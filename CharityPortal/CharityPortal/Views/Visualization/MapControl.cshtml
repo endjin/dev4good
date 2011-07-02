@@ -19,7 +19,7 @@
         });
 
         @foreach (Marker marker in Model.Markers) {
-            @:addMarker(map, "@marker.Title", "@marker.Content", "@marker.Latitude", "@marker.Longitude");
+            @:addMarker(map, "@marker.Title", "@Html.Raw(marker.Content)", "@marker.Latitude", "@marker.Longitude");
         }
     }
 
