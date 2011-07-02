@@ -1,5 +1,3 @@
-*.dll
-*.pdb
 *.vs10x
 *.csproj.user
 *.suo
