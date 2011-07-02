@@ -228,14 +228,5 @@
     <NotInBuild Include="Scripts\ScriptsIgnoredOnImport.sql">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <Build Include="TestData.dgen">
-      <SubType>NotInBuild</SubType>
-    </Build>
-    <NotInBuild Include="Data Generation Plans\dev4good_charityportal_testdata.xls">
-      <SubType>NotInBuild</SubType>
-    </NotInBuild>
-    <NotInBuild Include="Data Generation Plans\dev4good_charityportal_testdata.xls.dsn">
-      <SubType>NotInBuild</SubType>
-    </NotInBuild>
   </ItemGroup>
 </Project>
