@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/02/2011 16:21:29
--- Generated from EDMX file: D:\trev\Dev\dev4good\CharityPortal\CharityPortal.Data\DataContext.edmx
+-- Date Created: 07/02/2011 18:04:40
+-- Generated from EDMX file: C:\Users\Ivan Zlatev\Desktop\dev4good\CharityPortal\CharityPortal.Data\DataContext.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -25,9 +25,6 @@ IF OBJECT_ID(N'[dbo].[FK_ProjectResource]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_OrganizationResource]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Resources] DROP CONSTRAINT [FK_OrganizationResource];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ResourceResource]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Resources] DROP CONSTRAINT [FK_ResourceResource];
 GO
 IF OBJECT_ID(N'[dbo].[FK_TagResource_Tag]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TagResource] DROP CONSTRAINT [FK_TagResource_Tag];
@@ -85,7 +82,7 @@ CREATE TABLE [dbo].[Resources] (
     [Location_Address] nvarchar(max)  NOT NULL,
     [Project_Id] int  NOT NULL,
     [Organization_Id] int  NOT NULL,
-    [Fulfills_Id] bigint  NOT NULL
+    [FulfilledBy_Id] bigint  NULL
 );
 GO
 
@@ -106,7 +103,7 @@ GO
 
 -- Creating table 'TagResource'
 CREATE TABLE [dbo].[TagResource] (
-    [Tag_Id] int  NOT NULL,
+    [Tags_Id] int  NOT NULL,
     [Resources_Id] bigint  NOT NULL
 );
 GO
@@ -139,10 +136,10 @@ ADD CONSTRAINT [PK_Tags]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Tag_Id], [Resources_Id] in table 'TagResource'
+-- Creating primary key on [Tags_Id], [Resources_Id] in table 'TagResource'
 ALTER TABLE [dbo].[TagResource]
 ADD CONSTRAINT [PK_TagResource]
-    PRIMARY KEY NONCLUSTERED ([Tag_Id], [Resources_Id] ASC);
+    PRIMARY KEY NONCLUSTERED ([Tags_Id], [Resources_Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -191,24 +188,10 @@ ON [dbo].[Resources]
     ([Organization_Id]);
 GO
 
--- Creating foreign key on [Fulfills_Id] in table 'Resources'
-ALTER TABLE [dbo].[Resources]
-ADD CONSTRAINT [FK_ResourceResource]
-    FOREIGN KEY ([Fulfills_Id])
-    REFERENCES [dbo].[Resources]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ResourceResource'
-CREATE INDEX [IX_FK_ResourceResource]
-ON [dbo].[Resources]
-    ([Fulfills_Id]);
-GO
-
--- Creating foreign key on [Tag_Id] in table 'TagResource'
+-- Creating foreign key on [Tags_Id] in table 'TagResource'
 ALTER TABLE [dbo].[TagResource]
 ADD CONSTRAINT [FK_TagResource_Tag]
-    FOREIGN KEY ([Tag_Id])
+    FOREIGN KEY ([Tags_Id])
     REFERENCES [dbo].[Tags]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -226,6 +209,20 @@ ADD CONSTRAINT [FK_TagResource_Resource]
 CREATE INDEX [IX_FK_TagResource_Resource]
 ON [dbo].[TagResource]
     ([Resources_Id]);
+GO
+
+-- Creating foreign key on [FulfilledBy_Id] in table 'Resources'
+ALTER TABLE [dbo].[Resources]
+ADD CONSTRAINT [FK_ResourceResource]
+    FOREIGN KEY ([FulfilledBy_Id])
+    REFERENCES [dbo].[Resources]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ResourceResource'
+CREATE INDEX [IX_FK_ResourceResource]
+ON [dbo].[Resources]
+    ([FulfilledBy_Id]);
 GO
 
 -- --------------------------------------------------
