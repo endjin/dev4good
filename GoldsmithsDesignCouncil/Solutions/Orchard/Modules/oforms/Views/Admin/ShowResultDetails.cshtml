@@ -1,0 +1,47 @@
+@using System.Xml.Linq
+@model oforms.Models.OFormResultRecord
+           
+@using (Script.Head())
+{
+	<link href="@Url.Content("~/Modules/oforms/Styles/oform.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="oforms_mainGrid">
+@Html.Partial("sn")
+<br/>
+<a href="javascript: history.go(-1)">@T("&#171; Back to the form submissions")</a><br/><br/>
+
+    <div class="box">
+        <div class="title">@T("Result details")</div>
+        <div class="content">
+            @{ var xdocument = XDocument.Parse(Model.Xml); }
+            @foreach (var elem in xdocument.Root.Elements())
+            {
+                <div>
+                @elem.Name<text>:</text> @elem.Value
+                </div>
+            }
+            <div>
+            @T("Created date"): @Model.CreatedDate
+            </div>
+            <div>
+            @T("Ip Address"): @Model.Ip
+            </div>
+        </div>
+    </div>
+        @if (Model.Files.Count > 0)
+        { 
+    <div class="box">
+        <div class="title">Files</div>
+        <div class="content">
+            @foreach (var file in Model.Files)
+            { 
+            <div>
+                @Html.ActionLink(file.FieldName ?? file.OriginalName, "DownloadResultFile", new { file.Id })
+            </div>
+            }
+        </div>
+    </div>
+        }
+</div>
+<a href="javascript: history.go(-1)">@T("&#171; Back to the form submissions")</a>

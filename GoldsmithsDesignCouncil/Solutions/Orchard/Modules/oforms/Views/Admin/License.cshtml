@@ -1,0 +1,7 @@
+﻿Please Enter the Serial number:
+<br/>
+@using (Html.BeginFormAntiForgeryPost())
+{
+    @Html.TextBox("sn", ViewData["sn"], new { @style = "width:500px;" })
+    <button class="primaryAction" type="submit">@T("Submit")</button>
+}

@@ -1,0 +1,64 @@
+@model IList<oforms.Models.OFormPart>
+           
+           
+<div class="manage">
+@Html.ActionLink(T("Add a new form").ToString(), "Create", new { }, new { @class = "button primaryAction" })
+@Html.ActionLink(T("Create a sample 'Contact us' form").ToString(), "Create", new { template = "ContactUs" }, new { @class = "button primaryAction" })
+</div>
+
+
+
+<div id="oforms_mainGrid">
+@Html.Partial("sn")
+@using (Html.BeginFormAntiForgeryPost())
+{ 
+    <fieldset>
+    <table class="items" border="1">
+        <thead>
+            <tr>
+                <th scope="col">@T("Name")</th>
+                <th scope="col">@T("Permalink")</th>
+                <th scope="col">@T("Actions")</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        @foreach (var entry in Model)
+        { 
+        <tr>
+            <td>@entry.Name</td>
+            <td>http://(website url)<strong>@Url.Action("Index", "Home", new { area = "oforms", name = entry.Name })</strong></td>
+            <td>
+                @Html.ActionLink(T("Edit").ToString(), "Edit", new { entry.Id }, new { @class = "button primaryAction" })
+             </td>
+             <td>   
+                @Html.ActionLink(T("Preview").ToString(), "Preview", "Home", new { entry.Id }, new { @class = "button primaryAction", target = "_blank" })
+             </td>
+             <td>
+                @if (entry.IsPublished)
+                {
+                    @Html.ActionLink(T("Unpublish").ToString(), "Unpublish", new { entry.Id }, new { @class = "button primaryAction", itemprop = "RemoveUrl UnsafeUrl" })
+                }
+                else
+                {
+                    @Html.ActionLink(T("Publish").ToString(), "Publish", new { entry.Id }, new { @class = "button primaryAction", itemprop = "RemoveUrl UnsafeUrl" })
+                }
+            </td>
+            <td>
+                @if (entry.SaveResultsToDB)
+                { 
+                    @Html.ActionLink(T("Show submissions").ToString(), "ShowFormResults", new { entry.Id }, new { @class = "button primaryAction", title = entry.Name })
+                }
+            </td>
+            <td>    
+                @Html.ActionLink(T("Delete").ToString(), "Delete", new { entry.Id }, new { @class = "button primaryAction confirmLink", title = string.Format("'{0}' {1}", entry.Name, "form") })
+            </td>
+        </tr>
+        }
+    </table>
+     </fieldset>
+}
+</div>
+@Html.Partial("ConfirmScript")

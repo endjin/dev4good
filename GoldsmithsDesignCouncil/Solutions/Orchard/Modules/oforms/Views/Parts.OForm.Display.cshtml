@@ -1,0 +1,67 @@
+@using oforms.Models
+@using Orchard.ContentManagement
+@using oforms.HtmlHelpers
+@{
+    ContentItem contentItem = Model.ContentItem;
+    var form = (OFormPart)contentItem.Get(typeof(OFormPart));
+}
+ 
+@helper Captcha(){
+    var random = new Random();
+    @Html.Image(Url.Action("GenerateCaptcha", "Home"), "captcha", new { c = random.Next() });
+    <br />
+    @Html.TextBox(oforms.OFormGlobals.CaptchaKey);
+    }
+           
+@using (Html.BeginFormAntiForgeryPost(
+                                        String.IsNullOrEmpty(form.Action) ? Url.Action("SubmitForm", "Home") : form.Action,
+                                        form.Method == "POST" ? FormMethod.Post : FormMethod.Get,
+                                        new { @id = form.Name, enctype = form.CanUploadFiles ? "multipart/form-data" : null }
+                                    )
+       )
+{
+    @Html.Hidden(oforms.OFormGlobals.NameKey, form.Name)
+    @Html.Raw(form.InnerHtml.Replace("{captcha}", Captcha().ToString()))
+}
+
+@{ /* DO NOT REMOVE THE LINES BELOW, IF YOU LIKE THIS MODULE, SUPPORT IT AND GET A LICENCE!!! http://extendorchard.co.uk/license-oforms */}
+@{ /* if you really can't pay you can use class oforms to hide the below div, the the link should stay, it is illegal to remove it */}
+@if (!ViewBag.validSn){@Html.Raw("<div class='oforms'><a href='http://extendorchard.co.uk' target=_blank>Extend Orchard</a></div>")}
+
+@{
+
+    Validator test = new Validator();
+    String validatorCollectorString = test.ValidationRuleCollector(form.ValRequiredFields, "required").
+                                    ValidationRuleCollector(form.ValEmail, "email").
+                                    ValidationRuleCollector(form.ValNumbersOnly, "number").  
+                                    ValidationRuleCollector(form.ValUrl, "url").     
+                                    ValidationRuleCollector(form.ValDate, "date").                     
+                                    RenderValidator();
+}
+
+
+
+	
+
+@using (Script.Head())
+{
+	<link href="@Url.Content("~/Modules/oforms/Styles/cmxform.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Script.Foot())
+{
+    Script.Require("jQuery");
+    
+    <script src="@Url.Content("~/Modules/oforms/Scripts/jquery.validate.min.js")"></script>
+    
+    <script type="text/javascript">
+        $().ready(function() {
+            $("#@form.Name").validate({
+                rules: {	                            
+			            @Html.Raw(validatorCollectorString)
+                }
+            });
+        });
+    </script>
+}
+

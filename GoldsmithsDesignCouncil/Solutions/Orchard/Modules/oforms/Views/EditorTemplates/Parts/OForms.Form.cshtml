@@ -1,0 +1,169 @@
+﻿@model oforms.Models.OFormPart
+
+<div id="oform-tabs">
+
+	<div class="box" id="oform-tabs-1">
+		<div class="title">@T("General settings")</div>
+		<div class="content">
+			<label class="sub" for="Name">@T("Name")</label><br />
+			@Html.TextBoxFor(m => m.Name, new { @class = "text" }) 
+            <span class="helps"></span>
+            <span>@T("Please Enter UNIQUE Form Name. It will be used later to create a permalink like SITE-URL/oforms/Name")</span>
+            @Html.ValidationMessageFor(m => m.Name)
+            <br /><br />
+
+			<label class="sub" for="Method">@T("Method")</label><br />
+			@Html.DropDownList("Method", new[] { 
+                                    new SelectListItem { Text = "POST", Value = "POST", Selected = true },
+                                    new SelectListItem { Text = "GET", Value = "GET" }}) 
+            <span class="helps"></span>
+            <span>@T("Please select GET or POST method for your form")</span>
+            <br/><br/>
+
+		    <label class="sub" for="InnerHtml">@T("Inner html (do not include opened and closed FORM tag). To use captcha include {captcha}")</label>
+            <span class="helps"></span>
+            <span>@T("Enter any HTML code including input fields. Do not include opened and closed FORM tag")</span>
+			@Html.TextAreaFor(m => m.InnerHtml) 
+            <br/><br/>
+
+			<label class="sub" for="RedirectUrl">@T("Redirect url")</label><br />
+			@Html.TextBoxFor(m => m.RedirectUrl, new { @class = "text" }) 
+            <span class="helps"></span>
+            <span>@T("Enter URL or Permalink where you want the form to redirect users after form submission")</span>
+		</div>
+	</div>
+
+	<div class="box" id="oform-tabs-2">
+		<div class="title">@T("Optional settings")</div>
+		<div class="content">
+			    <label class="sub" for="Action">@T("Action")</label><br />
+			    @Html.TextBoxFor(m => m.Action, new { @class = "text" }) 
+                <span class="helps"></span>
+                <span>@T("Leave EMPTY for internal forms, only use if you want to post data to an external URL")</span>
+                <br/><br/>
+
+                <label class="sub" for="SaveResultsToDB">@T("Save results to DB")</label>
+                <span class="helps"></span>
+                <span>@T("Save form submissions in the Data Base")</span><br/>
+			    @Html.CheckBoxFor(m => m.SaveResultsToDB, new { @class = "text" }) 
+
+		</div>
+	</div>
+    
+    <div class="box" id="oform-tabs-3">
+		<div class="title">@T("File uploading settings (optional)")</div>
+		<div class="content">
+			        <label class="sub" for="CanUploadFiles">@T("Can upload files")</label>
+                    <span class="helps"></span>
+                    <span>@T("Allow users to upload files")</span>
+                    <br />
+					@Html.CheckBoxFor(m => m.CanUploadFiles, new { @class = "text" })
+                    <br /><br />
+
+					<label class="sub" for="UploadFileSizeLimit">@T("Upload file size limit (in kilo bytes). Please note on Microsoft SQL Server Compact the limit in 8kb only.")</label><br />
+					@Html.TextBoxFor(m => m.UploadFileSizeLimit, new { @class = "text" }) 
+                    <span class="helps"></span>
+                    <span>@T("Enter file size in kilo bytes, for example 1024 = 1mb")</span>
+                    <br /><br />
+
+					<label class="sub" for="UploadFileType">@T("Upload file type")</label><br />
+					@Html.TextBoxFor(m => m.UploadFileType, new { @class = "text" }) 
+                    <span class="helps"></span>
+                    <span>@T("Restricts upload to specific file type. Enter types like this: doc, zip, pdf")</span>
+		</div>
+	</div>
+    
+    <div class="box" id="oform-tabs-4">
+		<div class="title">@T("Email settings")</div>
+		<div class="content">
+            <label class="sub" for="SendEmail">@T("Email Results (In order to use this please install 'Email Messaging' module from Orchard gallery)")</label>
+            <span class="helps"></span>
+            <span>@T("Send form submissions by email")</span><br />
+			@Html.CheckBoxFor(m => m.SendEmail, new { @class = "text" }) 
+            <br /><br />
+
+            <label class="sub" for="EmailSubject">@T("Subject")</label><br />
+			@Html.TextBoxFor(m => m.EmailSubject, new { @class = "text" }) 
+            <span class="helps"></span>
+            <span>@T("Email Subject")</span>
+            <br /><br />
+
+            <label class="sub" for="EmailSendTo">@T("To (separate by ; , or space)")</label><br />
+			@Html.TextBoxFor(m => m.EmailSendTo, new { @class = "text" }) 
+            <span class="helps"></span>
+            <span>@T("Recipients email addresses")</span>
+            <br /><br />
+            
+            <label class="sub" for="EmailTemplate">@T("Email Body")</label>
+            <span class="helps"></span>
+            <span>@T("Email body. Use {field name} to be replaced by field value. For example First Name: {first_name}")</span>            
+            <br />
+			@Html.TextAreaFor(m => m.EmailTemplate, new { @class = "text" })
+        </div>
+	</div>
+
+    <div class="box" id="oform-tabs-5">
+		<div class="title">@T("Form validation rules (enter fields name separated by comma)")</div>
+		<div class="content">
+            <label class="sub" for="ValRequiredFields">@T("Required fields")</label><br />
+			@Html.TextBoxFor(m => m.ValRequiredFields, new { @class = "text" })
+            <span class="helps"></span>
+            <span>@T("Enter fields name separated by comma. Example: name,age,email")</span>
+            <br /><br />
+
+            <label class="sub" for="ValNumbersOnly">@T("Numbers only")</label><br />
+			@Html.TextBoxFor(m => m.ValNumbersOnly, new { @class = "text" })
+            <span class="helps"></span>
+            <span>@T("Enter fields name separated by comma. Example: amount,age")</span>
+            <br /><br />
+
+            <label class="sub" for="ValDate">@T("Date")</label><br />
+			@Html.TextBoxFor(m => m.ValDate, new { @class = "text" }) 
+            <span class="helps"></span>
+            <span>@T("Enter fields name separated by comma. Example: date,dob")</span>
+            <br /><br />
+            
+            <label class="sub" for="ValEmail">@T("Email")</label><br />
+			@Html.TextBoxFor(m => m.ValEmail, new { @class = "text" }) 
+            <span class="helps"></span>
+            <span>@T("Enter fields name separated by comma. Example: email1,email2")</span>
+            <br /><br />
+                 
+            <label class="sub" for="ValUrl">@T("Url")</label><br />
+			@Html.TextBoxFor(m => m.ValUrl, new { @class = "text" }) 
+            <span class="helps"></span>
+            <span>@T("Enter fields name separated by comma. Example: url1,url2")</span>
+            <br /><br />
+        </div>
+	</div>
+</div>
+
+@using (Script.Head())
+{
+	<link href="@Url.Content("~/Modules/oforms/Styles/oform.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Modules/oforms/Styles/jquery.helptooltip.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Script.Foot())
+{
+    <script type="text/javascript">
+    //<![CDATA[
+        jQuery(document).ready(function () {
+	        $(".helps").helptooltip();
+	    });
+    //]]>
+
+	    jQuery.fn.helptooltip = function () {
+	        $("body").append('<div id="bubble_tooltip" style="display: none; left: 379px; top: 62px;"><div class="bubble_top"></div><div class="bubble_middle"><span id="bubble_tooltip_content">&nbsp;</span></div><div class="bubble_bottom"></div></div>');
+	        $(this).each(function () {
+	            var ht = $(this).next('span').html();
+	            $(this).next('span').html('&nbsp;&nbsp;&nbsp;<img onmouseout="$(\'#bubble_tooltip\').hide();" onmouseover="showme(\'' + ht + '\', this);" src="@Url.Content("~/Modules/oforms/Styles/images/b_tipp.gif")" alt="" />').show();
+	        });
+	    }
+	    function showme(txt, me) {
+	        $("#bubble_tooltip_content").html(txt);
+	        $("#bubble_tooltip").css({ display: 'block', top: $(me).offset().top - $("#bubble_tooltip").height() + 5, left: $(me).offset().left - ($("#bubble_tooltip").width() - 50) });
+	    }
+    </script>
+    
+}

@@ -1,0 +1,1030 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{50B779EA-EC00-4699-84C0-03B395C365D2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Orchard.Web</RootNamespace>
+    <AssemblyName>Orchard.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags></FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <UseIISExpress>true</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\OrchardBasicCorrectness.ruleset</CodeAnalysisRuleSet>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Orchard.WarmupStarter">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Orchard.WarmupStarter.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Framework">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Orchard.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Orchard.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Orchard.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=2.1.13.813, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web, Version=2.1.13.813, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Autofac.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web.Mvc, Version=2.1.13.813, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Autofac.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\WebMatrix.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Content Include="Config\log4net.config" />
+    <Content Include="Config\Sample.HostComponents.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Media\web.config" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Modules\Lucene\Module.txt" />
+    <Content Include="Modules\Lucene\web.config" />
+    <Content Include="Modules\Orchard.ArchiveLater\Content\Admin\images\scheduled.gif" />
+    <Content Include="Modules\Orchard.ArchiveLater\Content\Web.config" />
+    <Content Include="Modules\Orchard.ArchiveLater\Module.txt" />
+    <Content Include="Modules\Orchard.ArchiveLater\Placement.info" />
+    <Content Include="Modules\Orchard.ArchiveLater\Styles\orchard-archivelater-datetime.css" />
+    <Content Include="Modules\Orchard.ArchiveLater\Styles\Web.config" />
+    <Content Include="Modules\Orchard.ArchiveLater\Views\EditorTemplates\Parts\ArchiveLater.cshtml" />
+    <Content Include="Modules\Orchard.ArchiveLater\Views\Parts\ArchiveLater.Metadata.SummaryAdmin.cshtml" />
+    <Content Include="Modules\Orchard.ArchiveLater\Views\Web.config" />
+    <Content Include="Modules\Orchard.ArchiveLater\web.config" />
+    <Content Include="Modules\Orchard.Blogs\Content\Admin\images\draft.gif" />
+    <Content Include="Modules\Orchard.Blogs\Content\Admin\images\offline.gif" />
+    <Content Include="Modules\Orchard.Blogs\Content\Admin\images\online.gif" />
+    <Content Include="Modules\Orchard.Blogs\Content\Admin\images\published.gif" />
+    <Content Include="Modules\Orchard.Blogs\Content\Admin\images\scheduled.gif" />
+    <Content Include="Modules\Orchard.Blogs\Content\Web.config" />
+    <Content Include="Modules\Orchard.Blogs\Module.txt" />
+    <Content Include="Modules\Orchard.Blogs\Placement.info" />
+    <Content Include="Modules\Orchard.Blogs\Scripts\orchard-blogs-archives.js" />
+    <Content Include="Modules\Orchard.Blogs\Scripts\Web.config" />
+    <Content Include="Modules\Orchard.Blogs\Styles\images\menu.blog.png" />
+    <Content Include="Modules\Orchard.Blogs\Styles\menu.blog-admin.css" />
+    <Content Include="Modules\Orchard.Blogs\Styles\orchard-blogs-admin.css" />
+    <Content Include="Modules\Orchard.Blogs\Styles\orchard-blogs-archives.css" />
+    <Content Include="Modules\Orchard.Blogs\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Blogs\Views\BlogAdmin\Create.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\BlogAdmin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\BlogAdmin\Item.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\BlogAdmin\List.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\BlogPostAdmin\Create.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\BlogPostAdmin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\BlogPost\ListByArchive.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Blog\List.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Content-Blog.DetailAdmin.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Content-Blog.Edit.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\EditorTemplates\Parts.Blogs.Blog.Fields.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\EditorTemplates\Parts.Blogs.BlogArchives.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\EditorTemplates\Parts.Blogs.RecentBlogPosts.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.Blog.BlogPostCount.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.Blog.Description.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.Blog.Manage.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.Blog.SummaryAdmin.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.BlogArchives.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.BlogPost.List.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.BlogPost.ListAdmin.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.RecentBlogPosts.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Parts.Blogs.RemotePublishing.cshtml" />
+    <Content Include="Modules\Orchard.Blogs\Views\Web.config" />
+    <Content Include="Modules\Orchard.Blogs\web.config" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\Controller.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\DataMigration.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\ModuleAssemblyInfo.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\ModuleCsProj.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\ModuleManifest.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\ModuleRootWebConfig.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\Placement.info" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\StaticFilesWebConfig.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\Theme.png" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\ThemeManifest.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\CodeGenerationTemplates\ViewsWebConfig.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\Module.txt" />
+    <Content Include="Modules\Orchard.CodeGeneration\web.config" />
+    <Content Include="Modules\Orchard.Comments\Module.txt" />
+    <Content Include="Modules\Orchard.Comments\Placement.info" />
+    <Content Include="Modules\Orchard.Comments\Styles\images\menu.comments.png" />
+    <Content Include="Modules\Orchard.Comments\Styles\menu.comments-admin.css" />
+    <Content Include="Modules\Orchard.Comments\Styles\orchard-comments-admin.css" />
+    <Content Include="Modules\Orchard.Comments\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Comments\Views\Admin\Details.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\Admin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\CommentAuthor.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\CommentMetadata.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\EditorTemplates\Parts.Comments.Comments.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\EditorTemplates\Parts.Comments.SiteSettings.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\ListOfComments.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\Parts.Comments.Count.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\Parts.Comments.Count.SummaryAdmin.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\Parts.Comments.cshtml" />
+    <Content Include="Modules\Orchard.Comments\Views\Web.config" />
+    <Content Include="Modules\Orchard.Comments\web.config" />
+    <Content Include="Modules\Orchard.ContentTypes\Module.txt" />
+    <Content Include="Modules\Orchard.ContentTypes\Styles\orchard-contenttypes-admin.css" />
+    <Content Include="Modules\Orchard.ContentTypes\Styles\Web.config" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\AddFieldTo.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\AddPartsTo.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\Create.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\CreatePart.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\EditPart.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\List.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\ListParts.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\RemoveFieldFrom.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Admin\RemovePartFrom.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\DisplayTemplates\EditPartViewModel.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\DisplayTemplates\EditTypeViewModel.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\DisplayTemplates\Field.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\DisplayTemplates\Fields.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\DisplayTemplates\Settings.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\EditorTemplates\Field.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\EditorTemplates\Fields.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\EditorTemplates\Settings.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\EditorTemplates\TypePart.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\EditorTemplates\TypePartField.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\EditorTemplates\TypePartFields.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\EditorTemplates\TypeParts.cshtml" />
+    <Content Include="Modules\Orchard.ContentTypes\Views\Web.config" />
+    <Content Include="Modules\Orchard.ContentTypes\web.config" />
+    <Content Include="Modules\Orchard.DesignerTools\Module.txt" />
+    <Content Include="Modules\Orchard.DesignerTools\Properties\AssemblyInfo.cs" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\CodeMirror\codemirror.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\CodeMirror\css.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\CodeMirror\htmlmixed.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\CodeMirror\javascript.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\CodeMirror\razor.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\jquery.scrollTo-min.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\jquery.tmpl.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\jquery.tmpl.min.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\orchard-designertools-shapetracing.js" />
+    <Content Include="Modules\Orchard.DesignerTools\Scripts\Web.config" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\CodeMirror\codemirror.css" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\CodeMirror\css.css" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\CodeMirror\javascript.css" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\CodeMirror\razor.css" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\Images\collapse.png" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\Images\expand.png" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\Images\menu-glyph.png" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\Images\toolbar-bg.png" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\orchard-designertools-shapetracing.css" />
+    <Content Include="Modules\Orchard.DesignerTools\Styles\Web.config" />
+    <Content Include="Modules\Orchard.DesignerTools\Views\ShapeTracingMeta.cshtml" />
+    <Content Include="Modules\Orchard.DesignerTools\Views\ShapeTracingTemplates.cshtml" />
+    <Content Include="Modules\Orchard.DesignerTools\Views\ShapeTracingWrapper.cshtml" />
+    <Content Include="Modules\Orchard.DesignerTools\Views\Web.config" />
+    <Content Include="Modules\Orchard.DesignerTools\Web.config" />
+    <Content Include="Modules\Orchard.Email\Module.txt" />
+    <Content Include="Modules\Orchard.Email\Placement.info" />
+    <Content Include="Modules\Orchard.Email\Views\EditorTemplates\Parts\SmtpSettings.cshtml" />
+    <Content Include="Modules\Orchard.Email\Views\Web.config" />
+    <Content Include="Modules\Orchard.Email\web.config" />
+    <Content Include="Modules\Orchard.Experimental\Module.txt" />
+    <Content Include="Modules\Orchard.Experimental\Styles\images\menu.experimental.png" />
+    <Content Include="Modules\Orchard.Experimental\Styles\menu.experimental-admin.css" />
+    <Content Include="Modules\Orchard.Experimental\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Experimental\Views\Commands\Execute.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Content\Details.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Content\Index.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\DefinitionTemplates\ExperimentalSettings.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\EditorTemplates\Parts\Experimental.ShowDebugLink.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Home\FormShapes.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Home\Index.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Home\Simple.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Home\UsingShapes.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Home\_RenderableAction.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Metadata\Index.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Parts\Experimental.ShowDebugLink.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\ShapeTable\ShapeTable.cshtml" />
+    <Content Include="Modules\Orchard.Experimental\Views\Web.config" />
+    <Content Include="Modules\Orchard.Experimental\web.config" />
+    <Content Include="Modules\Orchard.ImportExport\Module.txt" />
+    <Content Include="Modules\Orchard.ImportExport\Styles\images\menu.importexport.png" />
+    <Content Include="Modules\Orchard.ImportExport\Styles\menu.importexport-admin.css" />
+    <Content Include="Modules\Orchard.ImportExport\Styles\Web.config" />
+    <Content Include="Modules\Orchard.ImportExport\Views\Admin\Export.cshtml" />
+    <Content Include="Modules\Orchard.ImportExport\Views\Admin\Import.cshtml" />
+    <Content Include="Modules\Orchard.ImportExport\Views\Web.config" />
+    <Content Include="Modules\Orchard.ImportExport\web.config" />
+    <Content Include="Modules\Orchard.Indexing\Module.txt" />
+    <Content Include="Modules\Orchard.Indexing\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Indexing\Views\DefinitionTemplates\FieldIndexing.cshtml" />
+    <Content Include="Modules\Orchard.Indexing\Views\DefinitionTemplates\TypeIndexing.cshtml" />
+    <Content Include="Modules\Orchard.Indexing\Views\Web.config" />
+    <Content Include="Modules\Orchard.Indexing\web.config" />
+    <Content Include="Modules\Orchard.jQuery\Module.txt" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery-1.5.2.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery-1.5.2.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.blind.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.blind.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.bounce.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.bounce.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.clip.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.clip.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.core.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.core.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.drop.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.drop.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.explode.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.explode.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.fade.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.fade.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.fold.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.fold.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.highlight.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.highlight.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.pulsate.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.pulsate.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.scale.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.scale.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.shake.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.shake.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.slide.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.slide.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.transfer.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.effects.transfer.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.accordion.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.accordion.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.autocomplete.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.autocomplete.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.button.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.button.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.core.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.core.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.datepicker.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.datepicker.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.dialog.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.dialog.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.draggable.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.draggable.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.droppable.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.droppable.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.mouse.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.mouse.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.position.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.position.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.progressbar.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.progressbar.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.resizable.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.resizable.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.selectable.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.selectable.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.slider.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.slider.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.sortable.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.sortable.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.tabs.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.tabs.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.widget.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.ui.widget.min.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\jquery.utils.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\ui.timepickr.js" />
+    <Content Include="Modules\Orchard.jQuery\Scripts\Web.config" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-icons_222222_256x240.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-icons_454545_256x240.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-icons_888888_256x240.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Modules\Orchard.jQuery\Styles\jquery-ui-1.8.11.custom.css" />
+    <Content Include="Modules\Orchard.jQuery\Styles\ui.datepicker.css" />
+    <Content Include="Modules\Orchard.jQuery\Styles\ui.timepickr.css" />
+    <Content Include="Modules\Orchard.jQuery\Styles\Web.config" />
+    <Content Include="Modules\Orchard.jQuery\web.config" />
+    <Content Include="Modules\Orchard.Lists\Module.txt" />
+    <Content Include="Modules\Orchard.Lists\Placement.info" />
+    <Content Include="Modules\Orchard.Lists\Scripts\orchard-lists-admin.js" />
+    <Content Include="Modules\Orchard.Lists\Scripts\Web.config" />
+    <Content Include="Modules\Orchard.Lists\Styles\images\menu.list.png" />
+    <Content Include="Modules\Orchard.Lists\Styles\menu.list-admin.css" />
+    <Content Include="Modules\Orchard.Lists\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Lists\Views\Admin\Choose.cshtml" />
+    <Content Include="Modules\Orchard.Lists\Views\Admin\List.cshtml" />
+    <Content Include="Modules\Orchard.Lists\Views\Parts.Container.Contained.SummaryAdmin.cshtml" />
+    <Content Include="Modules\Orchard.Lists\Views\Parts.Container.Manage.cshtml" />
+    <Content Include="Modules\Orchard.Lists\Web.config" />
+    <Content Include="Modules\Orchard.Localization\Module.txt" />
+    <Content Include="Modules\Orchard.Localization\Placement.info" />
+    <Content Include="Modules\Orchard.Localization\Styles\orchard-localization-admin.css" />
+    <Content Include="Modules\Orchard.Localization\Styles\orchard-localization-base.css" />
+    <Content Include="Modules\Orchard.Localization\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Localization\Views\Admin\Translate.cshtml" />
+    <Content Include="Modules\Orchard.Localization\Views\CultureSelection.cshtml" />
+    <Content Include="Modules\Orchard.Localization\Views\EditorTemplates\Parts\Localization.ContentTranslations.Edit.cshtml" />
+    <Content Include="Modules\Orchard.Localization\Views\Parts\Localization.ContentTranslations.cshtml" />
+    <Content Include="Modules\Orchard.Localization\Views\Parts\Localization.ContentTranslations.Summary.cshtml" />
+    <Content Include="Modules\Orchard.Localization\Views\Parts\Localization.ContentTranslations.SummaryAdmin.cshtml" />
+    <Content Include="Modules\Orchard.Localization\Views\Web.config" />
+    <Content Include="Modules\Orchard.Localization\web.config" />
+    <Content Include="Modules\Orchard.MediaPicker\Content\Web.config" />
+    <Content Include="Modules\Orchard.MediaPicker\Module.txt" />
+    <Content Include="Modules\Orchard.MediaPicker\Properties\AssemblyInfo.cs" />
+    <Content Include="Modules\Orchard.MediaPicker\Scripts\MediaBrowser.js" />
+    <Content Include="Modules\Orchard.MediaPicker\Scripts\MediaPicker.js" />
+    <Content Include="Modules\Orchard.MediaPicker\Scripts\Web.config" />
+    <Content Include="Modules\Orchard.MediaPicker\Styles\images\imagepreview.png" />
+    <Content Include="Modules\Orchard.MediaPicker\Styles\images\synchronizing.gif" />
+    <Content Include="Modules\Orchard.MediaPicker\Styles\mediapicker.css" />
+    <Content Include="Modules\Orchard.MediaPicker\Styles\Web.config" />
+    <Content Include="Modules\Orchard.MediaPicker\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.MediaPicker\Views\Admin\Tab_Gallery.cshtml" />
+    <Content Include="Modules\Orchard.MediaPicker\Views\Admin\Tab_Url.cshtml" />
+    <Content Include="Modules\Orchard.MediaPicker\Views\Web.config" />
+    <Content Include="Modules\Orchard.MediaPicker\web.config" />
+    <Content Include="Modules\Orchard.Media\Content\Admin\images\folder.gif" />
+    <Content Include="Modules\Orchard.Media\Content\Site.css" />
+    <Content Include="Modules\Orchard.Media\Content\Web.config" />
+    <Content Include="Modules\Orchard.Media\Module.txt" />
+    <Content Include="Modules\Orchard.Media\Styles\images\menu.media.png" />
+    <Content Include="Modules\Orchard.Media\Styles\menu.media-admin.css" />
+    <Content Include="Modules\Orchard.Media\Styles\orchard-media-admin.css" />
+    <Content Include="Modules\Orchard.Media\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Media\Views\Admin\Add.cshtml" />
+    <Content Include="Modules\Orchard.Media\Views\Admin\Create.cshtml" />
+    <Content Include="Modules\Orchard.Media\Views\Admin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.Media\Views\Admin\EditMedia.cshtml" />
+    <Content Include="Modules\Orchard.Media\Views\Admin\EditProperties.cshtml" />
+    <Content Include="Modules\Orchard.Media\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Media\Views\EditorTemplates\Parts\Media.MediaSettings.cshtml" />
+    <Content Include="Modules\Orchard.Media\Views\Web.config" />
+    <Content Include="Modules\Orchard.Media\web.config" />
+    <Content Include="Modules\Orchard.Messaging\Module.txt" />
+    <Content Include="Modules\Orchard.Messaging\Placement.info" />
+    <Content Include="Modules\Orchard.Messaging\Views\EditorTemplates\Parts\MessageSettings.cshtml" />
+    <Content Include="Modules\Orchard.Messaging\Views\Web.config" />
+    <Content Include="Modules\Orchard.Messaging\web.config" />
+    <Content Include="Modules\Orchard.Migrations\Module.txt" />
+    <Content Include="Modules\Orchard.Migrations\web.config" />
+    <Content Include="Modules\Orchard.Modules\Content\Admin\images\disabled.gif" />
+    <Content Include="Modules\Orchard.Modules\Content\Admin\images\enabled.gif" />
+    <Content Include="Modules\Orchard.Modules\Content\Web.config" />
+    <Content Include="Modules\Orchard.Modules\Module.txt" />
+    <Content Include="Modules\Orchard.Modules\Styles\images\menu.modules.png" />
+    <Content Include="Modules\Orchard.Modules\Styles\images\new.gif" />
+    <Content Include="Modules\Orchard.Modules\Styles\images\update.gif" />
+    <Content Include="Modules\Orchard.Modules\Styles\menu.modules-admin.css" />
+    <Content Include="Modules\Orchard.Modules\Styles\orchard-modules-admin.css" />
+    <Content Include="Modules\Orchard.Modules\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Modules\Views\Admin\Features.cshtml" />
+    <Content Include="Modules\Orchard.Modules\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Modules\Views\ModuleEntry.cshtml" />
+    <Content Include="Modules\Orchard.Modules\Views\Web.config" />
+    <Content Include="Modules\Orchard.Modules\web.config" />
+    <Content Include="Modules\Orchard.MultiTenancy\Content\Admin\images\disabled.gif" />
+    <Content Include="Modules\Orchard.MultiTenancy\Content\Admin\images\enabled.gif" />
+    <Content Include="Modules\Orchard.MultiTenancy\Content\Web.config" />
+    <Content Include="Modules\Orchard.MultiTenancy\Module.txt" />
+    <Content Include="Modules\Orchard.MultiTenancy\Styles\orchard-multitenancy-admin.css" />
+    <Content Include="Modules\Orchard.MultiTenancy\Styles\Web.config" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Admin\Add.cshtml" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Admin\DisplayTemplates\ActionsForDisabled.cshtml" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Admin\DisplayTemplates\ActionsForInvalid.cshtml" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Admin\DisplayTemplates\ActionsForRunning.cshtml" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Admin\DisplayTemplates\ActionsForUninitialized.cshtml" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Admin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.MultiTenancy\Views\Web.config" />
+    <Content Include="Modules\Orchard.MultiTenancy\web.config" />
+    <Content Include="Modules\Orchard.Packaging\Content\Images\imagePlaceholder.png" />
+    <Content Include="Modules\Orchard.Packaging\Content\Images\moduleDefaultIcon.png" />
+    <Content Include="Modules\Orchard.Packaging\Content\Images\stars.png" />
+    <Content Include="Modules\Orchard.Packaging\Content\Web.config" />
+    <Content Include="Modules\Orchard.Packaging\Module.txt" />
+    <Content Include="Modules\Orchard.Packaging\Service References\GalleryServer\Reference.datasvcmap" />
+    <Content Include="Modules\Orchard.Packaging\Service References\GalleryServer\service.edmx" />
+    <Content Include="Modules\Orchard.Packaging\Styles\images\installed.gif" />
+    <Content Include="Modules\Orchard.Packaging\Styles\orchard-packaging-admin.css" />
+    <Content Include="Modules\Orchard.Packaging\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Packaging\Views\GalleryUpdates\ModulesUpdates.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\GalleryUpdates\ThemesUpdates.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\Gallery\AddSource.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\Gallery\Modules.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\Gallery\Sources.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\Gallery\Themes.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\PackagingServices\AddModule.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\PackagingServices\AddTheme.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\PackagingServices\InstallModuleDetails.cshtml" />
+    <Content Include="Modules\Orchard.Packaging\Views\Web.config" />
+    <Content Include="Modules\Orchard.Packaging\web.config" />
+    <Content Include="Modules\Orchard.Pages\Module.txt" />
+    <Content Include="Modules\Orchard.Pages\Styles\images\menu.page.png" />
+    <Content Include="Modules\Orchard.Pages\Styles\menu.page-admin.css" />
+    <Content Include="Modules\Orchard.Pages\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Pages\web.config" />
+    <Content Include="Modules\Orchard.PublishLater\Content\Admin\images\draft.gif" />
+    <Content Include="Modules\Orchard.PublishLater\Content\Admin\images\offline.gif" />
+    <Content Include="Modules\Orchard.PublishLater\Content\Admin\images\online.gif" />
+    <Content Include="Modules\Orchard.PublishLater\Content\Admin\images\published.gif" />
+    <Content Include="Modules\Orchard.PublishLater\Content\Admin\images\scheduled.gif" />
+    <Content Include="Modules\Orchard.PublishLater\Content\Web.config" />
+    <Content Include="Modules\Orchard.PublishLater\Module.txt" />
+    <Content Include="Modules\Orchard.PublishLater\Placement.info" />
+    <Content Include="Modules\Orchard.PublishLater\Styles\orchard-publishlater-datetime.css" />
+    <Content Include="Modules\Orchard.PublishLater\Styles\Web.config" />
+    <Content Include="Modules\Orchard.PublishLater\Views\EditorTemplates\Parts\PublishLater.cshtml" />
+    <Content Include="Modules\Orchard.PublishLater\Views\Parts\PublishLater.Metadata.cshtml" />
+    <Content Include="Modules\Orchard.PublishLater\Views\Parts\PublishLater.Metadata.Summary.cshtml" />
+    <Content Include="Modules\Orchard.PublishLater\Views\Parts\PublishLater.Metadata.SummaryAdmin.cshtml" />
+    <Content Include="Modules\Orchard.PublishLater\Views\Web.config" />
+    <Content Include="Modules\Orchard.PublishLater\web.config" />
+    <Content Include="Modules\Orchard.Recipes\Module.txt" />
+    <Content Include="Modules\Orchard.Recipes\web.config" />
+    <Content Include="Modules\Orchard.Roles\Content\Site.css" />
+    <Content Include="Modules\Orchard.Roles\Content\Web.config" />
+    <Content Include="Modules\Orchard.Roles\Module.txt" />
+    <Content Include="Modules\Orchard.Roles\Placement.info" />
+    <Content Include="Modules\Orchard.Roles\Views\Admin\Create.cshtml" />
+    <Content Include="Modules\Orchard.Roles\Views\Admin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.Roles\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Roles\Views\EditorTemplates\Parts\Roles.UserRoles.cshtml" />
+    <Content Include="Modules\Orchard.Roles\Views\Web.config" />
+    <Content Include="Modules\Orchard.Roles\web.config" />
+    <Content Include="Modules\Orchard.Scripting.Dlr\Module.txt" />
+    <Content Include="Modules\Orchard.Scripting.Dlr\web.config" />
+    <Content Include="Modules\Orchard.Scripting\Module.txt" />
+    <Content Include="Modules\Orchard.Scripting\web.config" />
+    <Content Include="Modules\Orchard.Search\Module.txt" />
+    <Content Include="Modules\Orchard.Search\Placement.info" />
+    <Content Include="Modules\Orchard.Search\Styles\orchard-search-admin.css" />
+    <Content Include="Modules\Orchard.Search\Styles\orchard-search-search.css" />
+    <Content Include="Modules\Orchard.Search\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Search\Views\EditorTemplates\Parts\Search.SiteSettings.cshtml" />
+    <Content Include="Modules\Orchard.Search\Views\Parts\Search.SearchForm.cshtml" />
+    <Content Include="Modules\Orchard.Search\Views\Search\Index.cshtml" />
+    <Content Include="Modules\Orchard.Search\Views\Web.config" />
+    <Content Include="Modules\Orchard.Search\web.config" />
+    <Content Include="Modules\Orchard.Setup\Content\synchronizing.gif" />
+    <Content Include="Modules\Orchard.Setup\Content\Web.config" />
+    <Content Include="Modules\Orchard.Setup\Module.txt" />
+    <Content Include="Modules\Orchard.Setup\Recipes\blog.recipe.xml" />
+    <Content Include="Modules\Orchard.Setup\Recipes\core.recipe.xml" />
+    <Content Include="Modules\Orchard.Setup\Recipes\default.recipe.xml" />
+    <Content Include="Modules\Orchard.Setup\Scripts\setup.js" />
+    <Content Include="Modules\Orchard.Setup\Scripts\Web.config" />
+    <Content Include="Modules\Orchard.Setup\Views\Setup\Index.cshtml" />
+    <Content Include="Modules\Orchard.Setup\Views\Web.config" />
+    <Content Include="Modules\Orchard.Setup\web.config" />
+    <Content Include="Modules\Orchard.Tags\Module.txt" />
+    <Content Include="Modules\Orchard.Tags\Placement.info" />
+    <Content Include="Modules\Orchard.Tags\Styles\images\menu.tags.png" />
+    <Content Include="Modules\Orchard.Tags\Styles\menu.tags-admin.css" />
+    <Content Include="Modules\Orchard.Tags\Styles\orchard-tags-admin.css" />
+    <Content Include="Modules\Orchard.Tags\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Tags\Views\Admin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.Tags\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Tags\Views\EditorTemplates\Parts\CreateTag.cshtml" />
+    <Content Include="Modules\Orchard.Tags\Views\EditorTemplates\Parts\Tags.cshtml" />
+    <Content Include="Modules\Orchard.Tags\Views\Home\Index.cshtml" />
+    <Content Include="Modules\Orchard.Tags\Views\Home\Search.cshtml" />
+    <Content Include="Modules\Orchard.Tags\Views\Parts\Tags.ShowTags.cshtml" />
+    <Content Include="Modules\Orchard.Tags\Views\Web.config" />
+    <Content Include="Modules\Orchard.Tags\web.config" />
+    <Content Include="Modules\Orchard.Themes\Content\orchard.ico" />
+    <Content Include="Modules\Orchard.Themes\Content\Web.config" />
+    <Content Include="Modules\Orchard.Themes\Module.txt" />
+    <Content Include="Modules\Orchard.Themes\Styles\images\menu.themes.png" />
+    <Content Include="Modules\Orchard.Themes\Styles\images\new.gif" />
+    <Content Include="Modules\Orchard.Themes\Styles\images\update.gif" />
+    <Content Include="Modules\Orchard.Themes\Styles\menu.themes-admin.css" />
+    <Content Include="Modules\Orchard.Themes\Styles\orchard-themes-admin.css" />
+    <Content Include="Modules\Orchard.Themes\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Themes\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Themes\Views\ThemeEntry.cshtml" />
+    <Content Include="Modules\Orchard.Themes\Views\ThemeEntry.Current.cshtml" />
+    <Content Include="Modules\Orchard.Themes\Views\ThemePreview.cshtml" />
+    <Content Include="Modules\Orchard.Themes\Views\Web.config" />
+    <Content Include="Modules\Orchard.Themes\web.config" />
+    <Content Include="Modules\Orchard.Users\Content\Admin\images\offline.gif" />
+    <Content Include="Modules\Orchard.Users\Content\Admin\images\online.gif" />
+    <Content Include="Modules\Orchard.Users\Content\Web.config" />
+    <Content Include="Modules\Orchard.Users\Module.txt" />
+    <Content Include="Modules\Orchard.Users\Styles\images\menu.users.png" />
+    <Content Include="Modules\Orchard.Users\Styles\menu.users-admin.css" />
+    <Content Include="Modules\Orchard.Users\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Users\Views\Account\AccessDenied.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\ChallengeEmailFail.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\ChallengeEmailSent.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\ChallengeEmailSuccess.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\ChangePassword.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\LostPassword.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\RegistrationPending.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Account\RequestLostPassword.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Admin\Create.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Admin\Edit.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\EditorTemplates\Parts\User.Create.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\EditorTemplates\Parts\User.Edit.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\EditorTemplates\Parts\Users.RegistrationSettings.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Items\Content-User.Edit.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\LogOn.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Register.cshtml" />
+    <Content Include="Modules\Orchard.Users\Views\Web.config" />
+    <Content Include="Modules\Orchard.Users\web.config" />
+    <Content Include="Modules\Orchard.Warmup\Module.txt" />
+    <Content Include="Modules\Orchard.Warmup\Placement.info" />
+    <Content Include="Modules\Orchard.Warmup\Properties\AssemblyInfo.cs" />
+    <Content Include="Modules\Orchard.Warmup\Scripts\Web.config" />
+    <Content Include="Modules\Orchard.Warmup\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Warmup\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Warmup\Views\EditorTemplates\Parts.Warmup.SiteSettings.cshtml" />
+    <Content Include="Modules\Orchard.Warmup\Views\Web.config" />
+    <Content Include="Modules\Orchard.Warmup\web.config" />
+    <Content Include="Modules\Orchard.Widgets\Content\Admin\images\edit.png" />
+    <Content Include="Modules\Orchard.Widgets\Content\Admin\images\movedown.gif" />
+    <Content Include="Modules\Orchard.Widgets\Content\Admin\images\moveup.gif" />
+    <Content Include="Modules\Orchard.Widgets\Content\Web.config" />
+    <Content Include="Modules\Orchard.Widgets\Module.txt" />
+    <Content Include="Modules\Orchard.Widgets\Placement.info" />
+    <Content Include="Modules\Orchard.Widgets\Styles\images\all-zones-on.gif" />
+    <Content Include="Modules\Orchard.Widgets\Styles\images\all-zones.gif" />
+    <Content Include="Modules\Orchard.Widgets\Styles\images\arrows.png" />
+    <Content Include="Modules\Orchard.Widgets\Styles\images\eye.png" />
+    <Content Include="Modules\Orchard.Widgets\Styles\images\menu.widgets.png" />
+    <Content Include="Modules\Orchard.Widgets\Styles\images\widget-zones-on.gif" />
+    <Content Include="Modules\Orchard.Widgets\Styles\images\widget-zones.gif" />
+    <Content Include="Modules\Orchard.Widgets\Styles\menu.widgets-admin.css" />
+    <Content Include="Modules\Orchard.Widgets\Styles\orchard-widgets-admin.css" />
+    <Content Include="Modules\Orchard.Widgets\Styles\Web.config" />
+    <Content Include="Modules\Orchard.Widgets\Views\Admin\AddLayer.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Admin\AddWidget.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Admin\ChooseWidget.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Admin\EditLayer.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Admin\EditWidget.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Admin\Index.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\EditorTemplates\Parts.Widgets.LayerPart.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\EditorTemplates\Parts.Widgets.WidgetPart.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Web.config" />
+    <Content Include="Modules\Orchard.Widgets\Views\Widget.ControlWrapper.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Widget.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Widget.DeleteButton.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Widget.Edit.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\Widget.Wrapper.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\WidgetLayersControl.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\WidgetLayerVisibility.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\WidgetPlacement.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\WidgetPlacement.Orphans.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\WidgetPlacement.Zones.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\Views\WidgetSimplePreview.cshtml" />
+    <Content Include="Modules\Orchard.Widgets\web.config" />
+    <Content Include="Modules\Themes\SafeMode\Content\orchard.ico" />
+    <Content Include="Modules\Themes\SafeMode\Content\Web.config" />
+    <Content Include="Modules\Themes\SafeMode\Styles\ie6.css" />
+    <Content Include="Modules\Themes\SafeMode\Styles\images\backgroundHeader.gif" />
+    <Content Include="Modules\Themes\SafeMode\Styles\images\backgroundVines.gif" />
+    <Content Include="Modules\Themes\SafeMode\Styles\images\orchardLogo.gif" />
+    <Content Include="Modules\Themes\SafeMode\Styles\site.css" />
+    <Content Include="Modules\Themes\SafeMode\Styles\Web.config" />
+    <Content Include="Modules\Themes\SafeMode\Theme.png" />
+    <Content Include="Modules\Themes\SafeMode\Theme.txt" />
+    <Content Include="Modules\Themes\SafeMode\Views\Document.cshtml" />
+    <Content Include="Modules\Themes\SafeMode\Views\Layout.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Scripts\admin.js" />
+    <Content Include="Modules\Themes\TheAdmin\Scripts\Web.config" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\ie.css" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\ie7.css" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\ie8.css" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\adminNavBackground.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\backgroundGradient.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\backgroundHeader.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icon-advisory.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icon-contribute.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icon-docs.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icon-friends.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icon-gallery.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icon-settings.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icons.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\icons.psd" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\info.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\menu-default.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\menu-glyph.png" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\menuClosed.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\menuClosedHover.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\menuOpen.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\menuOpenHover.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\orchardLogo.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\tableHeaderBackgroundRed.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\images\vinesBackgroundBottom.gif" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\site.css" />
+    <Content Include="Modules\Themes\TheAdmin\Styles\Web.config" />
+    <Content Include="Modules\Themes\TheAdmin\Theme.png" />
+    <Content Include="Modules\Themes\TheAdmin\Theme.txt" />
+    <Content Include="Modules\Themes\TheAdmin\Views\Header.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Views\Layout.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Views\LocalMenu.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Views\Menu.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Views\OrchardVersion.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Views\Pager.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Views\Title.cshtml" />
+    <Content Include="Modules\Themes\TheAdmin\Views\User.cshtml" />
+    <Content Include="Modules\Themes\TheThemeMachine\Placement.info" />
+    <Content Include="Modules\Themes\TheThemeMachine\Styles\Site.css" />
+    <Content Include="Modules\Themes\TheThemeMachine\Styles\Web.config" />
+    <Content Include="Modules\Themes\TheThemeMachine\Theme.png" />
+    <Content Include="Modules\Themes\TheThemeMachine\Theme.txt" />
+    <Content Include="Modules\Themes\TheThemeMachine\ThemeZonePreview.png" />
+    <Content Include="Modules\Themes\TheThemeMachine\Views\BadgeOfHonor.cshtml" />
+    <Content Include="Modules\Themes\TheThemeMachine\Views\Branding.cshtml" />
+    <Content Include="Modules\Themes\TheThemeMachine\Views\Layout.cshtml" />
+    <Content Include="Modules\Themes\Web.config" />
+    <Content Include="Modules\TinyMce\Module.txt" />
+    <Content Include="Modules\TinyMce\Scripts\langs\en.js" />
+    <Content Include="Modules\TinyMce\Scripts\license.txt" />
+    <Content Include="Modules\TinyMce\Scripts\orchard-tinymce.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\autoresize\editor_plugin.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\autoresize\editor_plugin_src.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\fullscreen\editor_plugin.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\fullscreen\editor_plugin_src.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\fullscreen\fullscreen.htm" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\mediapicker\editor_plugin.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\mediapicker\editor_plugin_src.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\mediapicker\img\picture_add.png" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\searchreplace\css\searchreplace.css" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\searchreplace\editor_plugin.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\searchreplace\editor_plugin_src.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\searchreplace\js\searchreplace.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\searchreplace\langs\en_dlg.js" />
+    <Content Include="Modules\TinyMce\Scripts\plugins\searchreplace\searchreplace.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\about.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\anchor.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\charmap.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\color_picker.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\editor_template.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\editor_template_src.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\image.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\img\colorpicker.jpg" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\img\icons.gif" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\js\about.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\js\anchor.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\js\charmap.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\js\color_picker.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\js\image.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\js\link.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\js\source_editor.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\langs\en.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\langs\en_dlg.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\link.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\content.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\dialog.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\img\buttons.png" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\img\items.gif" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\img\menu_check.gif" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\img\progress.gif" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\img\tabs.gif" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\default\ui.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\content.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\dialog.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\img\button_bg.png" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\img\button_bg_black.png" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\img\button_bg_silver.png" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\ui.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\ui_black.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\skins\o2k7\ui_silver.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\advanced\source_editor.htm" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\editor_template.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\editor_template_src.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\img\icons.gif" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\langs\en.js" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\skins\default\content.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\skins\default\ui.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\skins\o2k7\content.css" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\skins\o2k7\img\button_bg.png" />
+    <Content Include="Modules\TinyMce\Scripts\themes\simple\skins\o2k7\ui.css" />
+    <Content Include="Modules\TinyMce\Scripts\tiny_mce.js" />
+    <Content Include="Modules\TinyMce\Scripts\tiny_mce_popup.js" />
+    <Content Include="Modules\TinyMce\Scripts\tiny_mce_src.js" />
+    <Content Include="Modules\TinyMce\Scripts\utils\editable_selects.js" />
+    <Content Include="Modules\TinyMce\Scripts\utils\form_utils.js" />
+    <Content Include="Modules\TinyMce\Scripts\utils\mctabs.js" />
+    <Content Include="Modules\TinyMce\Scripts\utils\validate.js" />
+    <Content Include="Modules\TinyMce\Scripts\Web.config" />
+    <Content Include="Modules\TinyMce\Views\Body-Html.Editor.cshtml" />
+    <Content Include="Modules\TinyMce\Views\Web.config" />
+    <Content Include="Modules\TinyMce\web.config" />
+    <Content Include="Core\Common\Module.txt" />
+    <Content Include="Core\Common\Placement.info" />
+    <Content Include="Core\Common\Views\Body.Editor.cshtml" />
+    <Content Include="Core\Common\Views\CommonMetadataOwner.cshtml" />
+    <Content Include="Core\Common\Views\DefinitionTemplates\BodyPartSettings.cshtml" />
+    <Content Include="Core\Common\Views\DefinitionTemplates\BodyTypePartSettings.cshtml" />
+    <Content Include="Core\Common\Views\EditorTemplates\Fields.Common.Text.Edit.cshtml" />
+    <Content Include="Core\Common\Views\EditorTemplates\Parts.Common.Body.cshtml" />
+    <Content Include="Core\Common\Views\EditorTemplates\Parts.Common.Container.cshtml" />
+    <Content Include="Core\Common\Views\EditorTemplates\Parts.Common.Owner.cshtml" />
+    <Content Include="Core\Common\Views\Fields.Common.Text.cshtml" />
+    <Content Include="Core\Common\Views\Parts.Common.Body.cshtml" />
+    <Content Include="Core\Common\Views\Parts.Common.Body.Summary.cshtml" />
+    <Content Include="Core\Common\Views\Parts.Common.Body.SummaryAdmin.cshtml" />
+    <Content Include="Core\Common\Views\Parts.Common.Metadata.cshtml" />
+    <Content Include="Core\Common\Views\Parts.Common.Metadata.Summary.cshtml" />
+    <Content Include="Core\Common\Views\Parts.Common.Metadata.SummaryAdmin.cshtml" />
+    <Content Include="Core\Common\Views\Web.config" />
+    <Content Include="Core\Containers\Module.txt" />
+    <Content Include="Core\Containers\Placement.info" />
+    <Content Include="Core\Containers\Views\DefinitionTemplates\ContainerPartSettings.cshtml" />
+    <Content Include="Core\Containers\Views\DefinitionTemplates\ContainerTypePartSettings.cshtml" />
+    <Content Include="Core\Containers\Views\EditorTemplates\Containable.cshtml" />
+    <Content Include="Core\Containers\Views\EditorTemplates\Container.cshtml" />
+    <Content Include="Core\Containers\Views\EditorTemplates\ContainerWidget.cshtml" />
+    <Content Include="Core\Containers\Views\EditorTemplates\CustomProperties.cshtml" />
+    <Content Include="Core\Containers\Views\Item\Display.cshtml" />
+    <Content Include="Core\Containers\Views\Parts.ContainerWidget.cshtml" />
+    <Content Include="Core\Contents\Module.txt" />
+    <Content Include="Core\Contents\Placement.info" />
+    <Content Include="Core\Contents\Styles\images\menu.content.png" />
+    <Content Include="Core\Contents\Styles\menu.content-admin.css" />
+    <Content Include="Core\Contents\Styles\Web.config" />
+    <Content Include="Core\Contents\Views\Admin\CreatableTypeList.cshtml" />
+    <Content Include="Core\Contents\Views\Admin\Create.cshtml" />
+    <Content Include="Core\Contents\Views\Admin\Edit.cshtml" />
+    <Content Include="Core\Contents\Views\Admin\List.cshtml" />
+    <Content Include="Core\Contents\Views\Content.ControlWrapper.cshtml" />
+    <Content Include="Core\Contents\Views\Content.cshtml" />
+    <Content Include="Core\Contents\Views\Content.Edit.cshtml" />
+    <Content Include="Core\Contents\Views\Content.PublishButton.cshtml" />
+    <Content Include="Core\Contents\Views\Content.SaveButton.cshtml" />
+    <Content Include="Core\Contents\Views\Content.Summary.cshtml" />
+    <Content Include="Core\Contents\Views\Content.SummaryAdmin.cshtml" />
+    <Content Include="Core\Contents\Views\Parts.Contents.Publish.cshtml" />
+    <Content Include="Core\Contents\Views\Parts.Contents.Publish.SummaryAdmin.cshtml" />
+    <Content Include="Core\Contents\Views\Web.config" />
+    <Content Include="Core\Dashboard\Module.txt" />
+    <Content Include="Core\Dashboard\styles\images\menu.dashboard.png" />
+    <Content Include="Core\Dashboard\styles\menu.dashboard-admin.css" />
+    <Content Include="Core\Dashboard\styles\Web.config" />
+    <Content Include="Core\Dashboard\Views\Admin\Index.cshtml" />
+    <Content Include="Core\Dashboard\Views\Web.config" />
+    <Content Include="Core\Feeds\Module.txt" />
+    <Content Include="Core\Feeds\Views\Feed.cshtml" />
+    <Content Include="Core\HomePage\Module.txt" />
+    <Content Include="Core\Navigation\Module.txt" />
+    <Content Include="Core\Navigation\Placement.info" />
+    <Content Include="Core\Navigation\Styles\images\menu.navigation.png" />
+    <Content Include="Core\Navigation\Styles\menu.navigation-admin.css" />
+    <Content Include="Core\Navigation\Styles\Web.config" />
+    <Content Include="Core\Navigation\Views\Admin\Index.cshtml" />
+    <Content Include="Core\Navigation\Views\DefinitionTemplates\AdminMenuPartTypeSettings.cshtml" />
+    <Content Include="Core\Navigation\Views\EditorTemplates\Parts.Navigation.AdminMenu.Edit.cshtml" />
+    <Content Include="Core\Navigation\Views\EditorTemplates\Parts.Navigation.Menu.Edit.cshtml" />
+    <Content Include="Core\Navigation\Views\Web.config" />
+    <Content Include="Core\Reports\Module.txt" />
+    <Content Include="Core\Reports\Styles\images\menu.reports.png" />
+    <Content Include="Core\Reports\Styles\menu.reports-admin.css" />
+    <Content Include="Core\Reports\Styles\Web.config" />
+    <Content Include="Core\Reports\Views\Admin\Display.cshtml" />
+    <Content Include="Core\Reports\Views\Admin\Index.cshtml" />
+    <Content Include="Core\Reports\Views\Web.config" />
+    <Content Include="Core\Routable\Module.txt" />
+    <Content Include="Core\Routable\Placement.info" />
+    <Content Include="Core\Routable\Scripts\jquery.slugify.js" />
+    <Content Include="Core\Routable\Scripts\Web.config" />
+    <Content Include="Core\Routable\Views\EditorTemplates\Parts.Routable.RoutePart.cshtml" />
+    <Content Include="Core\Routable\Views\Parts.RoutableTitle.cshtml" />
+    <Content Include="Core\Routable\Views\Parts.RoutableTitle_Summary.cshtml" />
+    <Content Include="Core\Routable\Views\Parts.RoutableTitle_SummaryAdmin.cshtml" />
+    <Content Include="Core\Routable\Views\Routable.HomePage.cshtml" />
+    <Content Include="Core\Routable\Views\Web.config" />
+    <Content Include="Core\Scheduling\Module.txt" />
+    <Content Include="Core\Settings\Module.txt" />
+    <Content Include="Core\Settings\Placement.info" />
+    <Content Include="Core\Settings\Styles\admin.css" />
+    <Content Include="Core\Settings\Styles\images\menu.settings.png" />
+    <Content Include="Core\Settings\Styles\menu.settings-admin.css" />
+    <Content Include="Core\Settings\Styles\Web.config" />
+    <Content Include="Core\Settings\Views\Admin\Culture.cshtml" />
+    <Content Include="Core\Settings\Views\Admin\Index.cshtml" />
+    <Content Include="Core\Settings\Views\DisplayTemplates\CurrentCulture.cshtml" />
+    <Content Include="Core\Settings\Views\DisplayTemplates\RemovableCulture.cshtml" />
+    <Content Include="Core\Settings\Views\EditorTemplates\Parts.Settings.SiteSettingsPart.cshtml" />
+    <Content Include="Core\Settings\Views\Web.config" />
+    <Content Include="Core\Shapes\Module.txt" />
+    <Content Include="Core\Shapes\Scripts\base.js" />
+    <Content Include="Core\Shapes\Scripts\html5.js" />
+    <Content Include="Core\Shapes\Scripts\jquery.switchable.js" />
+    <Content Include="Core\Shapes\Scripts\Web.config" />
+    <Content Include="Core\Shapes\Styles\Images\detail-view-on.gif" />
+    <Content Include="Core\Shapes\Styles\Images\detail-view.gif" />
+    <Content Include="Core\Shapes\Styles\Images\summary-view-on.gif" />
+    <Content Include="Core\Shapes\Styles\Images\summary-view.gif" />
+    <Content Include="Core\Shapes\Styles\Images\toolBarActiveButtonBackground.gif" />
+    <Content Include="Core\Shapes\Styles\Images\toolBarBackground.gif" />
+    <Content Include="Core\Shapes\Styles\Images\toolBarHoverButtonBackground.gif" />
+    <Content Include="Core\Shapes\Styles\jquery.switchable.css" />
+    <Content Include="Core\Shapes\Styles\special.css" />
+    <Content Include="Core\Shapes\Styles\Web.config" />
+    <Content Include="Core\Shapes\Views\Document.cshtml" />
+    <Content Include="Core\Shapes\Views\Header.cshtml" />
+    <Content Include="Core\Shapes\Views\HeadPreload.cshtml" />
+    <Content Include="Core\Shapes\Views\Layout.cshtml" />
+    <Content Include="Core\Shapes\Views\LocalMenu.cshtml" />
+    <Content Include="Core\Shapes\Views\LocalMenuItem.cshtml" />
+    <Content Include="Core\Shapes\Views\Menu.cshtml" />
+    <Content Include="Core\Shapes\Views\MenuItem.cshtml" />
+    <Content Include="Core\Shapes\Views\Message.cshtml" />
+    <Content Include="Core\Shapes\Views\NotFound.cshtml" />
+    <Content Include="Core\Shapes\Views\Pager.cshtml" />
+    <Content Include="Core\Shapes\Views\ShapeResult\Display.cshtml" />
+    <Content Include="Core\Shapes\Views\User.cshtml" />
+    <Content Include="Core\Shapes\Views\Web.config" />
+    <Content Include="Core\web.config" />
+    <Content Include="Core\XmlRpc\Module.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Media\OrchardLogo.png" />
+    <Content Include="Refresh.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Config\Sample.Host.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>    
+      CustomCollectFiles;    
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);  
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+  </PropertyGroup>
+  <Target Name="CustomCollectFiles">
+    <ItemGroup>
+      <Orchard-Web-Bins Include="bin\*" />
+      <SqlCeBinariesx86 Include="..\..\lib\sqlce\x86\**\*" />
+      <SqlCeBinariesx64 Include="..\..\lib\sqlce\amd64\**\*" />
+      <_CustomFiles Include="Media\**\*;App_Data\**\*;Modules\**\*;Themes\**\*;Core\**\*" Exclude="**\obj\**;@(Orchard-Web-Bins -&gt; '**\%(Filename)%(Extension)');**\*.csproj.user;**\*.hg*" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>%(RelativeDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+      <_SqlCeBinariesx86Files Include="@(SqlCeBinariesx86);" />
+      <FilesForPackagingFromProject Include="%(_SqlCeBinariesx86Files.Identity)">
+        <DestinationRelativePath>bin\x86\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+      <_SqlCeBinariesx64Files Include="@(SqlCeBinariesx64);" />
+      <FilesForPackagingFromProject Include="%(_SqlCeBinariesx64Files.Identity)">
+        <DestinationRelativePath>bin\amd64\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+  <Target Name="CopySqlCeBinaries">
+    <ItemGroup>
+      <SqlCeBinariesx86 Include="$(ProjectDir)..\..\lib\sqlce\x86\**\*" />
+      <SqlCeBinariesx64 Include="$(ProjectDir)..\..\lib\sqlce\amd64\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SqlCeBinariesx86)" DestinationFolder="$(OutputPath)\x86\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(SqlCeBinariesx64)" DestinationFolder="$(OutputPath)\amd64\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>
+    <CallTarget Targets="CopySqlCeBinaries" />
+    <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+    <!-- If this is an area parent project, uncomment the following lines:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+    -->
+  </Target>
+  <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>30320</DevelopmentServerPort>
+          <DevelopmentServerVPath>/OrchardLocal</DevelopmentServerVPath>
+          <IISUrl>http://localhost:30320/OrchardLocal</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl></CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

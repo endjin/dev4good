@@ -1,0 +1,42 @@
+#bubble_tooltip{
+	width:147px;
+	position:absolute;
+	display:none;
+    z-index: 100;
+}
+#bubble_tooltip .bubble_top{
+	background-image: url('../Styles/images/bubble_top.gif');
+	background-repeat:no-repeat;
+	height:16px;
+    background-position: bottom;
+}
+#bubble_tooltip .bubble_middle{
+	background-image: url('../Styles/images/bubble_middle.gif');
+	background-repeat:repeat-y;
+	background-position:bottom left;
+     padding: 10px;
+
+    font-size: 10px;
+    padding-bottom: 0px;
+    padding-right: 20px;
+}
+#bubble_tooltip .bubble_middle span{
+	position:relative;
+	top:-8px;
+	font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+	font-size:11px;
+}
+#bubble_tooltip .bubble_bottom{
+	background-image: url('../Styles/images/bubble_bottom.gif');
+	background-repeat:no-repeat;
+	background-repeat:no-repeat;
+	height:44px;
+	position:relative;
+	top:-6px}
+	.gridBorder
+	{
+		border-left-width:0px !important;
+		border-right-width:0px !important;
+
+
+	}

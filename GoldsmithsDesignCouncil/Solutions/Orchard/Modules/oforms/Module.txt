@@ -1,0 +1,10 @@
+Name: oforms
+AntiForgery: enabled
+Author: The Extend Orchard Team
+Website: http://extendorchard.co.uk
+Version: 1.2
+OrchardVersion: 1.2
+Description: Contact form, feedback forms, inquiry forms, any forms. Create quick and easy any forms on your website. Email the results, store them in the database or shown in the admin panel. Fits in any design on any page for any website. oForms includes also Data validation on form. Main features are: Emails processing, Data validation with jQuery, Data storage and management, Captcha security, Anti-forgery validation, Upload files, System notification messages. Find help on http://extendorchard.co.uk/tutorial-oforms
+Features: Create any forms
+    oforms:
+        Description: Contact form, feedback forms, inquiry forms, any forms. Create quick and easy any forms on your website. Email the results, store them in the database or shown in the admin panel. Fits in any design on any page for any website. oForms includes also Data validation on form. Main features are: Emails processing, Data validation with jQuery, Data storage and management, Captcha security, Anti-forgery validation, Upload files, System notification messages. Find help on http://extendorchard.co.uk/tutorial-oforms

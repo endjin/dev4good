@@ -1,0 +1,13 @@
+﻿@{ /* DO NOT REMOVE THE LINES BELOW, IF YOU LIKE THIS MODULE, SUPPORT IT!!! */}
+@if (!ViewBag.validSn)
+{
+    @Html.Raw("<div style='border: 1px solid red; padding: 10px;clear: both;'><strong>Serial number needed! </strong><br/>");
+    @Html.Raw("Invalidated oForms install is a fully functional Orchard module which has No limitations. ");
+    @Html.Raw("However for a small fee you can remove this text and the link on the front end, and HELP us to continue the development and support of this module.");
+    @Html.Raw("<br/><a href='http://extendorchard.co.uk/license-oforms' target='_blank'>Please click here to get the serial number:  ");
+    @Html.Raw("http://extendorchard.co.uk/license-oforms</a><br/><br/><a href='" + Url.Action("License") + "'>Click here to Enter Serial number</a><br/><br/>");
+    @Html.Raw("Report bug/suggestions/questions on extend@extendorchard.co.uk<br/><br/>");                                                                                                                                                           
+    @Html.Raw("<b>HELP</b> on <a target='_blank' href='http://extendorchard.co.uk/tutorial-oforms'>how to use oForms here: http://extendorchard.co.uk/tutorial-oforms</a></div>");
+                                                                                                                                                           
+                                                                                                                                                           
+}

@@ -1,0 +1,19 @@
+﻿div.box
+{
+	border:1px solid #E4E5E6;
+	padding: 0px;
+	margin-bottom: 20px;
+}
+
+div.box div.title 
+{
+	background: #F3F4F5;
+	margin:0px;
+	padding: 10px 0px 10px 10px;
+	font-weight: bold;
+}
+
+div.box div.content
+{
+	padding:10px 0px 20px 10px;
+}
