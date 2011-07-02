@@ -1,0 +1,10 @@
+﻿@model CharityPortal.Models.OverviewMapViewModel
+@{
+    ViewBag.Title = "Visualization";
+}
+
+<h2>Visualization</h2>
+
+<div style="height: 300px">
+    @Html.Partial("MapControl", @Model.Map)
+</div>
