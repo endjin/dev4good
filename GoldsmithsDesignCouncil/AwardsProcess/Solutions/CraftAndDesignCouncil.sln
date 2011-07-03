@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftAndDesignCouncil.Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftAndDesignCouncil.Tasks", "CraftAndDesignCouncil.Tasks\CraftAndDesignCouncil.Tasks.csproj", "{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSpecTests.CraftAndDesignCouncil", "MSpecTests.CraftAndDesignCouncil\MSpecTests.CraftAndDesignCouncil.csproj", "{F63E0957-B60B-47A3-96BB-76DC243D0C8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftAndDesignCouncil.Specifications", "CraftAndDesignCouncil.Specifications\CraftAndDesignCouncil.Specifications.csproj", "{F63E0957-B60B-47A3-96BB-76DC243D0C8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftAndDesignCouncil.Web.Mvc", "CraftAndDesignCouncil.Web.Mvc\CraftAndDesignCouncil.Web.Mvc.csproj", "{39613BA0-1206-4A4B-A16A-C1F2A22D1267}"
 EndProject
