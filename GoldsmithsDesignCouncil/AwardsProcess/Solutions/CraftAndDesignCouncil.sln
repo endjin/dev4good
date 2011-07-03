@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftAndDesignCouncil.Web.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraftAndDesignCouncil.Tests", "CraftAndDesignCouncil.Tests\CraftAndDesignCouncil.Tests.csproj", "{CC4A233E-BE8A-47CC-A87C-8352BFD557B7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{06479610-E42C-4BE4-9D0D-8ED5F2CB95B4}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "CraftAndDesignCouncil.Data", "CraftAndDesignCouncil.Data\CraftAndDesignCouncil.Data.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,12 @@ Global
 		{CC4A233E-BE8A-47CC-A87C-8352BFD557B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC4A233E-BE8A-47CC-A87C-8352BFD557B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC4A233E-BE8A-47CC-A87C-8352BFD557B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +74,6 @@ Global
 		{39613BA0-1206-4A4B-A16A-C1F2A22D1267} = {D5E689AA-BE7E-4F5F-AF51-03F71C6C31B2}
 		{F63E0957-B60B-47A3-96BB-76DC243D0C8A} = {2322D330-1A60-4F79-B553-53DED803A098}
 		{CC4A233E-BE8A-47CC-A87C-8352BFD557B7} = {2322D330-1A60-4F79-B553-53DED803A098}
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3} = {06479610-E42C-4BE4-9D0D-8ED5F2CB95B4}
 	EndGlobalSection
 EndGlobal
