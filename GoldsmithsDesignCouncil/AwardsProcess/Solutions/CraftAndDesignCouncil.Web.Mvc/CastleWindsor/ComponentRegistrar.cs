@@ -1,13 +1,16 @@
-﻿using SharpArch.Web.Mvc.Castle;
-
-namespace CraftAndDesignCouncil.Web.Mvc.CastleWindsor
+﻿namespace CraftAndDesignCouncil.Web.Mvc.CastleWindsor
 {
+    #region Using Directives
+
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
 
     using SharpArch.Domain.PersistenceSupport;
     using SharpArch.NHibernate;
     using SharpArch.NHibernate.Contracts.Repositories;
+    using SharpArch.Web.Mvc.Castle;
+
+    #endregion
 
     public class ComponentRegistrar
     {
