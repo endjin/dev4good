@@ -96,9 +96,17 @@ namespace CharityPortal.Controllers
         public ActionResult Delete(int id)
         {
             var context = new DataContextContainer();
-            Organization organization = context.Organizations.Where(X => X.Id == id).FirstOrDefault();
+            Organization organization = context.Organizations.Single(X => X.Id == id);
             context.DeleteObject(organization);
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                //report error
+                return View();
+            } 
            return RedirectToAction("Index");
         }
 

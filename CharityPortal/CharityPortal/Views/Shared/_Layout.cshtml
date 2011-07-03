@@ -19,10 +19,12 @@
                     .Items(menu => {
                         menu.Add().Text("Home").Action("Index", "Home");
                         menu.Add().Text("Map").Action("OverviewMap", "Visualization");
-                        menu.Add().Text("About").Action("About", "Home");
+                       
                         menu.Add().Text("Organization").Action("Index", "Organization");
                         menu.Add().Text("Project").Action("Index", "Project");
-                        menu.Add().Text("Resource").Action("Index", "Resource");
+                        menu.Add().Text("Resource Needed").Action("IndexNeeded", "Resource");
+                        menu.Add().Text("Resource Avaliable").Action("IndexAvaliable", "Resource");
+                        menu.Add().Text("About").Action("About", "Home");
                     }))
         </div>
 
