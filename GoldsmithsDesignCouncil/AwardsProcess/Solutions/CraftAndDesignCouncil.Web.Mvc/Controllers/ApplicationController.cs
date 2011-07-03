@@ -6,7 +6,7 @@
 
     #endregion
 
-    public class HomeController : Controller
+    public class ApplicationController : Controller
     {
         public ActionResult Index()
         {

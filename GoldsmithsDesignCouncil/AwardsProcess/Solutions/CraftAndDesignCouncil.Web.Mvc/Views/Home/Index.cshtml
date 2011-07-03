@@ -1,36 +1,86 @@
-﻿@{
+﻿@using CraftAndDesignCouncil.Domain
+
+@model Applicant
+           
+@{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-	<h2>S#arp Architecture Project</h2>
-	<h3>What next?</h3>
-	<p>
-		Your S#arp Architecture 2.0RC project is now setup and ready to go. This release is built on the RTM verion of ASP.NET MVC 3 and .NET 4. The only tasks remaining
-		are to:
-		<ol>
-			<li>
-				<span style="font-weight:bold; font-style:italic">Create your database and set the connection string
-				within SharpCookbook.Web/NHibernate.config</span>
-			</li>
-			<li>
-				Optionally, modify the Fluent NHibernate preferences within SharpCookbook.Data.NHibernateMaps.GetConventions()
-				if you don't like the default settings.  There's lots of terrific info about Fluent NHibernate
-				at <a href="http://wiki.fluentnhibernate.org/show/HomePage">http://wiki.fluentnhibernate.org/show/HomePage</a>.
-			</li>
-			<li>
-				Open SharpCookbook.Tests.dll via NUnit and make sure all the tests are turning green.
-			</li>
-			<li>
-				Add your first entity with CRUD scaffolding via /Code Generation/CrudScaffolding/ScaffoldingGeneratorCommand.tt.
-				(If you include a namespace, be sure to setup the appropriate view area within
-				SharpCookbook.Web.Controllers.RouteRegistrar.RegisterRoutesTo() after the scaffolding generator has completed.)
-			</li>
-		</ol>
-	</p>
-	<p>
-		If you need direction on what to do next, take a look at the documentation found in the
-		/docs folder of the S#arp Architecture release package which provides a solid tutorial.
-		You can also ask for assitance and guidance on the
-		<a href="http://groups.google.com/group/sharp-architecture">S#arp Architecture discussion boards</a>.
-	</p>
+ <form id="form1" runat="server">
+    <div class="container_12">
+        <div class="grid_12">
+            <h2>Goldsmiths' Craft &amp; Design Council: Craftsmanship &amp; Design Awards</h2>
+            <div class="jsonFormatter">
+                <div class="grid_9">
+                    @using (Html.BeginForm()) {
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+                            <ul>
+                                <li>
+                                    @Html.LabelFor(Model => Model.FirstName, "First Name:")
+                                    <div>@Html.TextBoxFor(Model => Model.FirstName)</div>
+                                    @Html.ValidationMessageFor(Model => Model.FirstName)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.LastName, "Last Name")
+                                    <div>@Html.TextBoxFor(Model => Model.LastName)</div>
+                                    @Html.ValidationMessageFor(Model => Model.LastName)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.Email, "Email:")
+                                    <div>@Html.TextBoxFor(Model => Model.Email)</div>
+                                    @Html.ValidationMessageFor(Model => Model.Email)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.Address.AddressLine1)
+                                    <div>@Html.TextBoxFor(Model => Model.Address.AddressLine1)</div>
+                                    @Html.ValidationMessageFor(Model => Model.Address.AddressLine1)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.Address.AddressLine2)
+                                    <div>@Html.TextBoxFor(Model => Model.Address.AddressLine2)</div>
+                                    @Html.ValidationMessageFor(Model => Model.Address.AddressLine2)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.Address.City)
+                                    <div>@Html.TextBoxFor(Model => Model.Address.City)</div>
+                                    @Html.ValidationMessageFor(Model => Model.Address.City)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.Address.StateProvince)
+                                    <div>@Html.TextBoxFor(Model => Model.Address.StateProvince)</div>
+                                    @Html.ValidationMessageFor(Model => Model.Address.StateProvince)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.Address.PostCode)
+                                    <div>@Html.TextBoxFor(Model => Model.Address.PostCode)</div>
+                                    @Html.ValidationMessageFor(Model => Model.Address.PostCode)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(Model => Model.Address.Country)
+                                    <div>@Html.TextBoxFor(Model => Model.Address.Country)</div>
+                                    @Html.ValidationMessageFor(Model => Model.Address.Country)
+                                </li>
+                                <li>
+                                    @Html.SubmitButton("saveButton", "Save")
+                                </li>
+                            </ul>
+                        </fieldset>
+                    }
+                </div>
+                <div class="grid_3">
+                </div>
+                <div class="clear">&nbsp;</div>
+                <div class="grid_12" >
+                    <div>
+                        <br />
+                        <a href="#" id="next" onclick="return;"><img src="/Content/img/accept.gif" alt="Next" />Next</a>
+                        <a href="#" id="clear" onclick="return;"><img src="/Content/img/bin_empty.gif" alt="Clear" />Clear</a>
+                    </div>
+                </div>
+                <div class="clear">&nbsp;</div>
+            </div>
+        </div>
+        <div class="clear">&nbsp;</div>
+    </div>
+</form>
