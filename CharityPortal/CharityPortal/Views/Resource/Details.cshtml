@@ -30,6 +30,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "t-button" }) 
+    @Html.ActionLink("Back to List", "Index", null , new { @class = "t-button" })
 </p>

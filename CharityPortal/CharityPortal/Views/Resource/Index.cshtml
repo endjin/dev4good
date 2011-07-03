@@ -7,23 +7,26 @@
 <h2>Resource List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create" , null ,  new{   @class="t-button"})
 </p>
-<table>
+<div class="t-widget t-grid" id="Grid">
+
+<table style="border-collapse:collapse">
+<thead class="t-grid-header">
     <tr>
-        <th>
+       <th class="t-header" scope="col">
             Title
         </th>
-        <th>
+         <th class="t-header" scope="col">
             Description
         </th>
-        <th>
+         <th class="t-header" scope="col">
             Quantity
         </th>
-        <th>
+         <th class="t-header" scope="col">
             Quantity Units
         </th>
-        <th></th>
+         <th class="t-header" scope="col"></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -41,9 +44,9 @@
             @Html.DisplayFor(modelItem => item.QuantityUnits)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "t-button" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "t-button" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "t-button" })
         </td>
     </tr>
 }
