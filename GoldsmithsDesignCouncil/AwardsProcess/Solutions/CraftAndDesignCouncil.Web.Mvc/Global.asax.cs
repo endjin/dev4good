@@ -1,5 +1,7 @@
 ﻿namespace CraftAndDesignCouncil.Web.Mvc
 {
+    #region Using Directives
+
     using System;
     using System.Reflection;
     using System.Web.Mvc;
@@ -7,7 +9,7 @@
 
     using Castle.Windsor;
 
-    // CraftAndDesignCouncil.Web.Mvc.CastleWindsor
+        // CraftAndDesignCouncil.Web.Mvc.CastleWindsor
     using CastleWindsor;
 
     using CommonServiceLocator.WindsorAdapter;
@@ -24,8 +26,9 @@
     using SharpArch.NHibernate.Web.Mvc;
     using SharpArch.Web.Mvc.Castle;
     using SharpArch.Web.Mvc.ModelBinder;
-    
 
+    #endregion
+    
     /// <summary>
     /// Represents the MVC Application
     /// </summary>
