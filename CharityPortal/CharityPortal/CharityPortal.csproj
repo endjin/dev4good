@@ -64,7 +64,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Telerik.Web.Mvc">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\Extensions for ASP.NET MVC Q1 2011\Binaries\Mvc3\Telerik.Web.Mvc.dll</HintPath>
+      <HintPath>..\lib\Telerik.Web.Mvc.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
