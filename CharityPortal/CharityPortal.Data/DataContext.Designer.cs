@@ -21,8 +21,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataContext", "OrganizationProject", "Organization", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Organization), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Project))]
 [assembly: EdmRelationshipAttribute("DataContext", "ProjectResource", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Project), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
 [assembly: EdmRelationshipAttribute("DataContext", "OrganizationResource", "Organization", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Organization), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
-[assembly: EdmRelationshipAttribute("DataContext", "FK_ResourceResource", "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CharityPortal.Data.Resource), "Resource1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource), true)]
-[assembly: EdmRelationshipAttribute("DataContext", "TagResource1", "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource), "Tag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Tag))]
+[assembly: EdmRelationshipAttribute("DataContext", "ResourceResource", "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Resource), "Resource1", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Resource))]
+[assembly: EdmRelationshipAttribute("DataContext", "TagResource", "Tag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Tag), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
 
 #endregion
 
@@ -723,30 +723,6 @@ namespace CharityPortal.Data
         private global::System.String _QuantityUnits;
         partial void OnQuantityUnitsChanging(global::System.String value);
         partial void OnQuantityUnitsChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int64> FulfilledBy_Id
-        {
-            get
-            {
-                return _FulfilledBy_Id;
-            }
-            set
-            {
-                OnFulfilledBy_IdChanging(value);
-                ReportPropertyChanging("FulfilledBy_Id");
-                _FulfilledBy_Id = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FulfilledBy_Id");
-                OnFulfilledBy_IdChanged();
-            }
-        }
-        private Nullable<global::System.Int64> _FulfilledBy_Id;
-        partial void OnFulfilledBy_IdChanging(Nullable<global::System.Int64> value);
-        partial void OnFulfilledBy_IdChanged();
 
         #endregion
         #region Complex Properties
@@ -868,38 +844,16 @@ namespace CharityPortal.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DataContext", "FK_ResourceResource", "Resource1")]
-        public EntityCollection<Resource> Resources1
+        [EdmRelationshipNavigationPropertyAttribute("DataContext", "ResourceResource", "Resource1")]
+        public Resource Fulfills
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Resource>("DataContext.FK_ResourceResource", "Resource1");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.ResourceResource", "Resource1").Value;
             }
             set
             {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Resource>("DataContext.FK_ResourceResource", "Resource1", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DataContext", "FK_ResourceResource", "Resource")]
-        public Resource Resource1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.FK_ResourceResource", "Resource").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.FK_ResourceResource", "Resource").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.ResourceResource", "Resource1").Value = value;
             }
         }
         /// <summary>
@@ -907,17 +861,17 @@ namespace CharityPortal.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Resource> Resource1Reference
+        public EntityReference<Resource> FulfillsReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.FK_ResourceResource", "Resource");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.ResourceResource", "Resource1");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Resource>("DataContext.FK_ResourceResource", "Resource", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Resource>("DataContext.ResourceResource", "Resource1", value);
                 }
             }
         }
@@ -928,18 +882,56 @@ namespace CharityPortal.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DataContext", "TagResource1", "Tag")]
-        public EntityCollection<Tag> Tags
+        [EdmRelationshipNavigationPropertyAttribute("DataContext", "ResourceResource", "Resource")]
+        public Resource FulfilledBy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Tag>("DataContext.TagResource1", "Tag");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.ResourceResource", "Resource").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.ResourceResource", "Resource").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Resource> FulfilledByReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Resource>("DataContext.ResourceResource", "Resource");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Tag>("DataContext.TagResource1", "Tag", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Resource>("DataContext.ResourceResource", "Resource", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataContext", "TagResource", "Tag")]
+        public EntityCollection<Tag> Tag
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Tag>("DataContext.TagResource", "Tag");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Tag>("DataContext.TagResource", "Tag", value);
                 }
             }
         }
@@ -1034,18 +1026,18 @@ namespace CharityPortal.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DataContext", "TagResource1", "Resource")]
-        public EntityCollection<Resource> Resources_1
+        [EdmRelationshipNavigationPropertyAttribute("DataContext", "TagResource", "Resource")]
+        public EntityCollection<Resource> Resources
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Resource>("DataContext.TagResource1", "Resource");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Resource>("DataContext.TagResource", "Resource");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Resource>("DataContext.TagResource1", "Resource", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Resource>("DataContext.TagResource", "Resource", value);
                 }
             }
         }

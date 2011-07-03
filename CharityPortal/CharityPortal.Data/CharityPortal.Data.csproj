@@ -57,9 +57,7 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.Config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataContext.edmx.sql" />
