@@ -49,7 +49,7 @@ namespace CharityPortal.Controllers
             {
                 var context = new DataContextContainer();
                 context.AddToOrganizations(model);
-
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -78,12 +78,15 @@ namespace CharityPortal.Controllers
             {
                 // TODO: Add update logic here
                 var context = new DataContextContainer();
+                Organization organization = context.Organizations.Where(X => X.Id == model.Id).FirstOrDefault();
+                organization.Name  = model.Name;
+                organization.ContactEmail = model.ContactEmail;
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
@@ -92,7 +95,11 @@ namespace CharityPortal.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View();
+            var context = new DataContextContainer();
+            Organization organization = context.Organizations.Where(X => X.Id == id).FirstOrDefault();
+            context.DeleteObject(organization);
+            context.SaveChanges();
+           return RedirectToAction("Index");
         }
 
         //
@@ -103,14 +110,19 @@ namespace CharityPortal.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
- 
+                var context = new DataContextContainer();
+
+                context.DeleteObject(model);
+                context.SaveChanges();
                 return RedirectToAction("Index");
+               
             }
             catch
             {
-                return View();
+                
             }
+            
+            return RedirectToAction("Index");
         }
     }
 }
