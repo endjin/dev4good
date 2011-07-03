@@ -19,6 +19,22 @@
         @Html.DisplayFor(model => model.ContactEmail)
     </div>
 </fieldset>
+
+@if (Model != null && Model.Projects != null && Model.Projects.Count > 0) {
+<fieldset>
+    <legend>Projects Map</legend>
+    @{
+        Map map = new Map();
+        foreach(Project project in Model.Projects) {
+            map.Markers.Add(MapUtils.CreateProjectMarker(project, Url));
+        }
+    }
+    <div class="map-container">
+        @Html.Map(map);
+    </div>
+</fieldset>
+}
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

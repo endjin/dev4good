@@ -290,3 +290,9 @@ div#title
 {
     width: 6em;
 }
+
+.map-container
+{
+	height: 300px;
+	width: 100%;
+}

@@ -15,15 +15,15 @@
         {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             zoom: @Model.ZoomLevel,
-            center: new google.maps.LatLng(-34.397, 150.644)
+            center: new google.maps.LatLng(0, 0)
         });
 
         @foreach (Marker marker in Model.Markers) {
-            @:addMarker(map, "@marker.Title", "@Html.Raw(marker.Content)", "@marker.Latitude", "@marker.Longitude");
+            @:addMarker(map, "@marker.Title", "@Html.Raw(marker.Content)", "@marker.Latitude", "@marker.Longitude", "@marker.IconUrl");
         }
     }
 
-    function addMarker(map, title, content, latitude, longitude)
+    function addMarker(map, title, content, latitude, longitude, icon)
     {
         var markerPosition = new google.maps.LatLng(latitude, longitude);
 
@@ -31,6 +31,7 @@
             position: markerPosition, 
             map: map, 
             title: title,
+            icon: icon,
             infoWindow : new google.maps.InfoWindow({ content: content })
         });
 

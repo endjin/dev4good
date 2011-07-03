@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using CharityPortal.Data;
 using Newtonsoft.Json;
 using CharityPortal.Models;
+using CharityPortal.Utils;
 
 namespace CharityPortal.Controllers
 {
@@ -13,21 +14,26 @@ namespace CharityPortal.Controllers
     {
         public ActionResult OverviewMap()
         {
-            OverviewMapViewModel model = new OverviewMapViewModel();
+            using (DataContextContainer dataContext = new DataContextContainer()) {
+                IList<Resource> availableResources = dataContext.Organizations.SelectMany(org => org.AvailableResources).ToList();
+                IList<Project> projects = dataContext.Projects.ToList();
+                IList<Resource> requiredResources = projects.SelectMany(project => project.RequiredResources).ToList();
+                
 
-            model.Map = new Map() {
-                Markers = new List<Marker>() {
-                    new Marker() {
-                        Title = "Playground 1",
-                        Content = "Work in progress",
-                        Latitude = -34.397,
-                        Longitude = 150.644
-                    }
-                }
-            };
 
-            return View(model);
+                OverviewMapViewModel model = new OverviewMapViewModel();
+
+                foreach (Resource availableResource in availableResources)
+                    model.Map.Markers.Add(MapUtils.CreateAvailableResourceMarker(availableResource, Url));
+
+                foreach (Resource requiredResource in requiredResources)
+                    model.Map.Markers.Add(MapUtils.CreateRequiredResourceMarker(requiredResource, Url));
+
+                foreach (Project project in projects)
+                    model.Map.Markers.Add(MapUtils.CreateProjectMarker(project, Url));
+
+                return View(model);
+            }
         }
-
     }
 }

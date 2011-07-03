@@ -14,7 +14,8 @@ namespace CharityPortal.Models
         /// </summary>
         public Map()
         {
-            ZoomLevel = 10;
+            ZoomLevel = 1;
+            Markers = new List<Marker>();
         }
 
         public int ZoomLevel { get; set; }
