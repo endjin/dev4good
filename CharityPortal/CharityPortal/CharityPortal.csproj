@@ -498,6 +498,7 @@
     <Content Include="Content\2011.1.315\Windows7\sprite-vertical.png" />
     <Content Include="Content\2011.1.315\Windows7\sprite.png" />
     <Content Include="Content\images\available-resource.png" />
+    <Content Include="Content\images\project.png" />
     <Content Include="Content\images\required-resource.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
