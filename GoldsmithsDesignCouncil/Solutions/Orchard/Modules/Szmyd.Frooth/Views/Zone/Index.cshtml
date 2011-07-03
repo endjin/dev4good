@@ -1,0 +1,172 @@
+﻿@model Szmyd.Frooth.ViewModels.ZoneManagementViewModel
+@using Orchard.ContentManagement;
+@using Szmyd.Frooth.Utilities;
+@{ Layout.Title = T("Manage site layout").ToString(); }
+@functions{
+    int RunningId { get; set; }
+}
+@helper DisplayZoneHierarchy(IEnumerable<Szmyd.Frooth.Models.Zone> zones, int level)
+    {
+        if (zones != null)
+        {
+
+            int count = zones.Count() - 1;
+            int j = 0;
+
+            foreach (var zone in zones)
+            { 
+    <tr>
+        @if (!zone.IsReadOnly && zone.Id > 0)
+        { 
+            <td>
+                @for (int i = 0; i < level; i++)
+                {
+                    <text>&gt;</text> 
+                }
+                &nbsp;
+                @if (j > 0)
+                { 
+                    <a href="@Url.Action("MoveUp", new { id = zone.Id })">
+                        <img src="@Url.Content("~/modules/szmyd.frooth/Content/images/moveup.gif")" alt="@T("Move up")"/></a>
+                }
+                @if (j < count)
+                { 
+                    <a href="@Url.Action("MoveDown", new { id = zone.Id })">
+                        <img src="@Url.Content("~/modules/szmyd.frooth/Content/images/movedown.gif")" alt="@T("Move down")"/></a>
+                }
+                <input type="text" class="text-box" name="@Html.NameOf(m => m.Zones[RunningId].Name)" value="@zone.Name" />
+            </td>
+            <td>
+                @Html.DropDownList(Html.NameOf(m => m.Zones[RunningId].ParentName), new System.Web.Mvc.SelectList(Model.AvailableZones.Where(i => i.Name != zone.Name).ToList<dynamic>(), "ParentName", "Name", zone.ParentName))
+            </td>
+            <td>
+                @Html.DropDownList(Html.NameOf(m => m.Zones[RunningId].IsVertical), new System.Web.Mvc.SelectList(new[] { new { Id = true, Name = T("Vertical") }, new { Id = false, Name = T("Horizontal") } }, "Id", "Name", zone.IsVertical))
+            </td>
+            <td>
+                @Html.DropDownList(Html.NameOf(m => m.Zones[RunningId].Tag), new System.Web.Mvc.SelectList(Html5.Tags.Select(t => new { Id = t, Name = t }), "Id", "Name", zone.Tag))
+            </td>
+            <td>
+                @Html.CheckBox(Html.NameOf(m => m.Zones[RunningId].IsCollapsible), zone.IsCollapsible)
+            </td>
+            <td>
+                <input type="hidden" name="@Html.NameOf(m => m.Zones[RunningId].Id)" value="@zone.Id" />
+                <input type="hidden" name="@Html.NameOf(m => m.Zones[RunningId].IsReadOnly)" value="@zone.IsReadOnly" />
+                <a href="@Html.AntiForgeryTokenGetUrl(Url.Action("Delete", new { id = zone.Id }))" class="remove">@T("Remove")</a>
+            </td>
+            
+                RunningId++;
+        }
+        else
+        {
+            <td>
+                @for (int i = 0; i < level; i++)
+                {
+                    <text>&gt;</text> 
+                }
+                &nbsp;
+                <input type="text" class="text-box disabled" disabled="disabled" value="@zone.Name" />
+            </td>
+            <td>
+                <input type="text" class="text-box disabled" disabled="disabled" value="@zone.ParentName" />
+            </td>
+            <td>
+                <input type="text" class="text-box disabled" disabled="disabled" value="@(zone.IsVertical ? "Vertical" : "Horizontal")" />
+            </td>
+            <td>
+                <input type="text" class="text-box disabled" disabled="disabled" value="@zone.Tag" />
+            </td>
+            <td>
+                <input type="checkbox" class="check-box disabled" disabled="disabled" checked="@(zone.IsCollapsible ? "checked" : "")" />
+            </td>
+            <td>
+            </td>
+        }
+    </tr>    
+                
+    
+    @DisplayZoneHierarchy(zone.Children, level + 1)
+        j++;
+            }
+        }
+}
+<div class="manage">
+    @Html.ActionLink(T("Manage alternate layouts").Text, "Index", "Alternate", new { Area = "Szmyd.Frooth" }, new { @class = "button primaryAction" })
+</div>
+@using (Html.BeginFormAntiForgeryPost())
+{
+    <table class="items">
+        <colgroup>
+            <col id="Name" />
+            <col id="Parent" />
+            <col id="Layout" />
+            <col id="Tag" />
+            <col id="Collapsible" />
+            <col id="Actions" />
+        </colgroup>
+        <thead>
+            <tr>
+                <td scope="col">@T("Name")
+                </td>
+                <td scope="col">@T("Parent")
+                </td>
+                <td scope="col">@T("Layout")
+                </td>
+                <td scope="col">@T("Wrapped as")
+                </td>
+                <td scope="col">@T("Collapsible?")
+                </td>
+                <td scope="col">
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+    RunningId = 0;
+                @DisplayZoneHierarchy(Model.Zones, 0)
+            }
+        </tbody>
+    </table>
+    <fieldset class="actions">
+        <button type="submit" class="primaryAction">@T("Update All")</button></fieldset>
+}
+<h2>@T("Add New Zone")</h2>
+@using (Html.BeginFormAntiForgeryPost(Url.Action("Create"), FormMethod.Post))
+{
+    <table class="menu items">
+        <colgroup>
+            <col id="AddName" />
+            <col id="AddParent" />
+            <col id="AddLayout" />
+            <col id="AddTag" />
+            <col id="AddCollapsible" />
+            <col id="AddActions" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="Name">@T("Name")</label>
+                    @Html.EditorFor(m => m.NewZone.Name)
+                </td>
+                <td>
+                    <label for="ParentPosition">@T("Parent")</label>
+                    @Html.DropDownList(Html.NameOf(m => m.NewZone.ParentName), new System.Web.Mvc.SelectList(Model.AvailableZones, "ParentName", "Name"))
+                </td>
+                <td>
+                    <label for="IsVertical">@T("Layout")</label>
+                    @Html.DropDownListFor(m => m.NewZone.IsVertical, new System.Web.Mvc.SelectList(new[] { new { Id = true, Name = T("Vertical") }, new { Id = false, Name = T("Horizontal") } }, "Id", "Name"))
+                </td>
+                <td>
+                    <label for="Tag">@T("Wrapped as")</label>
+                    @Html.DropDownList(Html.NameOf(m => m.NewZone.Tag), new System.Web.Mvc.SelectList(Html5.Tags.Select(t => new { Id = t, Name = t }), "Id", "Name"))
+                </td>
+                <td>
+                    <label for="IsCollapsible">@T("Collapsible?")</label>
+                    @Html.EditorFor(m => m.NewZone.IsCollapsible)
+                </td>
+                <td>
+                    <button class="add" type="submit">@T("Add")</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

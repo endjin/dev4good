@@ -291,6 +291,23 @@
     <References />
   </Dependency>
   <Dependency>
+    <ModuleName>Szmyd.Frooth</ModuleName>
+    <VirtualPath>~/Modules/Szmyd.Frooth/Szmyd.Frooth.csproj</VirtualPath>
+    <LoaderName>DynamicExtensionLoader</LoaderName>
+    <References>
+      <Reference>
+        <Name>Orchard.Widgets</Name>
+        <LoaderName>PrecompiledExtensionLoader</LoaderName>
+        <VirtualPath>~/Modules/Orchard.Widgets/bin/Orchard.Widgets.dll</VirtualPath>
+      </Reference>
+      <Reference>
+        <Name>Orchard.Media</Name>
+        <LoaderName>PrecompiledExtensionLoader</LoaderName>
+        <VirtualPath>~/Modules/Orchard.Media/bin/Orchard.Media.dll</VirtualPath>
+      </Reference>
+    </References>
+  </Dependency>
+  <Dependency>
     <ModuleName>TheAdmin</ModuleName>
     <VirtualPath>~/Theme/TheAdmin</VirtualPath>
     <LoaderName>RawThemeExtensionLoader</LoaderName>

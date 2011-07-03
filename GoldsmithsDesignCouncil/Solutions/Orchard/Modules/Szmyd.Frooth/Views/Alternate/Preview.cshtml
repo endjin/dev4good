@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Szmyd.Frooth.Models.Zone>
+@using Orchard.ContentManagement;
+@using Szmyd.Frooth.Utilities;
+@{ Layout.Title = T("Preview").ToString(); }
+@functions{
+    int RunningId { get; set; }
+}
+@helper DisplayPreview(IEnumerable<Szmyd.Frooth.Models.Zone> zones)
+{
+    if (zones != null)
+    {
+        <ol>
+        @foreach (var zone in zones)
+        {
+            <li><strong>@zone.Name</strong> (@(zone.IsVertical ? "V" : "H"), @(zone.IsCollapsible ? "C" : "NC"), @(zone.Tag))
+            
+            @if (zone.Children.Count() > 0)
+            { 
+                @DisplayPreview(zone.Children)
+            }
+            </li>
+        } 
+        </ol>
+    }           
+}
+
+@DisplayPreview(Model)

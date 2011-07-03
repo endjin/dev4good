@@ -1,0 +1,138 @@
+﻿@model Szmyd.Frooth.ViewModels.ResourcesViewModel
+@using Orchard.ContentManagement;
+@using Szmyd.Frooth;
+@{ Layout.Title = T("Manage resources").ToString(); }
+
+<div class="manage">
+    <strong>@T("Choose layer: ")</strong>
+    @foreach (var layer in Model.Layers)
+    {
+        if (layer.Id == Model.LayerId)
+        { 
+        <strong>
+            @Html.ActionLink(T(layer.Name).Text, "Layer", new { Area = "Szmyd.Frooth", LayerId = layer.ContentItem.Id })
+        </strong>
+         
+        }
+        else
+        {
+        @Html.ActionLink(T(layer.Name).Text, "Layer", new { Area = "Szmyd.Frooth", LayerId = layer.ContentItem.Id })
+        }
+  
+        <text>&nbsp;&nbsp;|&nbsp;&nbsp;</text>
+    }
+    @Html.ActionLink(T("+ Add a layer").ToString(), "AddLayer", "Admin", new { Area = "Orchard.Widgets" }, new { @class = "button primaryAction" })
+
+</div>
+
+<h2>@T("Styles")</h2>
+@using (Html.BeginFormAntiForgeryPost())
+{
+    <table class="items">
+        <colgroup>
+            <col id="Name" />
+            <col id="File" />
+        </colgroup>
+        <thead>
+            <tr>
+                <td scope="col">@T("Name")
+                </td>
+                <td scope="col">@T("Stylesheet file")
+                </td>
+                <td scope="col">
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var style in Model.AvailableStyles)
+        {
+            <tr>
+                <td>@style.Name</td>
+                <td><a href="@(!string.IsNullOrWhiteSpace(style.Url) ? style.Url : Url.Content(style.LocalPath))">Download</a></td>
+                <td>
+                    <a href="@Html.AntiForgeryTokenGetUrl(Url.Action("Delete", new { id = style.Id }))" class="remove">@T("Remove")</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+<h2>@T("Add Stylesheet")</h2>
+@using (Html.BeginFormAntiForgeryPost(Url.Action("Create"), FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        @Html.LabelFor(m => m.New.Name, T("Enter your style name (has to be unique)."))
+        @Html.EditorFor(m => m.New.Name)
+        @Html.LabelFor(m => m.New.Url, T("Enter an URL"))
+        @Html.EditorFor(m => m.New.Url)
+        <br />or<br />
+        <label for="ResourceFile">@T("Upload stylesheet from local computer")</label>
+        <input id="ResourceFile" name="ResourceFile" type="file" value="@T("Browse")" size="64"/>
+    </fieldset>
+    <fieldset>
+        @Html.Hidden(Html.NameOf(m => m.New.Type), Szmyd.Frooth.Models.ResourceType.Stylesheet)
+        @Html.Hidden(Html.NameOf(m => m.New.Location), Szmyd.Frooth.Models.ResourceLocation.Head)
+        <button class="primaryAction" type="submit">@T("Add")</button>
+        
+    </fieldset>
+}
+<hr />
+<h2>@T("Scripts")</h2>
+@using (Html.BeginFormAntiForgeryPost())
+{
+    <table class="items">
+        <colgroup>
+            <col id="Name" />
+            <col id="File" />
+            <col id="ScriptLocation" />
+
+        </colgroup>
+        <thead>
+            <tr>
+                <td scope="col">@T("Name")
+                </td>
+                <td scope="col">@T("Script file")
+                </td>
+                <td scope="col">@T("Script location")
+            </td>
+                <td scope="col">
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var script in Model.AvailableStyles)
+        {
+            <tr>
+                <td>@script.Name</td>
+                <td><a href="@(!string.IsNullOrWhiteSpace(script.Url) ? script.Url : Url.Content(script.LocalPath))">Download</a></td>
+                <td>
+                    @T(Enum.GetName(typeof(Szmyd.Frooth.Models.ResourceLocation), script.Location))
+                </td>
+                <td>
+                    <a href="@Html.AntiForgeryTokenGetUrl(Url.Action("Delete", new { id = script.Id }))" class="remove">@T("Remove")</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+<h2>@T("Add Script")</h2>
+@using (Html.BeginFormAntiForgeryPost(Url.Action("Create"), FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        @Html.LabelFor(m => m.New.Name, T("Enter your script name (has to be unique)."))
+        @Html.EditorFor(m => m.New.Name)
+        @Html.LabelFor(m => m.New.Url, T("Enter an URL"))
+        @Html.EditorFor(m => m.New.Url)
+        <br />or<br />
+        <label for="ResourceFile">@T("Upload .js file from local computer")</label>
+        <input id="ResourceFile" name="ResourceFile" type="file" value="@T("Browse")" size="64"/>
+        @Html.LabelFor(m => m.New.Name, T("Choose where to place script:"))
+        @Html.DropDownListFor(m => m.New.Location, new System.Web.Mvc.SelectList(new[] { new { Id = "Head", Name = T("At Head") }, new { Id = "Foot", Name = T("At Foot") } }, "Id", "Name"))
+    </fieldset>
+    <fieldset>
+        @Html.Hidden(Html.NameOf(m => m.New.Type), Szmyd.Frooth.Models.ResourceType.Script)
+        <button class="primaryAction" type="submit">@T("Add")</button>
+        
+    </fieldset>
+}
