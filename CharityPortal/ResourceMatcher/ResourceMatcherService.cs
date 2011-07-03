@@ -60,20 +60,27 @@ namespace ResourceMatcher
             }
         }
 
-        private long _lastTweetId = 0;
+        private AppSetting _lastTweetId = new AppSetting { Name = "LastTweetId", Value = "0"};
 
         /// <summary>
         /// Update the recorded Id of the most recent tweet
         /// </summary>
         private void UpdateLastTweetId(IEnumerable<Tweet> tweets)
         {
+            if (_lastTweetId == null)
+            {
+                //Get from DB
+                _lastTweetId = _context.AppSettings.FirstOrDefault(s => s.Name == "LastTweetId");
+            }
+
             if (tweets.Any())
             {
-                _lastTweetId = Math.Max(_lastTweetId, tweets.Max(t => t.Id));
+                _lastTweetId.Value = Math.Max(int.Parse(_lastTweetId.Value), tweets.Max(t => t.Id)).ToString();
+                _context.SaveChanges();
             }
         }
 
-        static string _twitterUrl = "http://search.twitter.com/search.atom?rpp=100&since_id=";
+        static readonly string _twitterUrl = "http://search.twitter.com/search.atom?rpp=100&since_id=";
 
         static IObservable<string> SearchTwitter(string searchText, long lastId)
         {
@@ -99,7 +106,7 @@ namespace ResourceMatcher
         private void ImportTweets()
         {
             Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(30))
-                .SelectMany(ticks => SearchTwitter(HttpUtility.UrlEncode(_MagicHashTag), _lastTweetId))
+                .SelectMany(ticks => SearchTwitter(HttpUtility.UrlEncode(_MagicHashTag), int.Parse(_lastTweetId.Value)))
                 .Select(ParseTwitterSearch)
                 .Subscribe(tweets => { 
                                         UpdateLastTweetId(tweets); 
@@ -111,7 +118,7 @@ namespace ResourceMatcher
         private void SaveResourceFromTweet(Tweet tweet)
         {
             Resource resource = null;
-            Regex tweetSplitter = new Regex(@"^(" + _MagicHashTag + @")\W+(#(p|o)\W*(\w+))\W+(.*?)((\d+)\W*(.*)){0,1}$");
+            Regex tweetSplitter = new Regex(@"^(" + _MagicHashTag + @")\W+(#(p|o)\W*(\w+))\W+(.*?(x(\d+)\W*(\w*)){0,1})$");
 
             MatchCollection matches = tweetSplitter.Matches(tweet.Title);
             if(matches.Count==1)
@@ -131,8 +138,8 @@ namespace ResourceMatcher
                 }
                 else
                 {
-                    quantity = int.Parse(match.Groups[7].Value);
-                    units = match.Groups[8].Value;
+                    quantity = 1;
+                    units = "unit";
                 }
 
                 Organization organization = null;
@@ -192,6 +199,8 @@ namespace ResourceMatcher
                 resource.Location.Address = string.Empty;
                 resource.Location.Latitude = 51.5;
                 resource.Location.Longitude = -1.75;
+
+                //resource.Tags.Add(new Tag() {Name = ""});
 
                 _context.AddToResources(resource);
                 _context.SaveChanges();

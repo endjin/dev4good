@@ -137,6 +137,22 @@ namespace CharityPortal.Data
             }
         }
         private ObjectSet<Tag> _Tags;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<AppSetting> AppSettings
+        {
+            get
+            {
+                if ((_AppSettings == null))
+                {
+                    _AppSettings = base.CreateObjectSet<AppSetting>("AppSettings");
+                }
+                return _AppSettings;
+            }
+        }
+        private ObjectSet<AppSetting> _AppSettings;
 
         #endregion
         #region AddTo Methods
@@ -172,6 +188,14 @@ namespace CharityPortal.Data
         {
             base.AddObject("Tags", tag);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the AppSettings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAppSettings(AppSetting appSetting)
+        {
+            base.AddObject("AppSettings", appSetting);
+        }
 
         #endregion
     }
@@ -180,6 +204,113 @@ namespace CharityPortal.Data
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataContext", Name="AppSetting")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AppSetting : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new AppSetting object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="value">Initial value of the Value property.</param>
+        public static AppSetting CreateAppSetting(global::System.Int32 id, global::System.String name, global::System.String value)
+        {
+            AppSetting appSetting = new AppSetting();
+            appSetting.Id = id;
+            appSetting.Name = name;
+            appSetting.Value = value;
+            return appSetting;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private global::System.String _Value;
+        partial void OnValueChanging(global::System.String value);
+        partial void OnValueChanged();
+
+        #endregion
+    
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -723,6 +854,30 @@ namespace CharityPortal.Data
         private global::System.String _QuantityUnits;
         partial void OnQuantityUnitsChanging(global::System.String value);
         partial void OnQuantityUnitsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImageUrl
+        {
+            get
+            {
+                return _ImageUrl;
+            }
+            set
+            {
+                OnImageUrlChanging(value);
+                ReportPropertyChanging("ImageUrl");
+                _ImageUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImageUrl");
+                OnImageUrlChanged();
+            }
+        }
+        private global::System.String _ImageUrl;
+        partial void OnImageUrlChanging(global::System.String value);
+        partial void OnImageUrlChanged();
 
         #endregion
         #region Complex Properties

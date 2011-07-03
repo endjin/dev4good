@@ -10,6 +10,7 @@
     <EntitySet Name="Resources" EntityType="DataContext.Store.Resources" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Organizations" EntityType="DataContext.Store.Organizations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tags" EntityType="DataContext.Store.Tags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AppSettings" EntityType="DataContext.Store.AppSettings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TagResource" EntityType="DataContext.Store.TagResource" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="OrganizationProject" Association="DataContext.Store.OrganizationProject">
       <End Role="Organization" EntitySet="Organizations" />
@@ -41,8 +42,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="Location_Longitude" Type="float" Nullable="false" />
     <Property Name="Location_Latitude" Type="float" Nullable="false" />
@@ -54,13 +55,14 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="Quantity" Type="float" Nullable="false" />
-    <Property Name="QuantityUnits" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="QuantityUnits" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="Location_Longitude" Type="float" Nullable="false" />
     <Property Name="Location_Latitude" Type="float" Nullable="false" />
     <Property Name="Location_Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" Nullable="true" MaxLength="255" />
     <Property Name="Project_Id" Type="int" Nullable="true" />
     <Property Name="Organization_Id" Type="int" Nullable="true" />
     <Property Name="FulfilledBy_Id" Type="bigint" Nullable="true" />
@@ -70,15 +72,23 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ContactEmail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ContactEmail" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="AppSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="TagResource">
     <Key>
@@ -189,14 +199,15 @@
             <End Role="Resource" EntitySet="Resources" />
             <End Role="Resource1" EntitySet="Resources" />
           </AssociationSet>
+          <EntitySet Name="AppSettings" EntityType="DataContext.AppSetting" />
           </EntityContainer>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
           <NavigationProperty Name="AdminOrganization" Relationship="DataContext.OrganizationProject" FromRole="Project" ToRole="Organization" />
           <NavigationProperty Name="RequiredResources" Relationship="DataContext.ProjectResource" FromRole="Project" ToRole="Resource" />
@@ -207,24 +218,25 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
           <NavigationProperty Name="Project" Relationship="DataContext.ProjectResource" FromRole="Resource" ToRole="Project" />
           <NavigationProperty Name="Organization" Relationship="DataContext.OrganizationResource" FromRole="Resource" ToRole="Organization" />
           <Property Type="Double" Name="Quantity" Nullable="false" />
-          <Property Type="String" Name="QuantityUnits" Nullable="false" />
+          <Property Type="String" Name="QuantityUnits" Nullable="false" MaxLength="255" />
           <NavigationProperty Name="Tags" Relationship="DataContext.TagResource" FromRole="Resource" ToRole="Tag" />
           <Property Name="Location" Type="DataContext.Location" Nullable="false" />
           <NavigationProperty Name="Fulfills" Relationship="DataContext.ResourceResource" FromRole="Resource" ToRole="Resource1" />
           <NavigationProperty Name="FulfilledBy" Relationship="DataContext.ResourceResource" FromRole="Resource1" ToRole="Resource" />
+          <Property Type="String" Name="ImageUrl" Nullable="true" MaxLength="255" />
           </EntityType>
         <EntityType Name="Organization">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="ContactEmail" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ContactEmail" Nullable="false" MaxLength="255" />
           <NavigationProperty Name="Projects" Relationship="DataContext.OrganizationProject" FromRole="Organization" ToRole="Project" />
           <NavigationProperty Name="AvailableResources" Relationship="DataContext.OrganizationResource" FromRole="Organization" ToRole="Resource" />
         </EntityType>
@@ -250,7 +262,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
           <NavigationProperty Name="Resources" Relationship="DataContext.TagResource" FromRole="Tag" ToRole="Resource" />
         </EntityType>
         <Association Name="TagResource">
@@ -261,6 +273,14 @@
           <End Type="DataContext.Resource" Role="Resource" Multiplicity="0..1" />
           <End Type="DataContext.Resource" Role="Resource1" Multiplicity="0..1" />
         </Association>
+        <EntityType Name="AppSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="255" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -295,6 +315,7 @@
             <ScalarProperty Name="Latitude" ColumnName="Location_Latitude" />
             <ScalarProperty Name="Address" ColumnName="Location_Address" />
           </ComplexProperty>
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -312,6 +333,15 @@
         <MappingFragment StoreEntitySet="Tags">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppSettings">
+      <EntityTypeMapping TypeName="IsTypeOf(DataContext.AppSetting)">
+        <MappingFragment StoreEntitySet="AppSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -378,15 +408,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="DataContext" >
-        <EntityTypeShape EntityType="DataContext.Project" Width="2" PointX="2.875" PointY="0.875" Height="2.3648893229166661" />
-        <EntityTypeShape EntityType="DataContext.Resource" Width="1.75" PointX="5.625" PointY="0.875" Height="2.7494921875" />
+        <EntityTypeShape EntityType="DataContext.Project" Width="2" PointX="3.125" PointY="0.875" Height="2.3648893229166661" />
+        <EntityTypeShape EntityType="DataContext.Resource" Width="1.75" PointX="5.625" PointY="0.875" Height="3.3263964843749996" />
         <EntityTypeShape EntityType="DataContext.Organization" Width="1.75" PointX="0.75" PointY="1" Height="1.9802864583333331" />
         <AssociationConnector Association="DataContext.OrganizationProject">
-          <ConnectorPoint PointX="2.5" PointY="1.9901432291666665" />
-          <ConnectorPoint PointX="2.875" PointY="1.9901432291666665" />
+          <ConnectorPoint PointX="2.5" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="3.125" PointY="1.9901432291666668" />
         </AssociationConnector>
         <AssociationConnector Association="DataContext.ProjectResource">
-          <ConnectorPoint PointX="4.875" PointY="2.0574446614583328" />
+          <ConnectorPoint PointX="5.125" PointY="2.0574446614583328" />
           <ConnectorPoint PointX="5.625" PointY="2.0574446614583328" />
         </AssociationConnector>
         <AssociationConnector Association="DataContext.OrganizationResource">
@@ -396,16 +426,16 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="DataContext.Tag" Width="1.5" PointX="2.5" PointY="3.875" Height="1.5956835937499996" />
         <AssociationConnector Association="DataContext.TagResource">
-          <ConnectorPoint PointX="4" PointY="4.672841796875" />
-          <ConnectorPoint PointX="6.5" PointY="4.672841796875" />
-          <ConnectorPoint PointX="6.5" PointY="3.6244921875" />
+          <ConnectorPoint PointX="4" PointY="4.0381982421875" />
+          <ConnectorPoint PointX="5.625" PointY="4.0381982421875" />
         </AssociationConnector>
         <AssociationConnector Association="DataContext.ResourceResource">
-          <ConnectorPoint PointX="6.2455769230769231" PointY="0.875" />
-          <ConnectorPoint PointX="6.2455769230769231" PointY="0.625" />
-          <ConnectorPoint PointX="6.7665384615384614" PointY="0.625" />
-          <ConnectorPoint PointX="6.7665384615384614" PointY="0.875" />
+          <ConnectorPoint PointX="6.2455769230769231" PointY="4.201396484375" />
+          <ConnectorPoint PointX="6.2455769230769231" PointY="4.451396484375" />
+          <ConnectorPoint PointX="6.7665384615384614" PointY="4.451396484375" />
+          <ConnectorPoint PointX="6.7665384615384614" PointY="4.201396484375" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="DataContext.AppSetting" Width="1.5" PointX="8.875" PointY="1.625" Height="1.59568359375" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
