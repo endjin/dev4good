@@ -47,7 +47,7 @@
     <Property Name="Location_Longitude" Type="float" Nullable="false" />
     <Property Name="Location_Latitude" Type="float" Nullable="false" />
     <Property Name="Location_Address" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="AdminOrganization_Id" Type="int" Nullable="false" />
+    <Property Name="AdminOrganization_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Resources">
     <Key>
@@ -61,8 +61,8 @@
     <Property Name="Location_Longitude" Type="float" Nullable="false" />
     <Property Name="Location_Latitude" Type="float" Nullable="false" />
     <Property Name="Location_Address" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Project_Id" Type="int" Nullable="false" />
-    <Property Name="Organization_Id" Type="int" Nullable="false" />
+    <Property Name="Project_Id" Type="int" Nullable="true" />
+    <Property Name="Organization_Id" Type="int" Nullable="true" />
     <Property Name="FulfilledBy_Id" Type="bigint" Nullable="true" />
   </EntityType>
   <EntityType Name="Organizations">
@@ -89,7 +89,7 @@
     <Property Name="Resources_Id" Type="bigint" Nullable="false" />
   </EntityType>
   <Association Name="OrganizationProject">
-    <End Role="Organization" Type="DataContext.Store.Organizations" Multiplicity="1" />
+    <End Role="Organization" Type="DataContext.Store.Organizations" Multiplicity="0..1" />
     <End Role="Project" Type="DataContext.Store.Projects" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Organization">
@@ -101,7 +101,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="ProjectResource">
-    <End Role="Project" Type="DataContext.Store.Projects" Multiplicity="1" />
+    <End Role="Project" Type="DataContext.Store.Projects" Multiplicity="0..1" />
     <End Role="Resource" Type="DataContext.Store.Resources" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Project">
@@ -113,7 +113,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="OrganizationResource">
-    <End Role="Organization" Type="DataContext.Store.Organizations" Multiplicity="1" />
+    <End Role="Organization" Type="DataContext.Store.Organizations" Multiplicity="0..1" />
     <End Role="Resource" Type="DataContext.Store.Resources" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Organization">
@@ -229,15 +229,15 @@
           <NavigationProperty Name="AvailableResources" Relationship="DataContext.OrganizationResource" FromRole="Organization" ToRole="Resource" />
         </EntityType>
         <Association Name="OrganizationProject">
-          <End Type="DataContext.Organization" Role="Organization" Multiplicity="1" />
+          <End Type="DataContext.Organization" Role="Organization" Multiplicity="0..1" />
           <End Type="DataContext.Project" Role="Project" Multiplicity="*" />
         </Association>
         <Association Name="ProjectResource">
-          <End Type="DataContext.Project" Role="Project" Multiplicity="1" />
+          <End Type="DataContext.Project" Role="Project" Multiplicity="0..1" />
           <End Type="DataContext.Resource" Role="Resource" Multiplicity="*" />
         </Association>
         <Association Name="OrganizationResource">
-          <End Type="DataContext.Organization" Role="Organization" Multiplicity="1" />
+          <End Type="DataContext.Organization" Role="Organization" Multiplicity="0..1" />
           <End Type="DataContext.Resource" Role="Resource" Multiplicity="*" />
         </Association>
         <ComplexType Name="Location" >
@@ -322,6 +322,7 @@
       <EndProperty Name="Project">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="AdminOrganization_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="ProjectResource" TypeName="DataContext.ProjectResource" StoreEntitySet="Resources">
       <EndProperty Name="Project">
@@ -330,6 +331,7 @@
       <EndProperty Name="Resource">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="Project_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="OrganizationResource" TypeName="DataContext.OrganizationResource" StoreEntitySet="Resources">
       <EndProperty Name="Organization">
@@ -338,6 +340,7 @@
       <EndProperty Name="Resource">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="Organization_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="TagResource" TypeName="DataContext.TagResource" StoreEntitySet="TagResource">
       <EndProperty Name="Tag">
@@ -377,9 +380,9 @@
       <Diagram Name="DataContext" >
         <EntityTypeShape EntityType="DataContext.Project" Width="2" PointX="2.875" PointY="0.875" Height="2.3648893229166661" />
         <EntityTypeShape EntityType="DataContext.Resource" Width="1.75" PointX="5.625" PointY="0.875" Height="2.7494921875" />
-        <EntityTypeShape EntityType="DataContext.Organization" Width="1.5" PointX="0.75" PointY="1" Height="1.59568359375" />
+        <EntityTypeShape EntityType="DataContext.Organization" Width="1.75" PointX="0.75" PointY="1" Height="1.9802864583333331" />
         <AssociationConnector Association="DataContext.OrganizationProject">
-          <ConnectorPoint PointX="2.25" PointY="1.9901432291666665" />
+          <ConnectorPoint PointX="2.5" PointY="1.9901432291666665" />
           <ConnectorPoint PointX="2.875" PointY="1.9901432291666665" />
         </AssociationConnector>
         <AssociationConnector Association="DataContext.ProjectResource">
@@ -387,9 +390,9 @@
           <ConnectorPoint PointX="5.625" PointY="2.0574446614583328" />
         </AssociationConnector>
         <AssociationConnector Association="DataContext.OrganizationResource">
-          <ConnectorPoint PointX="1.5" PointY="2.9802864583333331" />
-          <ConnectorPoint PointX="1.5" PointY="3.4634407552083326" />
-          <ConnectorPoint PointX="5.625" PointY="3.4634407552083326" />
+          <ConnectorPoint PointX="1.59375" PointY="2.9802864583333331" />
+          <ConnectorPoint PointX="1.59375" PointY="3.5574446614583328" />
+          <ConnectorPoint PointX="5.625" PointY="3.5574446614583328" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataContext.Tag" Width="1.5" PointX="2.5" PointY="3.875" Height="1.5956835937499996" />
         <AssociationConnector Association="DataContext.TagResource">

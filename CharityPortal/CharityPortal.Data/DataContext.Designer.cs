@@ -18,9 +18,9 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("DataContext", "OrganizationProject", "Organization", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Organization), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Project))]
-[assembly: EdmRelationshipAttribute("DataContext", "ProjectResource", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Project), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
-[assembly: EdmRelationshipAttribute("DataContext", "OrganizationResource", "Organization", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CharityPortal.Data.Organization), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
+[assembly: EdmRelationshipAttribute("DataContext", "OrganizationProject", "Organization", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CharityPortal.Data.Organization), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Project))]
+[assembly: EdmRelationshipAttribute("DataContext", "ProjectResource", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CharityPortal.Data.Project), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
+[assembly: EdmRelationshipAttribute("DataContext", "OrganizationResource", "Organization", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CharityPortal.Data.Organization), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
 [assembly: EdmRelationshipAttribute("DataContext", "TagResource", "Tag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Tag), "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CharityPortal.Data.Resource))]
 [assembly: EdmRelationshipAttribute("DataContext", "ResourceResource", "Resource", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CharityPortal.Data.Resource), "Resource1", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CharityPortal.Data.Resource))]
 

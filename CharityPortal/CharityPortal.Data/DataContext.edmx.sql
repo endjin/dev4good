@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/02/2011 18:04:40
+-- Date Created: 07/03/2011 11:35:52
 -- Generated from EDMX file: C:\Users\Ivan Zlatev\Desktop\dev4good\CharityPortal\CharityPortal.Data\DataContext.edmx
 -- --------------------------------------------------
 
@@ -31,6 +31,9 @@ IF OBJECT_ID(N'[dbo].[FK_TagResource_Tag]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_TagResource_Resource]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TagResource] DROP CONSTRAINT [FK_TagResource_Resource];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ResourceResource]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Resources] DROP CONSTRAINT [FK_ResourceResource];
 GO
 
 -- --------------------------------------------------
@@ -66,7 +69,7 @@ CREATE TABLE [dbo].[Projects] (
     [Location_Longitude] float  NOT NULL,
     [Location_Latitude] float  NOT NULL,
     [Location_Address] nvarchar(max)  NOT NULL,
-    [AdminOrganization_Id] int  NOT NULL
+    [AdminOrganization_Id] int  NULL
 );
 GO
 
@@ -80,8 +83,8 @@ CREATE TABLE [dbo].[Resources] (
     [Location_Longitude] float  NOT NULL,
     [Location_Latitude] float  NOT NULL,
     [Location_Address] nvarchar(max)  NOT NULL,
-    [Project_Id] int  NOT NULL,
-    [Organization_Id] int  NOT NULL,
+    [Project_Id] int  NULL,
+    [Organization_Id] int  NULL,
     [FulfilledBy_Id] bigint  NULL
 );
 GO
