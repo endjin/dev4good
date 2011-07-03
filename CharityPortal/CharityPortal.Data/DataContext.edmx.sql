@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/03/2011 11:35:52
--- Generated from EDMX file: C:\Users\Ivan Zlatev\Desktop\dev4good\CharityPortal\CharityPortal.Data\DataContext.edmx
+-- Date Created: 07/03/2011 14:07:50
+-- Generated from EDMX file: C:\dev4good\CharityPortal\CharityPortal.Data\DataContext.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -52,6 +52,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Tags]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Tags];
 GO
+IF OBJECT_ID(N'[dbo].[AppSettings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AppSettings];
+GO
 IF OBJECT_ID(N'[dbo].[TagResource]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TagResource];
 GO
@@ -63,8 +66,8 @@ GO
 -- Creating table 'Projects'
 CREATE TABLE [dbo].[Projects] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
-    [Description] nvarchar(max)  NOT NULL,
+    [Name] nvarchar(255)  NOT NULL,
+    [Description] nvarchar(255)  NOT NULL,
     [IsActive] bit  NOT NULL,
     [Location_Longitude] float  NOT NULL,
     [Location_Latitude] float  NOT NULL,
@@ -76,13 +79,14 @@ GO
 -- Creating table 'Resources'
 CREATE TABLE [dbo].[Resources] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
-    [Title] nvarchar(max)  NOT NULL,
-    [Description] nvarchar(max)  NOT NULL,
+    [Title] nvarchar(255)  NOT NULL,
+    [Description] nvarchar(255)  NOT NULL,
     [Quantity] float  NOT NULL,
-    [QuantityUnits] nvarchar(max)  NOT NULL,
+    [QuantityUnits] nvarchar(255)  NOT NULL,
     [Location_Longitude] float  NOT NULL,
     [Location_Latitude] float  NOT NULL,
     [Location_Address] nvarchar(max)  NOT NULL,
+    [ImageUrl] nvarchar(255)  NULL,
     [Project_Id] int  NULL,
     [Organization_Id] int  NULL,
     [FulfilledBy_Id] bigint  NULL
@@ -92,15 +96,23 @@ GO
 -- Creating table 'Organizations'
 CREATE TABLE [dbo].[Organizations] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
-    [ContactEmail] nvarchar(max)  NOT NULL
+    [Name] nvarchar(255)  NOT NULL,
+    [ContactEmail] nvarchar(255)  NOT NULL
 );
 GO
 
 -- Creating table 'Tags'
 CREATE TABLE [dbo].[Tags] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL
+    [Name] nvarchar(255)  NOT NULL
+);
+GO
+
+-- Creating table 'AppSettings'
+CREATE TABLE [dbo].[AppSettings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(255)  NOT NULL,
+    [Value] nvarchar(255)  NOT NULL
 );
 GO
 
@@ -136,6 +148,12 @@ GO
 -- Creating primary key on [Id] in table 'Tags'
 ALTER TABLE [dbo].[Tags]
 ADD CONSTRAINT [PK_Tags]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'AppSettings'
+ALTER TABLE [dbo].[AppSettings]
+ADD CONSTRAINT [PK_AppSettings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
