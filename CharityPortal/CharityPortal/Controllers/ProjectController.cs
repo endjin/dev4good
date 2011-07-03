@@ -103,7 +103,15 @@ namespace CharityPortal.Controllers
         {            
             Project project = db.Projects.Single(p => p.Id == id);
             db.Projects.DeleteObject(project);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                //report error
+                return View();
+            } 
             return RedirectToAction("Index");
         }
 

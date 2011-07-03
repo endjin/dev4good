@@ -21,6 +21,18 @@ namespace CharityPortal.Controllers
             return View(db.Resources.ToList());
         }
 
+
+        public ViewResult IndexNeeded()
+        {
+            return View("Index", db.Resources.Where(X => X.Organization == null).ToList());
+        }
+
+        public ViewResult IndexAvaliable()
+        {
+            return View("Index" ,db.Resources.Where(X=> X.Organization != null).ToList() );
+        }
+
+
         //
         // GET: /Resource/Details/5
 
@@ -92,6 +104,7 @@ namespace CharityPortal.Controllers
         {
             Resource resource = db.Resources.Single(r => r.Id == id);
              ViewBag.Organizations = db.Organizations;
+             ViewBag.Projects = db.Projects;
             return View(resource);
         }
 
@@ -128,7 +141,15 @@ namespace CharityPortal.Controllers
         {            
             Resource resource = db.Resources.Single(r => r.Id == id);
             db.Resources.DeleteObject(resource);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                //report error
+                return View();
+            } 
             return RedirectToAction("Index");
         }
 
