@@ -8,8 +8,8 @@
     <ProjectGuid>{F63E0957-B60B-47A3-96BB-76DC243D0C8A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MSpecTests.CraftAndDesignCouncil</RootNamespace>
-    <AssemblyName>MSpecTests.CraftAndDesignCouncil</AssemblyName>
+    <RootNamespace>CraftAndDesignCouncil.Specifications</RootNamespace>
+    <AssemblyName>CraftAndDesignCouncil.Specifications</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>

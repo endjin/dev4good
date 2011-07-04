@@ -1,7 +1,11 @@
 ﻿namespace CraftAndDesignCouncil.Web.Mvc.Controllers
 {
+    #region Using Directives
+
     using System.Web.Mvc;
     using System.Web.Routing;
+
+    #endregion
 
     public class RouteRegistrar
     {

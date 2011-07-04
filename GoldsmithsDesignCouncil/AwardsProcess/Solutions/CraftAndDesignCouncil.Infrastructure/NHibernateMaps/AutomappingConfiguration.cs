@@ -1,9 +1,13 @@
 ﻿namespace CraftAndDesignCouncil.Infrastructure.NHibernateMaps
 {
+    #region Using Directives
+
     using System.Linq;
     using FluentNHibernate;
     using FluentNHibernate.Automapping;
     using SharpArch.Domain.DomainModel;
+
+    #endregion
 
     public class AutomappingConfiguration : DefaultAutomappingConfiguration
     {
