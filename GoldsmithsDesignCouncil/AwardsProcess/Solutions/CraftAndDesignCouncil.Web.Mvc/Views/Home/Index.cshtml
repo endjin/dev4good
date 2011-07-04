@@ -6,81 +6,14 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- <form id="form1" runat="server">
-    <div class="container_12">
-        <div class="grid_12">
-            <h2>Goldsmiths' Craft &amp; Design Council: Craftsmanship &amp; Design Awards</h2>
-            <div class="jsonFormatter">
-                <div class="grid_9">
-                    @using (Html.BeginForm()) {
-                        @Html.AntiForgeryToken()
-                        <fieldset>
-                            <ul>
-                                <li>
-                                    @Html.LabelFor(Model => Model.FirstName, "First Name:")
-                                    <div>@Html.TextBoxFor(Model => Model.FirstName)</div>
-                                    @Html.ValidationMessageFor(Model => Model.FirstName)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.LastName, "Last Name")
-                                    <div>@Html.TextBoxFor(Model => Model.LastName)</div>
-                                    @Html.ValidationMessageFor(Model => Model.LastName)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.Email, "Email:")
-                                    <div>@Html.TextBoxFor(Model => Model.Email)</div>
-                                    @Html.ValidationMessageFor(Model => Model.Email)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.Address.AddressLine1)
-                                    <div>@Html.TextBoxFor(Model => Model.Address.AddressLine1)</div>
-                                    @Html.ValidationMessageFor(Model => Model.Address.AddressLine1)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.Address.AddressLine2)
-                                    <div>@Html.TextBoxFor(Model => Model.Address.AddressLine2)</div>
-                                    @Html.ValidationMessageFor(Model => Model.Address.AddressLine2)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.Address.City)
-                                    <div>@Html.TextBoxFor(Model => Model.Address.City)</div>
-                                    @Html.ValidationMessageFor(Model => Model.Address.City)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.Address.StateProvince)
-                                    <div>@Html.TextBoxFor(Model => Model.Address.StateProvince)</div>
-                                    @Html.ValidationMessageFor(Model => Model.Address.StateProvince)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.Address.PostCode)
-                                    <div>@Html.TextBoxFor(Model => Model.Address.PostCode)</div>
-                                    @Html.ValidationMessageFor(Model => Model.Address.PostCode)
-                                </li>
-                                <li>
-                                    @Html.LabelFor(Model => Model.Address.Country)
-                                    <div>@Html.TextBoxFor(Model => Model.Address.Country)</div>
-                                    @Html.ValidationMessageFor(Model => Model.Address.Country)
-                                </li>
-                                <li>
-                                    @Html.SubmitButton("saveButton", "Save")
-                                </li>
-                            </ul>
-                        </fieldset>
-                    }
-                </div>
-                <div class="grid_3">
-                </div>
-                <div class="clear">&nbsp;</div>
-                <div class="grid_12" >
-                    <div>
-                        <br />
-                        <a href="#" id="next" onclick="return;"><img src="/Content/img/accept.gif" alt="Next" />Next</a>
-                        <a href="#" id="clear" onclick="return;"><img src="/Content/img/bin_empty.gif" alt="Clear" />Clear</a>
-                    </div>
-                </div>
-                <div class="clear">&nbsp;</div>
+<div>
+    <div>
+        <h2>Goldsmiths' Craft &amp; Design Council: Craftsmanship &amp; Design Awards</h2>
+        <div>
+            <div>
+                @(Html.ActionLink<ApplicationController>(c => c.Index(), "Create New Application"))
             </div>
         </div>
-        <div class="clear">&nbsp;</div>
     </div>
-</form>
+    <div class="clear">&nbsp;</div>
+</div>

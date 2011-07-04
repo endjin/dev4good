@@ -137,7 +137,7 @@
     <Content Include="Content\img\grippie.gif" />
     <Content Include="Content\js\jquery-1.6.1.min.js" />
     <Content Include="Content\js\modernizr-1.7.min.js" />
-    <Content Include="Content\styles\site.css" />
+    <Content Include="Content\styles\forms.css" />
     <Content Include="Content\styles\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\jquery-1.6.1-vsdoc.js" />
