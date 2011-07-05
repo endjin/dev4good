@@ -10,7 +10,8 @@
     {
         public ActionResult Index()
         {
-            return View();
+            ActionResult res = View();
+            return res;
         }
     }
 }

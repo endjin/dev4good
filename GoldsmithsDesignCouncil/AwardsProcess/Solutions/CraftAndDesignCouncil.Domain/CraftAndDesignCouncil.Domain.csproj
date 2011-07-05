@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="Applicant.cs" />
     <Compile Include="Address.cs" />
+    <Compile Include="Question.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
