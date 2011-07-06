@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CraftAndDesignCouncil.Domain
+﻿namespace CraftAndDesignCouncil.Domain
 {
-    class Question
-    {
-        public string LongText
-        {
-            get;
-            set;
-        }
+    #region Using Directives
+    using SharpArch.Domain.DomainModel;
+    #endregion
 
-        public string HelpText
-        {
-            get;
-            set;
-        }
+    public class Question : Entity
+    {
+        public virtual string LongText { get; set; }
+
+        public virtual string HelpText { get; set; }
     }
 }

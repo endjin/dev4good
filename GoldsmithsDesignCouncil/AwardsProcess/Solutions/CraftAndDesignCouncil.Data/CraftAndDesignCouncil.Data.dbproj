@@ -146,7 +146,7 @@
     <Build Include="Schema Objects\Database Level Objects\Service Broker\Routes\AutoCreatedLocal.route.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\questions.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\question.table.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>
