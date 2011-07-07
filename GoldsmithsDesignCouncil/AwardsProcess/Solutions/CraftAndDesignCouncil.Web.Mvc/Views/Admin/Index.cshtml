@@ -1,5 +1,14 @@
-﻿@{
+﻿@using CraftAndDesignCouncil.Web.Mvc.Controllers.ViewModels
+
+@model AdminQuestionListViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-here we are!!!
+Questions
+<br />
+@foreach (var question in Model.Questions)
+{
+    Html.RenderPartial("AdminQuestionDetails", question);
+}
