@@ -9,3 +9,12 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
+if exists (select 1 from information_schema.Tables where table_name = 'Questions' and TABLE_SCHEMA = 'dbo')
+begin
+	print 'question table found'
+	truncate table dbo.Questions;
+	insert into dbo.Questions (QuestionText, HelpText) values ('This is the first question', 'This is the help text');
+	insert into dbo.Questions (QuestionText, HelpText) values ('This is the second question', 'This is the help text');
+	insert into dbo.Questions (QuestionText, HelpText) values ('This is the third question', 'This is the help text');
+end
