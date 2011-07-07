@@ -11,6 +11,9 @@
 
     public class Applicant : Entity
     {
+        [Required (ErrorMessage = "Please provide a password")]
+        public virtual string Password { get; set; }
+
         [Required(ErrorMessage = "Please fill in your first name")]
         public virtual string FirstName { get; set; }
 
