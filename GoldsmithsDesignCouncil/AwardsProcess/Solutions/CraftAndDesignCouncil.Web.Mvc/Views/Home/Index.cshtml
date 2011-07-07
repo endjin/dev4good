@@ -8,10 +8,11 @@
 }
 <div>
     <div>
-        <h2>Goldsmiths' Craft &amp; Design Council: Craftsmanship &amp; Design Awards</h2>
         <div>
             <div>
                 @(Html.ActionLink<ApplicationController>(c => c.Index(), "Create New Application"))
+                <br />
+                @(Html.ActionLink<AdminController>(c => c.Index(), "Admin area"))
             </div>
         </div>
     </div>
