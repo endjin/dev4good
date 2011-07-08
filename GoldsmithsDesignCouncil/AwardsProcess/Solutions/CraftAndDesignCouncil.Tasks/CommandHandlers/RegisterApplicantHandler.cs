@@ -20,9 +20,9 @@ using SharpArch.NHibernate.Contracts.Repositories;
         public ICommandResult Handle(RegisterApplicantCommand command)
         {
             command.Applicant.ModifiedDate = DateTime.Now;
-            repository.Save(command.Applicant);
+            Applicant res = repository.Save(command.Applicant);
 
-            return new RegisterApplicantResult(true);
+            return new RegisterApplicantResult(true, res.Id);
         }
     }
 }

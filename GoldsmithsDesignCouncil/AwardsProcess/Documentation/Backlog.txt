@@ -1,0 +1,2 @@
+Passwords stored as clear text in database
+Login logic not written always logs in as userId 1

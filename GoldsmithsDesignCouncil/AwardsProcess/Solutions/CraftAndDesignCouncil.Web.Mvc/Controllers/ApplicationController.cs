@@ -5,9 +5,7 @@
     using System.Web.Mvc;
     using CraftAndDesignCouncil.Domain;
     using SharpArch.Domain.Commands;
-    using System;
     using CraftAndDesignCouncil.Tasks.Commands;
-
     #endregion
 
     public class ApplicationController : Controller
@@ -29,9 +27,13 @@
         public ActionResult Index(Applicant applicant)
         {
             var command = new RegisterApplicantCommand(applicant);
-            commandProcessor.Process(command);
+            RegisterApplicantResult result = commandProcessor.Process(command) as RegisterApplicantResult;
+            if (result != null)
+            {
+                Session["LOGGED_IN_USER"] = result.ApplicantId;
+            }
 
-            return new RedirectResult("ContactDetails");
+            return new RedirectResult("ApplicationForm");
         }
     }
 }
