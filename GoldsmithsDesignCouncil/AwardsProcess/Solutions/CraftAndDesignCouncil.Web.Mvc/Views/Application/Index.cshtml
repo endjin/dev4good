@@ -8,28 +8,25 @@
 }
 <div>
     <div>
-        <h2>Goldsmiths' Craft &amp; Design Council: Craftsmanship &amp; Design Awards</h2>
-        <div>
-            <div >
-                @using (Html.BeginForm()) {
-                    @Html.AntiForgeryToken()
-                    <fieldset class="form-brd">
-                        <div class="form-col">
-                            <div class="form-row">
-                                @Html.LabelFor(Model => Model.Email, "Email:")
-                                @Html.TextBoxFor(Model => Model.Email)
-                                @Html.ValidationMessageFor(Model => Model.Email)
-                            </div>
-                            <div class="form-row">
-                                @Html.LabelFor(Model => Model.Password, "Password:")
-                                @Html.PasswordFor(Model => Model.Password)
-                                @Html.ValidationMessageFor(Model => Model.Password)
-                            </div>
+        <div >
+            @using (Html.BeginForm()) {
+                @Html.AntiForgeryToken()
+                <fieldset class="form-brd">
+                    <div class="form-col">
+                        <div class="form-row">
+                            @Html.LabelFor(Model => Model.Email, "Email:")
+                            @Html.TextBoxFor(Model => Model.Email)
+                            @Html.ValidationMessageFor(Model => Model.Email)
                         </div>
-                        @Html.SubmitButton()
-                    </fieldset>
-                }
-            </div>
+                        <div class="form-row">
+                            @Html.LabelFor(Model => Model.Password, "Password:")
+                            @Html.PasswordFor(Model => Model.Password)
+                            @Html.ValidationMessageFor(Model => Model.Password)
+                        </div>
+                    </div>
+                    <input type="submit" value="Send" />
+                </fieldset>
+            }
         </div>
     </div>
     <div class="clear">&nbsp;</div>

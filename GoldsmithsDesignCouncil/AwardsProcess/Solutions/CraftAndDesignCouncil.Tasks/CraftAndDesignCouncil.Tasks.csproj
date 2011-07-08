@@ -81,6 +81,9 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CommandHandlers\RegisterApplicantHandler.cs" />
+    <Compile Include="Commands\RegisterApplicantResult.cs" />
+    <Compile Include="Commands\RegisterApplicantCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">
@@ -109,10 +112,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CommandHandlers\" />
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
