@@ -169,6 +169,7 @@
   <ItemGroup>
     <Folder Include="Controllers\Queries\" />
     <Folder Include="Controllers\ViewModels\" />
+    <Folder Include="Views\Reports\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
