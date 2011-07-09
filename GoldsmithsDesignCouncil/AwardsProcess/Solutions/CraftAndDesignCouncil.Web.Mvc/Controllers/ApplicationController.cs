@@ -20,8 +20,18 @@
         [HttpGet]
         public ActionResult Index()
         {
+            if (Session["LOGGED_IN_USER"] == null)
+            {
+                return NewUser();
+            }
             return View();
         }
+
+        public ActionResult NewUser()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult Index(Applicant applicant)
