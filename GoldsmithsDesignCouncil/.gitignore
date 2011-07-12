@@ -29,3 +29,5 @@ _Resharper.*
 *.log
 *.ser
 *.dbmdl
+Thumbs.db
+

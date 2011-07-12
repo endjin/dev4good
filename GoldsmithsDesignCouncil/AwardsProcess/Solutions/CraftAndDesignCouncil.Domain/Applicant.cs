@@ -1,11 +1,11 @@
 ﻿namespace CraftAndDesignCouncil.Domain
 {
     #region Using Directives
-
     using System;
     using System.ComponentModel.DataAnnotations;
 
     using SharpArch.Domain.DomainModel;
+using System.Collections.Generic;
 
     #endregion
 
@@ -25,6 +25,8 @@
 
         [Required(ErrorMessage = "Please fill in your address")]
         public virtual Address Address { get; set; }
+
+        public virtual IList<ApplicationForm> Applications {get; set;}
 
         public virtual DateTime ModifiedDate { get; set; }
     }

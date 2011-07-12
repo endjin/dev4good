@@ -2,13 +2,16 @@
 
 namespace CraftAndDesignCouncil.Web.Mvc.Controllers
 {
-    using System;
     using System.Web.Mvc;
 
     public class LoginController : Controller
     {
-        //
-        // GET: /Login/
+        private readonly LoginHelper loginHelper;
+
+        public LoginController(LoginHelper loginHelper)
+        {
+            this.loginHelper = loginHelper;
+        }
 
         public ActionResult Index()
         {
@@ -19,13 +22,13 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
         public ActionResult LoginApplicant(string email, string password)
         {
             //TODO : Just mocking this up for now need to write a task to actually do the logging in
-            Session["LOGGED_IN_USER"] = 1;
+            loginHelper.LoginApplicant(email, password);
             return new RedirectResult("/");
         }
 
         public ActionResult LogoutApplicant()
         {
-            Session.Remove("LOGGED_IN_USER");
+            loginHelper.LogoutApplicant();
             return new RedirectResult("/");
         }
     }

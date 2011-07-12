@@ -11,27 +11,24 @@
     public class ApplicationController : Controller
     {
         private readonly ICommandProcessor commandProcessor;
+        private readonly LoginHelper loginHelper;
 
-        public ApplicationController(ICommandProcessor commandProcessor)
+        public ApplicationController(ICommandProcessor commandProcessor, LoginHelper loginHelper)
         {
+            this.loginHelper = loginHelper;
             this.commandProcessor = commandProcessor;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            if (Session["LOGGED_IN_USER"] == null)
+            if (loginHelper.SomebodyIsLoggedIn)
             {
-                return NewUser();
+                return new RedirectResult("ContactDetails");
             }
+
             return View();
         }
-
-        public ActionResult NewUser()
-        {
-            return View();
-        }
-
 
         [HttpPost]
         public ActionResult Index(Applicant applicant)
@@ -40,10 +37,21 @@
             RegisterApplicantResult result = commandProcessor.Process(command) as RegisterApplicantResult;
             if (result != null)
             {
-                Session["LOGGED_IN_USER"] = result.ApplicantId;
+                
             }
 
-            return new RedirectResult("ApplicationForm");
+            return new RedirectResult("ContactDetails");
         }
+
+        public ActionResult ContactDetails()
+        {
+            return View();
+        }
+
+        public ActionResult ApplicationFormSection(int sectionId)
+        {
+            return View();
+        }
+
     }
 }

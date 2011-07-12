@@ -83,8 +83,11 @@
     </Compile>
     <Compile Include="Applicant.cs" />
     <Compile Include="Address.cs" />
+    <Compile Include="ApplicationForm.cs" />
+    <Compile Include="ApplicationFormSection.cs" />
     <Compile Include="Contracts\Queries\IAllQuestionsQuery.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="QuestionAnswer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
