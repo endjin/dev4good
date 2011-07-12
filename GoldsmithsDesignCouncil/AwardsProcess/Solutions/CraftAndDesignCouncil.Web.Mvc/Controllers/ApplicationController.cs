@@ -11,9 +11,9 @@
     public class ApplicationController : Controller
     {
         private readonly ICommandProcessor commandProcessor;
-        private readonly LoginHelper loginHelper;
+        private readonly ILoginHelper loginHelper;
 
-        public ApplicationController(ICommandProcessor commandProcessor, LoginHelper loginHelper)
+        public ApplicationController(ICommandProcessor commandProcessor, ILoginHelper loginHelper)
         {
             this.loginHelper = loginHelper;
             this.commandProcessor = commandProcessor;

@@ -6,9 +6,9 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
 
     public class LoginController : Controller
     {
-        private readonly LoginHelper loginHelper;
+        private readonly ILoginHelper loginHelper;
 
-        public LoginController(LoginHelper loginHelper)
+        public LoginController(ILoginHelper loginHelper)
         {
             this.loginHelper = loginHelper;
         }
