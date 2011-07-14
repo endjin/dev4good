@@ -1,5 +1,3 @@
-using System;
-
 namespace CraftAndDesignCouncil.Web.Mvc.Controllers
 {
     public interface ILoginHelper
