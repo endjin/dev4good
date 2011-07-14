@@ -2,9 +2,8 @@
 {
     #region Using Directives
     using CraftAndDesignCouncil.Domain;
-    using System;
     using CraftAndDesignCouncil.Domain.Contracts.Tasks;
-using SharpArch.NHibernate.Contracts.Repositories;
+    using SharpArch.NHibernate.Contracts.Repositories;
     #endregion
 
     public class ApplicantTasks : IApplicantTasks

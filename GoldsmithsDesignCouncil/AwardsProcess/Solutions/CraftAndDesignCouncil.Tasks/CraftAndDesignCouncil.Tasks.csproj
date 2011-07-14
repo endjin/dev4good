@@ -81,6 +81,7 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ApplicantTasks.cs" />
     <Compile Include="CommandHandlers\RegisterApplicantHandler.cs" />
     <Compile Include="Commands\RegisterApplicantResult.cs" />
     <Compile Include="Commands\RegisterApplicantCommand.cs" />

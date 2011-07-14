@@ -126,7 +126,6 @@
     <Compile Include="Controllers\ILoginHelper.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MockLoginHelper.cs" />
-    <Compile Include="Controllers\NotImplementedLoginHelper.cs" />
     <Compile Include="Controllers\ViewModels\AdminQuestionListViewModel.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -86,6 +86,7 @@
     <Compile Include="ApplicationForm.cs" />
     <Compile Include="ApplicationFormSection.cs" />
     <Compile Include="Contracts\Queries\IAllQuestionsQuery.cs" />
+    <Compile Include="Contracts\Tasks\IApplicantTasks.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuestionAnswer.cs" />
   </ItemGroup>
@@ -106,9 +107,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\Tasks\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
