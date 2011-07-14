@@ -6,20 +6,16 @@
     using CraftAndDesignCouncil.Domain;
     using SharpArch.Domain.Commands;
     using CraftAndDesignCouncil.Tasks.Commands;
-    using CraftAndDesignCouncil.Domain.Contracts.Tasks;
+    using System;
     #endregion
 
     public class ApplicationController : Controller
     {
         private readonly ICommandProcessor commandProcessor;
         private readonly ILoginHelper loginHelper;
-        private readonly IApplicantTasks applicantTasks;
 
-        public ApplicationController(ICommandProcessor commandProcessor
-                                     , ILoginHelper loginHelper
-                                     , IApplicantTasks applicantTasks)
+        public ApplicationController(ICommandProcessor commandProcessor, ILoginHelper loginHelper)
         {
-            this.applicantTasks = applicantTasks;
             this.loginHelper = loginHelper;
             this.commandProcessor = commandProcessor;
         }
@@ -52,6 +48,7 @@
             return new RedirectResult("Application/ContactDetails");
         }
 
+        [HttpGet]
         public ActionResult ContactDetails()
         {
             if (!loginHelper.SomebodyIsLoggedIn)
@@ -60,6 +57,17 @@
             }
             Applicant applicant = loginHelper.GetLoggedInApplicant();
             return View(applicant);
+        }
+
+        [HttpPost]
+        public ActionResult ContactDetails(Applicant applicant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult ApplicationFormSection()
+        {
+            return View();
         }
 
         public ActionResult ApplicationFormSection(int sectionId)
