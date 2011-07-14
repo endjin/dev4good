@@ -1,6 +1,7 @@
 ﻿namespace CraftAndDesignCouncil.Infrastructure.Queries
 {
     #region Using Directives
+    using System;
     using CraftAndDesignCouncil.Domain;
     using CraftAndDesignCouncil.Domain.Contracts.Queries;
     using NHibernate.Linq;

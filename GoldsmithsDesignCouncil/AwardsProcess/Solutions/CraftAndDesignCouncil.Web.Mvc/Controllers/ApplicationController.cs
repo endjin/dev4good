@@ -24,7 +24,7 @@
         {
             if (loginHelper.SomebodyIsLoggedIn)
             {
-                return new RedirectResult("ContactDetails");
+                return new RedirectResult("Application/ContactDetails");
             }
 
             return View();
@@ -40,7 +40,7 @@
                 
             }
 
-            return new RedirectResult("ContactDetails");
+            return new RedirectResult("Application/ContactDetails");
         }
 
         public ActionResult ContactDetails()
