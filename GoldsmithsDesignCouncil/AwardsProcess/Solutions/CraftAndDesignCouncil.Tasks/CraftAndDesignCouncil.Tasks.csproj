@@ -85,7 +85,9 @@
     <Compile Include="CommandHandlers\RegisterApplicantHandler.cs" />
     <Compile Include="CommandHandlers\SaveApplicantDetailsHandler.cs" />
     <Compile Include="Commands\ApplicantResult.cs" />
-    <Compile Include="Commands\RegisterApplicantCommand.cs" />
+    <Compile Include="Commands\RegisterApplicantCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Commands\SaveApplicantDetailsCommand.cs" />
   </ItemGroup>
   <ItemGroup>
