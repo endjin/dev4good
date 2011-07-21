@@ -1,8 +1,8 @@
-﻿namespace CraftAndDesignCouncil.Tasks.Commands
-{
-    using SharpArch.Domain.Commands;
-    using CraftAndDesignCouncil.Domain;
+using SharpArch.Domain.Commands;
+using CraftAndDesignCouncil.Domain;
 
+namespace CraftAndDesignCouncil.Tasks.Commands
+{
     public class RegisterApplicantCommand : CommandBase
     {
         private readonly Applicant applicant;

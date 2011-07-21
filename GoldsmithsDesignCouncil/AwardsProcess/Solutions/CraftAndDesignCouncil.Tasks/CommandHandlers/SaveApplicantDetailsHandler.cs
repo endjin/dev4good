@@ -10,24 +10,46 @@ namespace CraftAndDesignCouncil.Tasks.CommandHandlers
     public class SaveApplicantDetailsHandler : ICommandHandler<SaveApplicantDetailsCommand>
     {
         private readonly INHibernateRepository<Applicant> applicantRepository;
+        private readonly INHibernateRepository<Address> addressRepository;
 
-        public SaveApplicantDetailsHandler(INHibernateRepository<Applicant> applicantRepository)
+        public SaveApplicantDetailsHandler(INHibernateRepository<Applicant> applicantRepository, INHibernateRepository<Address> addressRepository)
         {
+            this.addressRepository = addressRepository;
             this.applicantRepository = applicantRepository;
+        }
+
+
+        private void CopyAddressValues(Address from, Address to)
+        {
+            to.AddressLine1 = from.AddressLine1;
+            to.AddressLine2 = from.AddressLine2;
+            to.City = from.City;
+
         }
 
         public ICommandResult Handle(SaveApplicantDetailsCommand command)
         {
-            Applicant entity = applicantRepository.Get(command.Applicant.Id);
+            Applicant applicant = applicantRepository.Get(command.Applicant.Id);
 
-            entity.ModifiedDate = DateTime.Now;
-            entity.Email = command.Applicant.Email;
-            entity.FirstName = command.Applicant.FirstName;
-            entity.LastName = command.Applicant.LastName;
+            applicant.ModifiedDate = DateTime.Now;
+            applicant.Email = command.Applicant.Email;
+            applicant.FirstName = command.Applicant.FirstName;
+            applicant.LastName = command.Applicant.LastName;
+            if (applicant.Address == null)
+            {
+                applicant.Address = command.Applicant.Address.CloneTo();
+                applicant.Address.ModifiedDate = DateTime.Now;
+                addressRepository.Save(applicant.Address);
+            }
+            else
+            {
+                applicant.Address.CopyAllPropertiesFrom(command.Applicant.Address);
+                applicant.Address.ModifiedDate = DateTime.Now;
+            }
 
             applicantRepository.DbContext.CommitChanges();
 
-            return new ApplicantResult(true, entity.Id);
+            return new ApplicantResult(true, applicant.Id);
         }
     }
 }

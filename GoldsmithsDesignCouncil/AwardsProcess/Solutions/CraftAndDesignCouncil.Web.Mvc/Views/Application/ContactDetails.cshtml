@@ -47,19 +47,14 @@
                         @Html.ValidationMessageFor(Model => Model.Address.City)
                     </div>
                     <div class="form-row">
-                        @Html.LabelFor(Model => Model.Address.StateProvince, "State / Province:")
-                        @Html.TextBoxFor(Model => Model.Address.StateProvince)
-                        @Html.ValidationMessageFor(Model => Model.Address.StateProvince)
+                        @Html.LabelFor(Model => Model.Address.County, "County:")
+                        @Html.TextBoxFor(Model => Model.Address.County)
+                        @Html.ValidationMessageFor(Model => Model.Address.County)
                     </div>
                     <div class="form-row">
                         @Html.LabelFor(Model => Model.Address.PostCode, "Post Code:")
                         @Html.TextBoxFor(Model => Model.Address.PostCode)
                         @Html.ValidationMessageFor(Model => Model.Address.PostCode)
-                    </div>
-                    <div class="form-row">
-                        @Html.LabelFor(Model => Model.Address.Country, "Country:")
-                        @Html.TextBoxFor(Model => Model.Address.Country)
-                        @Html.ValidationMessageFor(Model => Model.Address.Country)
                     </div>
                     <div class="form-row">
                         @Html.SubmitButton("nextButton", "Next")

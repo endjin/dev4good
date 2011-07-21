@@ -152,5 +152,8 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Applicants.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Addresses.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>

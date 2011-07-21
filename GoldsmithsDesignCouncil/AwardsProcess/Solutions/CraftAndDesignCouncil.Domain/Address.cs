@@ -1,7 +1,6 @@
 ﻿namespace CraftAndDesignCouncil.Domain
 {
     #region Using Directives
-
     using System;
     using System.ComponentModel.DataAnnotations;
 
@@ -20,13 +19,10 @@
         public virtual string City { get; set; }
 
         [Required(ErrorMessage = "Please fill in your State / Province / County")]
-        public virtual string StateProvince { get; set; }
+        public virtual string County { get; set; }
 
         [Required(ErrorMessage = "Please fill in your Post Code")]
         public virtual string PostCode { get; set; }
-
-        [Required(ErrorMessage = "Please fill in your Country")]
-        public virtual string Country { get; set; }
 
         public virtual DateTime ModifiedDate { get; set; }
     }
