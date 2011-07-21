@@ -22,7 +22,7 @@ using SharpArch.NHibernate.Contracts.Repositories;
             command.Applicant.ModifiedDate = DateTime.Now;
             Applicant res = repository.Save(command.Applicant);
 
-            return new RegisterApplicantResult(true, res.Id);
+            return new ApplicantResult(true, res.Id);
         }
     }
 }

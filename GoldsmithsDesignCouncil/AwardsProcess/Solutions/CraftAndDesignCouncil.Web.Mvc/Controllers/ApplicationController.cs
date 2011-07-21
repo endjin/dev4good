@@ -35,7 +35,7 @@
         public ActionResult Index(Applicant applicant)
         {
             var command = new RegisterApplicantCommand(applicant);
-            RegisterApplicantResult result = commandProcessor.Process(command) as RegisterApplicantResult;
+            ApplicantResult result = commandProcessor.Process(command) as ApplicantResult;
             if (result == null)
             {
                 return new RedirectResult("/");
@@ -62,7 +62,9 @@
         [HttpPost]
         public ActionResult ContactDetails(Applicant applicant)
         {
-            throw new NotImplementedException();
+            SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);
+            ApplicantResult result = commandProcessor.Process(saveDetailsCommand) as ApplicantResult;
+            return new RedirectResult("Application/ApplicationFormSection");
         }
 
         public ActionResult ApplicationFormSection()

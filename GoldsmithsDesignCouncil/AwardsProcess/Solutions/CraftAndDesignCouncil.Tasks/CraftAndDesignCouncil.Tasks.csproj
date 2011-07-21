@@ -83,8 +83,10 @@
     </Compile>
     <Compile Include="ApplicantTasks.cs" />
     <Compile Include="CommandHandlers\RegisterApplicantHandler.cs" />
-    <Compile Include="Commands\RegisterApplicantResult.cs" />
+    <Compile Include="CommandHandlers\SaveApplicantDetailsHandler.cs" />
+    <Compile Include="Commands\ApplicantResult.cs" />
     <Compile Include="Commands\RegisterApplicantCommand.cs" />
+    <Compile Include="Commands\SaveApplicantDetailsCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">
