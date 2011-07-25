@@ -61,7 +61,6 @@
         }
 
         [HttpPost]
-        [Transaction]
         public ActionResult ContactDetails(Applicant applicant)
         {
             SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);

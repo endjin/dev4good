@@ -140,6 +140,7 @@
     <Content Include="Content\img\bin_empty.gif" />
     <Content Include="Content\img\gradient.gif" />
     <Content Include="Content\img\grippie.gif" />
+    <Content Include="Content\js\ContactDetails.js" />
     <Content Include="Content\js\jquery-1.6.1.min.js" />
     <Content Include="Content\js\modernizr-1.7.min.js" />
     <Content Include="Content\styles\forms.css" />

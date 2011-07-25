@@ -7,6 +7,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Html.Script("~/Content/js/ContactDetails.js");
+
 <div>
     <div >
         @using (Html.BeginForm()) {
@@ -56,7 +58,7 @@
                         @Html.TextBoxFor(Model => Model.Address.PostCode)
                         @Html.ValidationMessageFor(Model => Model.Address.PostCode)
                     </div>
-                    <div class="form-row">
+                    <div class="form-row" id="div_submit_buttons">
                         @Html.SubmitButton("nextButton", "Next")
                     </div>
                 </div>
