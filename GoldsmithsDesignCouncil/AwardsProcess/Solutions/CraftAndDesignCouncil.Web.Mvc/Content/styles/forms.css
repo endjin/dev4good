@@ -7,3 +7,4 @@ fieldset, .fieldset, .form-row { padding-bottom: 16px; position: relative; }
 .form-row { height: 22px; z-index: 1; }
 .form-row input { float: right; width: 160px; }
 .form-row label { margin-right: 5px; text-align: right; width: 117px; float: left; }
+.submit-link {text-decoration: underline; cursor:pointer; border:1px solid red}

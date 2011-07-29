@@ -2,6 +2,7 @@
 
 @model Applicant
            
+           
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,7 +12,8 @@
 
 <div>
     <div >
-        @using (Html.BeginForm()) {
+        @using (Html.BeginForm("ApplicationForm", "Application", FormMethod.Post, new Dictionary<string, object> {{"id","form_contactDetails"}}))
+        {
             @Html.HiddenFor(Model => Model.Id)
             @Html.AntiForgeryToken()
             <fieldset class="form-brd">
@@ -57,10 +59,16 @@
                         @Html.LabelFor(Model => Model.Address.PostCode, "Post Code:")
                         @Html.TextBoxFor(Model => Model.Address.PostCode)
                         @Html.ValidationMessageFor(Model => Model.Address.PostCode)
+                        <input type="hidden" id="input_applicationFormId" name="ApplicationFormId" />
                     </div>
                     <div class="form-row" id="div_submit_buttons">
                         @Html.SubmitButton("nextButton", "Next")
                     </div>
+                    <script language="Javascript" type="text/jscript">
+                        var theDiv = $("div #div_submit_buttons");
+                        var dataToUse = @Html.Raw("[18, 25, 34, 48];")
+                        theDiv.data("forms", dataToUse);      
+                    </script>
                 </div>
 
             </fieldset>

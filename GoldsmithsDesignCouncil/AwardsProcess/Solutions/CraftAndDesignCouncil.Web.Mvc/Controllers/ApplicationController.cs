@@ -60,11 +60,15 @@
             return View(applicant);
         }
 
+        //choose which application form to continue with or start a new one.
         [HttpPost]
-        public ActionResult ContactDetails(Applicant applicant)
+        public ActionResult ApplicationForm(Applicant applicant, int? ApplicationFormId)
         {
             SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);
             ApplicantResult result = commandProcessor.Process(saveDetailsCommand) as ApplicantResult;
+
+
+
             return new RedirectResult("Application/ApplicationFormSection");
         }
 
