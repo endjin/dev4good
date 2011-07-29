@@ -6,7 +6,6 @@ namespace CraftAndDesignCouncil.Tasks.CommandHandlers
     using SharpArch.NHibernate.Contracts.Repositories;
     using System;
 
-
     public class SaveApplicantDetailsHandler : ICommandHandler<SaveApplicantDetailsCommand>
     {
         private readonly INHibernateRepository<Applicant> applicantRepository;
@@ -16,15 +15,6 @@ namespace CraftAndDesignCouncil.Tasks.CommandHandlers
         {
             this.addressRepository = addressRepository;
             this.applicantRepository = applicantRepository;
-        }
-
-
-        private void CopyAddressValues(Address from, Address to)
-        {
-            to.AddressLine1 = from.AddressLine1;
-            to.AddressLine2 = from.AddressLine2;
-            to.City = from.City;
-
         }
 
         public ICommandResult Handle(SaveApplicantDetailsCommand command)

@@ -1,10 +1,17 @@
 namespace CraftAndDesignCouncil.Domain
 {
     using SharpArch.Domain.DomainModel;
-using System.Collections.Generic;
+    using System.Collections.Generic;
+    using System;
 
     public class ApplicationForm : Entity
     {
-        public virtual IList<ApplicationFormSection> Sections { get; set; }
+        public virtual DateTime StartedOn { get; set; }
+       // public virtual IList<ApplicationFormSection> Sections { get; set; }
+
+        public ApplicationForm()
+        {
+            StartedOn = DateTime.Now;
+        }
     }
 }

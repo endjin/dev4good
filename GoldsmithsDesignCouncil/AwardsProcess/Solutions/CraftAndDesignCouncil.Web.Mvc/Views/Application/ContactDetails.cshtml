@@ -7,11 +7,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Script("~/Content/js/ContactDetails.js");
-
 <div>
     <div >
-        @using (Html.BeginForm()) {
+        @using (Html.BeginForm("ApplicationForms", "Application")) {
             @Html.HiddenFor(Model => Model.Id)
             @Html.AntiForgeryToken()
             <fieldset class="form-brd">

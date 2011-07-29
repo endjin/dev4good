@@ -8,6 +8,8 @@
     using CraftAndDesignCouncil.Tasks.Commands;
     using System;
     using SharpArch.NHibernate.Web.Mvc;
+    using System.Web.Routing;
+    using System.Collections.Generic;
     #endregion
 
     public class ApplicationController : Controller
@@ -60,20 +62,34 @@
             return View(applicant);
         }
 
+        public ActionResult StartNewApplication()
+        {
+            if (!loginHelper.SomebodyIsLoggedIn)
+            {
+                return new RedirectResult("/");
+            }
+
+            Applicant loggedInAplicant = loginHelper.GetLoggedInApplicant();
+            var result = commandProcessor.Process(new StartNewApplicationFormCommand(loggedInAplicant));
+            var formResult = (ApplicationFormResult)result.Results[0];
+            return(new RedirectToRouteResult("ApplicationFormSection", new RouteValueDictionary {{"applicationFormId", formResult.ApplicationFormId}}));
+        }
+
+        public ActionResult ContinueExistingApplication(int applicationFormId)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpPost]
-        public ActionResult ContactDetails(Applicant applicant)
+        public ActionResult ApplicationForms(Applicant applicant)
         {
             SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);
-            ApplicantResult result = commandProcessor.Process(saveDetailsCommand) as ApplicantResult;
-            return new RedirectResult("Application/ApplicationFormSection");
+            commandProcessor.Process(saveDetailsCommand);
+            Applicant currentApplicant = loginHelper.GetLoggedInApplicant();
+            return View(currentApplicant);
         }
 
-        public ActionResult ApplicationFormSection()
-        {
-            return View();
-        }
-
-        public ActionResult ApplicationFormSection(int sectionId)
+        public ActionResult ApplicationFormSection(int applicationFormId, int sectionId)
         {
             return View();
         }
