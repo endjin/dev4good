@@ -29,5 +29,10 @@ using System.Collections.Generic;
         public virtual IList<ApplicationForm> Applications {get; set;}
 
         public virtual DateTime ModifiedDate { get; set; }
+
+        public Applicant()
+        {
+            Applications = new List<ApplicationForm>();
+        }
     }
 }

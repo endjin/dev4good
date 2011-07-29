@@ -12,7 +12,7 @@
         {
             instance.Key.Column(instance.EntityType.Name + "Id");
             instance.Cascade.AllDeleteOrphan();
-            instance.Inverse();
+            //instance.Inverse();  //commenting out co's not sure why we do this.  Once I understand I'll put it back (JPS)
         }
     }
 }

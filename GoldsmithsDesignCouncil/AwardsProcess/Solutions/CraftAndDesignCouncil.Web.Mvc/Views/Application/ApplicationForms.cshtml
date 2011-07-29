@@ -1,0 +1,18 @@
+﻿@using CraftAndDesignCouncil.Domain
+@model Applicant
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ApplicationForms";
+}
+
+<h2>Current applications</h2>
+@if (Model.Applications != null){
+    foreach (ApplicationForm form in Model.Applications){
+        
+        <a href="ApplicationFormSection/ApplicationFormId/@form.Id">Continue with form @form.Id (started on @form.StartedOn)</a><br />
+    }
+        
+}
+<br /><br />
+<a href="StartNewApplication">Start a new application</a>

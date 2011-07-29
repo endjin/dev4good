@@ -7,6 +7,6 @@ namespace CraftAndDesignCouncil.Domain
 
     public class ApplicationFormSection : Entity
     {
-        public virtual IList<QuestionAnswer> Questions { get; set; }
+       // public virtual IList<QuestionAnswer> Questions { get; set; }
     }
 }
