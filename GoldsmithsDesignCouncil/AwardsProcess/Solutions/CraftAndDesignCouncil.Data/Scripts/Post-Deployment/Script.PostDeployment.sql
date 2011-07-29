@@ -10,14 +10,13 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-if exists (select 1 from information_schema.Tables where table_name = 'Questions' and TABLE_SCHEMA = 'dbo')
 
 
-if exists (select 1 from information_schema.Tables where table_name = 'QuestionSection' and TABLE_SCHEMA = 'dbo')
+if exists (select 1 from information_schema.Tables where table_name = 'ApplicationFormSection' and TABLE_SCHEMA = 'dbo')
 begin
 	print 'ApplicationFormSection table found'
 	truncate table dbo.ApplicationFormSection;
-	set identity_insert dbo.ApplicationFormSection off
+	set identity_insert dbo.ApplicationFormSection on
 	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (1, 'Craft Section', 1);
 	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (2, 'Applicant level', 2);
 	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (3, 'Trainee details', 3);  --only if trainee
@@ -26,6 +25,7 @@ begin
 	set identity_insert dbo.ApplicationFormSection off
 end
 
+if exists (select 1 from information_schema.Tables where table_name = 'Questions' and TABLE_SCHEMA = 'dbo')
 begin
 	print 'question table found'
 	truncate table dbo.Questions;
