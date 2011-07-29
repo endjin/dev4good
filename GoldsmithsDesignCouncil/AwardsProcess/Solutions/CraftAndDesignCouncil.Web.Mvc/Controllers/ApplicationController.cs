@@ -51,7 +51,6 @@
             return new RedirectResult("Application/ContactDetails");
         }
 
-        [HttpGet]
         public ActionResult ContactDetails()
         {
             if (!loginHelper.SomebodyIsLoggedIn)
@@ -72,10 +71,10 @@
             Applicant loggedInAplicant = loginHelper.GetLoggedInApplicant();
             var result = commandProcessor.Process(new StartNewApplicationFormCommand(loggedInAplicant));
             var formResult = (ApplicationFormResult)result.Results[0];
-            return(new RedirectToRouteResult("ApplicationFormSection", new RouteValueDictionary {{"applicationFormId", formResult.ApplicationFormId}}));
+            return new RedirectResult(string.Format("ContinueExistingApplication/{0}", formResult.ApplicationFormId));
         }
 
-        public ActionResult ContinueExistingApplication(int applicationFormId)
+        public ActionResult ContinueExistingApplication(int Id)
         {
             throw new NotImplementedException();
         }
@@ -83,9 +82,19 @@
         [HttpPost]
         public ActionResult ApplicationForms(Applicant applicant)
         {
+            if (!loginHelper.SomebodyIsLoggedIn)
+            {
+                return new RedirectResult("/");
+            }
+            
             SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);
             commandProcessor.Process(saveDetailsCommand);
             Applicant currentApplicant = loginHelper.GetLoggedInApplicant();
+            if (currentApplicant.Applications.Count == 0)
+            {
+                return new RedirectResult("StartNewApplication");
+            }
+
             return View(currentApplicant);
         }
 

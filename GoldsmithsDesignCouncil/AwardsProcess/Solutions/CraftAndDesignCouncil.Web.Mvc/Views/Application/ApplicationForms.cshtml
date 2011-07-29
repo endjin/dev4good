@@ -10,7 +10,7 @@
 @if (Model.Applications != null){
     foreach (ApplicationForm form in Model.Applications){
         
-        <a href="ApplicationFormSection/ApplicationFormId/@form.Id">Continue with form @form.Id (started on @form.StartedOn)</a><br />
+        <a href="ContinueExistingApplication/@form.Id">Continue with form @form.Id (started on @form.StartedOn)</a><br />
     }
         
 }
