@@ -1,4 +1,5 @@
 Passwords stored as clear text in database
 Login logic not written always logs in as userId 1
-User login from top bar wrong - User shoudl either login or register from home page
+User login from top bar wrong - User should either login or register from home page
 need to build admin interface
+provide options for drop down questions

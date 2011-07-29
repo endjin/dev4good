@@ -158,5 +158,8 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\ApplicationForms.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\ApplicationFormSection.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
