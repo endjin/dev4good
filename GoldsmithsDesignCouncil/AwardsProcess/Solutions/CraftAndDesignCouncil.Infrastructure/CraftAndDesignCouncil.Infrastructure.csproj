@@ -106,6 +106,7 @@
     <Compile Include="NHibernateMaps\Conventions\TableNameConvention.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="Queries\AllQuestionsQuery.cs" />
+    <Compile Include="Queries\GetOrderedListOfSectionsQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">

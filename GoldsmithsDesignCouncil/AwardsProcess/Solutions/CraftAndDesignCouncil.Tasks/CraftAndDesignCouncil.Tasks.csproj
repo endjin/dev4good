@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Commands\SaveApplicantDetailsCommand.cs" />
     <Compile Include="Commands\StartNewApplicationFormCommand.cs" />
+    <Compile Include="QuestionTasks.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">
