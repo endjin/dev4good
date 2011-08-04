@@ -13,7 +13,10 @@
     using SharpArch.Domain.PersistenceSupport;
     using SharpArch.NHibernate;
     using SharpArch.NHibernate.Contracts.Repositories;
+    using System.Linq;
     using CraftAndDesignCouncil.Domain;
+    using System.Reflection;
+    using SharpArch.Domain.DomainModel;
 
     #endregion
 
@@ -29,11 +32,22 @@
                         .ImplementedBy(typeof(EntityDuplicateChecker))
                         .Named("entityDuplicateChecker"));
 
-                RegisterDynamicMocksFor(container, new List<Type> {
-                                        typeof(INHibernateRepository<ApplicationFormSection>)});
+            RegisterDynamicMocksFor(container,
+                                    GetRepositoryTypesForEntitiesInAssembly(container,
+                                                        typeof(Applicant).Assembly));
+                                    
 
-              ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
+            ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
 
+        }
+
+        private static IEnumerable<Type> GetRepositoryTypesForEntitiesInAssembly(IWindsorContainer container, Assembly assembly)
+        {
+            var entities = from x in assembly.GetTypes()
+                          where typeof(Entity).IsAssignableFrom(x)
+                          select typeof(INHibernateRepository<>).MakeGenericType(x);
+
+            return entities;
         }
   
 
@@ -42,7 +56,7 @@
             foreach (Type serviceType in serviceTypes)
             {
                 var mock = new NUnit.Mocks.DynamicMock(serviceType);
-                container.Register(Component.For(serviceType).Instance(mock.MockInstance).Named(serviceType.Name));
+                container.Register(Component.For(serviceType).Instance(mock.MockInstance));
 
             }
         }
