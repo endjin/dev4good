@@ -2,8 +2,6 @@
 {
     #region Using Directives
 
-    using CraftAndDesignCouncil.Tests;
-    using SharpArch.Domain;
     using System.Collections.Generic;
     using System;
     using Castle.MicroKernel.Registration;
@@ -17,6 +15,7 @@
     using CraftAndDesignCouncil.Domain;
     using System.Reflection;
     using SharpArch.Domain.DomainModel;
+    using Rhino.Mocks;
 
     #endregion
 
@@ -32,13 +31,12 @@
                         .ImplementedBy(typeof(EntityDuplicateChecker))
                         .Named("entityDuplicateChecker"));
 
-            RegisterDynamicMocksFor(container,
-                                    GetRepositoryTypesForEntitiesInAssembly(typeof(Applicant).Assembly));
-                                    
-
+            IEnumerable<Type> repoTypes = GetRepositoryTypesForEntitiesInAssembly(typeof(Applicant).Assembly);
+            
+            RegisterDynamicMocksFor(container,repoTypes);
             ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
-
         }
+ 
 
         private static IEnumerable<Type> GetRepositoryTypesForEntitiesInAssembly(Assembly assembly)
         {
@@ -54,9 +52,8 @@
         {
             foreach (Type serviceType in serviceTypes)
             {
-                var mock = new NUnit.Mocks.DynamicMock(serviceType);
-                container.Register(Component.For(serviceType).Instance(mock.MockInstance));
-
+                var mock = MockRepository.GenerateStub(serviceType);
+                container.Register(Component.For(serviceType).Instance(mock));
             }
         }
         
