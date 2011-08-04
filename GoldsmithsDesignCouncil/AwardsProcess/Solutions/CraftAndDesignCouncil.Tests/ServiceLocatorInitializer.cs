@@ -33,15 +33,14 @@
                         .Named("entityDuplicateChecker"));
 
             RegisterDynamicMocksFor(container,
-                                    GetRepositoryTypesForEntitiesInAssembly(container,
-                                                        typeof(Applicant).Assembly));
+                                    GetRepositoryTypesForEntitiesInAssembly(typeof(Applicant).Assembly));
                                     
 
             ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
 
         }
 
-        private static IEnumerable<Type> GetRepositoryTypesForEntitiesInAssembly(IWindsorContainer container, Assembly assembly)
+        private static IEnumerable<Type> GetRepositoryTypesForEntitiesInAssembly(Assembly assembly)
         {
             var entities = from x in assembly.GetTypes()
                           where typeof(Entity).IsAssignableFrom(x)
