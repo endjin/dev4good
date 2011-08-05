@@ -75,6 +75,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\Machine.Specifications\Machine.Specifications.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\ReferencedAssemblies\RhinoMocks\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Domain, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.NHibernate, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -94,6 +102,9 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="context_for_QuestionTasks.cs" />
+    <Compile Include="When_the_QuestionTasks_gets_the_next_required_section_for_a_new_form.cs" />
+    <Compile Include="When_the_QuestionTasks_gets_the_next_required_seqtion_for_a_partially_filled_in_form.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">

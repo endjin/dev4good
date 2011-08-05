@@ -24,8 +24,8 @@ namespace CraftAndDesignCouncil.Tasks
             ApplicationFormSection nextRequiredSection = null;
             foreach (ApplicationFormSection section in sections)
             {
-                if (SectionIsRequired(section, applicationFormId)
-                     && !SectionIsCompleted(section, applicationFormId))
+                //if (SectionIsRequired(section, applicationFormId)
+                //     && !SectionIsCompleted(section, applicationFormId))
                 {
                     nextRequiredSection = section;
                     break;
