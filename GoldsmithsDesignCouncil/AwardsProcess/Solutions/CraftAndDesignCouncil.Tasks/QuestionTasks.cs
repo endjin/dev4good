@@ -9,13 +9,16 @@ namespace CraftAndDesignCouncil.Tasks
     public class QuestionTasks : IQuestionTasks
     {
         private INHibernateRepository<ApplicationFormSection> applicationFormSectionRepository;
+        private INHibernateRepository<ApplicationForm> applicationFormRepository;
         private IGetOrderedListOfSectionsQuery orderedListOfSectionsQuery;
 
         public QuestionTasks(INHibernateRepository<ApplicationFormSection> applicationFormSectionRepository
+                                 , INHibernateRepository<ApplicationForm> applicationFormRepository
                                  , IGetOrderedListOfSectionsQuery orderedListOfSectionsQuery)
         {
             this.orderedListOfSectionsQuery = orderedListOfSectionsQuery;
             this.applicationFormSectionRepository = applicationFormSectionRepository;
+            this.applicationFormRepository = applicationFormRepository;
         }
 
         public ApplicationFormSection GetNextRequiredSectionForApplicationForm(int applicationFormId)

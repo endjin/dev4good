@@ -13,8 +13,6 @@ namespace CraftAndDesignCouncil.Infrastructure.Queries
         {
             var res =  from x in  Session.Query<ApplicationFormSection>() orderby x.OrderingKey select x;
             return res.ToList();
-                        
-                      
         }
     }
 }

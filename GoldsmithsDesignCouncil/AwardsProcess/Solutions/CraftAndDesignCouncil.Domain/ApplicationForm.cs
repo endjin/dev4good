@@ -7,7 +7,7 @@ namespace CraftAndDesignCouncil.Domain
     public class ApplicationForm : Entity
     {
         public virtual DateTime StartedOn { get; set; }
-       // public virtual IList<ApplicationFormSection> Sections { get; set; }
+        public virtual IList<QuestionAnswer> Answers { get; set; }
 
         public ApplicationForm()
         {
