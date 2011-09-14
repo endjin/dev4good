@@ -16,11 +16,14 @@ namespace CraftAndDesignCouncil.Specifications
         Establish context = () =>
         {
             List<ApplicationFormSection> mockFormSectionData = BuildMockFormSectionData();
+            ApplicationForm emptyForm = new ApplicationForm {StartedOn=DateTime.Now};
             ApplicationForm partiallyCompletedForm = BuildPartiallyCompletedApplicationForm(mockFormSectionData);
 
             var mockFormSectionRepo = DependencyOf<INHibernateRepository<ApplicationFormSection>>();
             var mockFormRepo = DependencyOf<INHibernateRepository<ApplicationForm>>();
             mockFormSectionRepo.Stub(x => x.PerformQuery(null)).IgnoreArguments().Return(mockFormSectionData);
+            mockFormRepo.Stub(x => x.Get(1)).Return(emptyForm);
+            mockFormRepo.Stub(x => x.Get(2)).Return(partiallyCompletedForm);
 
         };
   

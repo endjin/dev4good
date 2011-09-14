@@ -1,6 +1,7 @@
 namespace CraftAndDesignCouncil.Tasks
 {
     using System;
+    using System.Linq;
     using CraftAndDesignCouncil.Domain.Contracts.Tasks;
     using SharpArch.NHibernate.Contracts.Repositories;
     using CraftAndDesignCouncil.Domain;
@@ -25,10 +26,11 @@ namespace CraftAndDesignCouncil.Tasks
         {
             var sections = applicationFormSectionRepository.PerformQuery(orderedListOfSectionsQuery);
             ApplicationFormSection nextRequiredSection = null;
+            ApplicationForm form = applicationFormRepository.Get(applicationFormId);
             foreach (ApplicationFormSection section in sections)
             {
                 //if (SectionIsRequired(section, applicationFormId)
-                //     && !SectionIsCompleted(section, applicationFormId))
+                if (!SectionIsCompleted(section, form))
                 {
                     nextRequiredSection = section;
                     break;
@@ -44,10 +46,17 @@ namespace CraftAndDesignCouncil.Tasks
             throw new NotImplementedException();
         }
   
-        private bool SectionIsCompleted(ApplicationFormSection section, int applicationFormId)
+        private bool SectionIsCompleted(ApplicationFormSection section, ApplicationForm applicationForm)
         {
-            // TODO: Implement this method
-            throw new NotImplementedException();
+
+            if (section == null) return true;
+            if (section.Questions == null || section.Questions.Count <1) return true;
+            if (applicationForm == null) return false;
+            if (section.Questions.Count>0 && applicationForm.Answers == null) return false;
+
+            return section.Questions.All(question => 
+                            applicationForm.Answers.Any(answer => 
+                                answer.Question.Id == question.Id));        
         }
     }
 }
