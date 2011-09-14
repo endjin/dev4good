@@ -9,7 +9,11 @@ namespace CraftAndDesignCouncil.Specifications
     using CraftAndDesignCouncil.Domain;
     using SharpArch.NHibernate.Contracts.Repositories;
     using Rhino.Mocks;
+    using SharpArch.Domain.DomainModel;
+    using System.Reflection;
     #endregion
+
+   
 
     public abstract class context_for_QuestionTasks : Specification<QuestionTasks>
     {
@@ -41,6 +45,8 @@ namespace CraftAndDesignCouncil.Specifications
             return aFrm;
         }
 
+        private static int nextQuestionId = 1;
+
         private static List<ApplicationFormSection> BuildMockFormSectionData()
         {
             List<ApplicationFormSection> mockFormSectionData = new List<ApplicationFormSection>();
@@ -49,11 +55,29 @@ namespace CraftAndDesignCouncil.Specifications
             {
                 ApplicationFormSection section = new ApplicationFormSection { Title = "Section " + x };
                 section.Questions = new List<Question>();
-                section.Questions.Add(new Question { QuestionText = section.Title + "-Question 1" });
-                section.Questions.Add(new Question { QuestionText = section.Title + "-Question 2" });
+                var q1 = new Question { QuestionText = section.Title + "-Question 1" };
+                SetIdOnEntity(q1, nextQuestionId++);
+                section.Questions.Add(q1);
+                var q2 = new Question { QuestionText = section.Title + "-Question 2" };
+                SetIdOnEntity(q2, nextQuestionId++);
+                section.Questions.Add(q2);
                 mockFormSectionData.Add(section);
             }
             return mockFormSectionData;
+        }
+
+        private static void SetIdOnEntity<TId>(IEntityWithTypedId<TId> entity, TId id)
+        {
+            Type type = entity.GetType();
+            PropertyInfo property = type.GetProperty("Id");
+            if (property.CanWrite)
+            {
+                property.SetValue(entity, id, null);
+            }
+            else
+            {
+                throw new ArgumentException("Cannot set id property on entity", "entity");
+            }
         }
     }
 }
