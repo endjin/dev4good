@@ -29,8 +29,8 @@ namespace CraftAndDesignCouncil.Tasks
             ApplicationForm form = applicationFormRepository.Get(applicationFormId);
             foreach (ApplicationFormSection section in sections)
             {
-                //if (SectionIsRequired(section, applicationFormId)
-                if (!SectionIsCompleted(section, form))
+                if (SectionIsRequired(section, form)
+                    && !SectionIsCompleted(section, form))
                 {
                     nextRequiredSection = section;
                     break;
@@ -40,10 +40,13 @@ namespace CraftAndDesignCouncil.Tasks
             return nextRequiredSection;
         }
   
-        private bool SectionIsRequired(ApplicationFormSection section, int applicationFormId)
+        private bool SectionIsRequired(ApplicationFormSection section, ApplicationForm applicationForm)
         {
-            // TODO: Implement this method
-            throw new NotImplementedException();
+            if (section.NotRequiredIfQuestion == null) return true;
+
+            return !applicationForm.Answers.Any(x => x.Question.Id == section.NotRequiredIfQuestion.Id
+                                                        && x.AnswerText == section.NotRequiredIfAnswer);
+
         }
   
         private bool SectionIsCompleted(ApplicationFormSection section, ApplicationForm applicationForm)

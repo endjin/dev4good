@@ -63,6 +63,10 @@ namespace CraftAndDesignCouncil.Specifications
                 section.Questions.Add(q2);
                 mockFormSectionData.Add(section);
             }
+            mockFormSectionData[1].NotRequiredIfQuestion = mockFormSectionData[0].Questions[0];
+            mockFormSectionData[1].NotRequiredIfAnswer = "Answer 1 1";
+
+
             return mockFormSectionData;
         }
 
