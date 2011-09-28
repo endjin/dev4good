@@ -13,9 +13,9 @@ namespace CraftAndDesignCouncil.Specifications
     using System.Reflection;
     #endregion
 
-   
 
-    public abstract class context_for_QuestionTasks : Specification<QuestionTasks>
+
+    public abstract class context_for_ApplicationFormSectionTasks : Specification<ApplicationFormSectionTasks>
     {
         Establish context = () =>
         {

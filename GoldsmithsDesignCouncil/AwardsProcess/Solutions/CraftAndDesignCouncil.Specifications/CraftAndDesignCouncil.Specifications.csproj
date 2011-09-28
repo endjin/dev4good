@@ -102,9 +102,9 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="context_for_QuestionTasks.cs" />
-    <Compile Include="When_the_QuestionTasks_gets_the_next_required_section.cs" />
-    <Compile Include="When_the_QuestionTasks_gets_the_next_required_section_for_a_new_form.cs" />
+    <Compile Include="context_for_ApplicationFormSectionTasks.cs" />
+    <Compile Include="When_the_ApplicationFormSectionTasks_gets_the_next_required_section.cs" />
+    <Compile Include="When_the_ApplicationFormSectionTasks_gets_the_next_required_section_for_a_new_form.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">

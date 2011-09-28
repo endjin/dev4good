@@ -10,17 +10,26 @@
     using SharpArch.NHibernate.Web.Mvc;
     using System.Web.Routing;
     using System.Collections.Generic;
+    using CraftAndDesignCouncil.Domain.Contracts.Tasks;
+    using CraftAndDesignCouncil.Web.Mvc.Controllers.ViewModels;
     #endregion
 
     public class ApplicationController : Controller
     {
         private readonly ICommandProcessor commandProcessor;
         private readonly ILoginHelper loginHelper;
+        private readonly IApplicationFormSectionTasks applicationFormSectionTasks;
+        private readonly IApplicationFormTasks applicationFormTasks;
 
-        public ApplicationController(ICommandProcessor commandProcessor, ILoginHelper loginHelper)
+        public ApplicationController(ICommandProcessor commandProcessor
+                                        , IApplicationFormSectionTasks applicationFormSectionTasks
+                                        , ILoginHelper loginHelper
+                                        , IApplicationFormTasks applicationFormTasks)
         {
+            this.applicationFormSectionTasks = applicationFormSectionTasks;
             this.loginHelper = loginHelper;
             this.commandProcessor = commandProcessor;
+            this.applicationFormTasks = applicationFormTasks;
         }
 
         [HttpGet]
@@ -61,23 +70,6 @@
             return View(applicant);
         }
 
-        public ActionResult StartNewApplication()
-        {
-            if (!loginHelper.SomebodyIsLoggedIn)
-            {
-                return new RedirectResult("/");
-            }
-
-            Applicant loggedInAplicant = loginHelper.GetLoggedInApplicant();
-            var result = commandProcessor.Process(new StartNewApplicationFormCommand(loggedInAplicant));
-            var formResult = (ApplicationFormResult)result.Results[0];
-            return new RedirectResult(string.Format("ContinueExistingApplication/{0}", formResult.ApplicationFormId));
-        }
-
-        public ActionResult ContinueExistingApplication(int Id)
-        {
-            throw new NotImplementedException();
-        }
 
         [HttpPost]
         public ActionResult ApplicationForms(Applicant applicant)
@@ -92,16 +84,45 @@
             Applicant currentApplicant = loginHelper.GetLoggedInApplicant();
             if (currentApplicant.Applications.Count == 0)
             {
-                return new RedirectResult("StartNewApplication");
+                return new RedirectResult("AplicationFormSection");
             }
 
             return View(currentApplicant);
         }
 
-        public ActionResult ApplicationFormSection(int applicationFormId, int sectionId)
+        public ActionResult ApplicationFormSection(int? applicationFormId, int? sectionId)
         {
-            return View();
-        }
+            if (!loginHelper.SomebodyIsLoggedIn)
+            {
+                return new RedirectResult("/");
+            }
 
+            ApplicationForm form;
+            ApplicationFormSection section;
+
+            if (applicationFormId == null)
+            {
+                Applicant loggedInAplicant = loginHelper.GetLoggedInApplicant();
+                form = applicationFormTasks.StartNewApplicationForm(loggedInAplicant);
+            }
+            else
+            {
+                form = applicationFormTasks.Get(applicationFormId.Value);
+            }
+
+            if (sectionId == null)
+            {
+                section = applicationFormSectionTasks.GetNextRequiredSectionForApplicationForm(form.Id);
+            }
+            else
+            {
+                section = applicationFormSectionTasks.Get(sectionId.Value);
+            }
+
+            var model = new ApplicationFormSectionViewModel();
+            model.SectionTitle = string.Format("form {0} - Section {1}", applicationFormId, sectionId);
+            return View(model);
+
+        }
     }
 }

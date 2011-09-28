@@ -7,19 +7,24 @@ namespace CraftAndDesignCouncil.Tasks
     using CraftAndDesignCouncil.Domain;
     using CraftAndDesignCouncil.Domain.Contracts.Queries;
 
-    public class QuestionTasks : IQuestionTasks
+    public class ApplicationFormSectionTasks : IApplicationFormSectionTasks
     {
         private INHibernateRepository<ApplicationFormSection> applicationFormSectionRepository;
         private INHibernateRepository<ApplicationForm> applicationFormRepository;
         private IGetOrderedListOfSectionsQuery orderedListOfSectionsQuery;
 
-        public QuestionTasks(INHibernateRepository<ApplicationFormSection> applicationFormSectionRepository
+        public ApplicationFormSectionTasks(INHibernateRepository<ApplicationFormSection> applicationFormSectionRepository
                                  , INHibernateRepository<ApplicationForm> applicationFormRepository
                                  , IGetOrderedListOfSectionsQuery orderedListOfSectionsQuery)
         {
             this.orderedListOfSectionsQuery = orderedListOfSectionsQuery;
             this.applicationFormSectionRepository = applicationFormSectionRepository;
             this.applicationFormRepository = applicationFormRepository;
+        }
+
+        public ApplicationFormSection Get(int id)
+        {
+            return applicationFormSectionRepository.Get(id);
         }
 
         public ApplicationFormSection GetNextRequiredSectionForApplicationForm(int applicationFormId)

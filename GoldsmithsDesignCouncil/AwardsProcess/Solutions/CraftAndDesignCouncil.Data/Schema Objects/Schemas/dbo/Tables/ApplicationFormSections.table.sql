@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[ApplicationFormSection]
+﻿CREATE TABLE [dbo].[ApplicationFormSections]
 (
 	ApplicationFormSectionId int NOT NULL identity (1,1) primary key, 
 	Title NVarChar(255) not null,

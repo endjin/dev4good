@@ -12,22 +12,22 @@ Post-Deployment Script Template
 
 
 
-if exists (select 1 from information_schema.Tables where table_name = 'ApplicationFormSection' and TABLE_SCHEMA = 'dbo')
+if exists (select 1 from information_schema.Tables where table_name = 'ApplicationFormSections' and TABLE_SCHEMA = 'dbo')
 begin
-	print 'ApplicationFormSection table found'
-	truncate table dbo.ApplicationFormSection;
-	set identity_insert dbo.ApplicationFormSection on
-	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (1, 'Craft Section', 1);
-	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (2, 'Applicant level', 2);
-	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (3, 'Trainee details', 3);  --only if trainee
-	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (4, 'Student', 4);
-	insert into dbo.ApplicationFormSection(ApplicationFormSectionId, Title, OrderingKey) values (5, 'Bursary & Scholarship', 5); --only if student = yes
-	set identity_insert dbo.ApplicationFormSection off
+	print 'ApplicationFormSections table found'
+	truncate table dbo.ApplicationFormSections;
+	set identity_insert dbo.ApplicationFormSections on
+	insert into dbo.ApplicationFormSections(ApplicationFormSectionId, Title, OrderingKey) values (1, 'Craft Section', 1);
+	insert into dbo.ApplicationFormSections(ApplicationFormSectionId, Title, OrderingKey) values (2, 'Applicant level', 2);
+	insert into dbo.ApplicationFormSections(ApplicationFormSectionId, Title, OrderingKey) values (3, 'Trainee details', 3);  --only if trainee
+	insert into dbo.ApplicationFormSections(ApplicationFormSectionId, Title, OrderingKey) values (4, 'Student', 4);
+	insert into dbo.ApplicationFormSections(ApplicationFormSectionId, Title, OrderingKey) values (5, 'Bursary & Scholarship', 5); --only if student = yes
+	set identity_insert dbo.ApplicationFormSections off
 end
 
 if exists (select 1 from information_schema.Tables where table_name = 'Questions' and TABLE_SCHEMA = 'dbo')
 begin
-	print 'question table found'
+	print 'questions table found'
 	truncate table dbo.Questions;
 	insert into dbo.Questions (QuestionText, HelpText, ApplicationFormSectionId) values ('Please select your craft section', 'Please select the craft section you think best describes your skills', 1);
 	insert into dbo.Questions (QuestionText, HelpText, ApplicationFormSectionId) values ('Please select your level', 'Please select your level. If you are currently studying or a recent graduate or under the age of 30 please selet "apprentice/trainee".  If you are older than 30 please select "senior"', 2);

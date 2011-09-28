@@ -3,7 +3,7 @@ namespace CraftAndDesignCouncil.Specifications
     using Machine.Specifications;
     using CraftAndDesignCouncil.Domain;
 
-    public class When_the_QuestionTasks_gets_the_next_required_section : context_for_QuestionTasks
+    public class When_the_ApplicationFormSectionTasks_gets_the_next_required_section : context_for_ApplicationFormSectionTasks
     {
         static ApplicationFormSection result;
 
