@@ -16,10 +16,11 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
         ICommandProcessor commandProcessor;
         ILoginHelper loginHelper;
 
-                                            public ApplicantController(IApplicantTasks applicantTasks, ICommandProcessor commandProcessor, ILoginHelper loginHelper)
+        public ApplicantController(IApplicantTasks applicantTasks, ICommandProcessor commandProcessor, ILoginHelper loginHelper)
         {
             this.loginHelper = loginHelper;
             this.applicantTasks = applicantTasks;
+            this.commandProcessor = commandProcessor;
         }
 
         public ActionResult Index()
@@ -37,8 +38,9 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
         {
             try
             {
-                var command = new RegisterApplicantCommand(applicant);
-                ApplicantResult result = commandProcessor.Process(command) as ApplicantResult;
+                var command = new RegisterApplicantCommand(applicant); 
+                var tmpResult = commandProcessor.Process(command).Results[0];
+                ApplicantResult result = tmpResult as ApplicantResult;
                 if (result == null)
                 {
                     return View();
@@ -46,6 +48,7 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
                 else
                 {
                     loginHelper.LoginApplicant(result.ApplicantId);
+                    return RedirectToAction("Edit", new { id = result.ApplicantId });
                 }
             }
             catch
