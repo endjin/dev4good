@@ -32,64 +32,7 @@
             this.applicationFormTasks = applicationFormTasks;
         }
 
-        [HttpGet]
-        public ActionResult Index()
-        {
-            if (loginHelper.SomebodyIsLoggedIn)
-            {
-                return new RedirectResult("Application/ContactDetails");
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index(Applicant applicant)
-        {
-            var command = new RegisterApplicantCommand(applicant);
-            ApplicantResult result = commandProcessor.Process(command) as ApplicantResult;
-            if (result == null)
-            {
-                return new RedirectResult("/");
-            }
-            else
-            {
-                loginHelper.LoginApplicant(result.ApplicantId);
-            }
-
-            return new RedirectResult("Application/ContactDetails");
-        }
-
-        public ActionResult ContactDetails()
-        {
-            if (!loginHelper.SomebodyIsLoggedIn)
-            {
-                return new RedirectResult("Application");
-            }
-            Applicant applicant = loginHelper.GetLoggedInApplicant();
-            return View(applicant);
-        }
-
-
-        [HttpPost]
-        public ActionResult ApplicationForms(Applicant applicant)
-        {
-            if (!loginHelper.SomebodyIsLoggedIn)
-            {
-                return new RedirectResult("/");
-            }
-            
-            SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);
-            commandProcessor.Process(saveDetailsCommand);
-            Applicant currentApplicant = loginHelper.GetLoggedInApplicant();
-            if (currentApplicant.Applications.Count == 0)
-            {
-                return new RedirectResult("AplicationFormSection");
-            }
-
-            return View(currentApplicant);
-        }
-
+      
         public ActionResult ApplicationFormSection(int? applicationFormId, int? sectionId)
         {
             if (!loginHelper.SomebodyIsLoggedIn)

@@ -1,50 +1,69 @@
-﻿@model CraftAndDesignCouncil.Domain.Applicant
+﻿﻿@using CraftAndDesignCouncil.Domain
 
+@model Applicant
+           
+           
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Applicant</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FirstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LastName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ModifiedDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ModifiedDate)
-            @Html.ValidationMessageFor(model => model.ModifiedDate)
-        </div>
-
-        @Html.HiddenFor(model => model.Id)
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <div >
+        @using (Html.BeginForm()) {
+            @Html.HiddenFor(Model => Model.Id)
+            @Html.AntiForgeryToken()
+            <fieldset class="form-brd">
+                <div class="form-col">
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.FirstName, "First Name:")
+                        @Html.TextBoxFor(Model => Model.FirstName)
+                        @Html.ValidationMessageFor(Model => Model.FirstName)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.LastName, "Last Name:")
+                        @Html.TextBoxFor(Model => Model.LastName)
+                        @Html.ValidationMessageFor(Model => Model.LastName)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.Email, "Email:")
+                        @Html.TextBoxFor(Model => Model.Email)
+                        @Html.ValidationMessageFor(Model => Model.Email)
+                    </div>
+                </div>
+                <div class="form-col-r">
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.Address.AddressLine1, "Address Line 1:")
+                        @Html.TextBoxFor(Model => Model.Address.AddressLine1)
+                        @Html.ValidationMessageFor(Model => Model.Address.AddressLine1)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.Address.AddressLine2, "Address Line 2:")
+                        @Html.TextBoxFor(Model => Model.Address.AddressLine2)
+                        @Html.ValidationMessageFor(Model => Model.Address.AddressLine2)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.Address.City, "City:")
+                        @Html.TextBoxFor(Model => Model.Address.City)
+                        @Html.ValidationMessageFor(Model => Model.Address.City)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.Address.County, "County:")
+                        @Html.TextBoxFor(Model => Model.Address.County)
+                        @Html.ValidationMessageFor(Model => Model.Address.County)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(Model => Model.Address.PostCode, "Post Code:")
+                        @Html.TextBoxFor(Model => Model.Address.PostCode)
+                        @Html.ValidationMessageFor(Model => Model.Address.PostCode)
+                    </div>
+                    <div class="form-row" id="div_submit_buttons">
+                        @Html.SubmitButton("nextButton", "Next")
+                    </div>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+    <div class="clear">&nbsp;</div>
 </div>

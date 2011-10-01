@@ -36,24 +36,17 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
         [HttpPost]
         public ActionResult Create(Applicant applicant)
         {
-            try
-            {
-                var command = new RegisterApplicantCommand(applicant); 
-                var tmpResult = commandProcessor.Process(command).Results[0];
-                ApplicantResult result = tmpResult as ApplicantResult;
-                if (result == null)
-                {
-                    return View();
-                }
-                else
-                {
-                    loginHelper.LoginApplicant(result.ApplicantId);
-                    return RedirectToAction("Edit", new { id = result.ApplicantId });
-                }
-            }
-            catch
+            var command = new RegisterApplicantCommand(applicant); 
+            var tmpResult = commandProcessor.Process(command).Results[0];
+            ApplicantResult result = tmpResult as ApplicantResult;
+            if (result == null)
             {
                 return View();
+            }
+            else
+            {
+                loginHelper.LoginApplicant(result.ApplicantId);
+                return RedirectToAction("Edit", new { id = result.ApplicantId });
             }
         }
         
@@ -72,19 +65,22 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(FormCollection collection)
+        public ActionResult Edit(Applicant applicant)
         {
-            try
+            if (!loginHelper.SomebodyIsLoggedIn)
             {
-              
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                return new RedirectResult("/");
             }
-            catch
+
+            SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);
+            commandProcessor.Process(saveDetailsCommand);
+            Applicant currentApplicant = loginHelper.GetLoggedInApplicant();
+            if (currentApplicant.Applications.Count == 0)
             {
-                return View();
+                return new RedirectResult("/AplicationForm/List");
             }
+
+            return View(currentApplicant);
         }
     }
 }
