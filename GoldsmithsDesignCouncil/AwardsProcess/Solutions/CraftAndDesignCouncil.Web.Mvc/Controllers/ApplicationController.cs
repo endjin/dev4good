@@ -120,7 +120,7 @@
             }
 
             var model = new ApplicationFormSectionViewModel();
-            model.SectionTitle = string.Format("form {0} - Section {1}", applicationFormId, sectionId);
+            model.SectionTitle = string.Format("form {0} - Section {1}", form.Id, section.Id);
             return View(model);
 
         }

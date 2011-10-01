@@ -6,14 +6,17 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<div>Login</div>
 <div>
-    <div>
-        <div>
-            <div>
-                @(Html.ActionLink<ApplicationController>(c => c.Index(), "Create New Application"))
-                <br />
-            </div>
-        </div>
-    </div>
-    <div class="clear">&nbsp;</div>
+@using (Html.BeginForm())
+{
+    @Html.Label("email"); @Html.TextBox("email2");<br />
+    @Html.Label("password"); @Html.Password("password");<br />
+    @Html.SubmitButton();
+}
 </div>
+<div><a href="/Applicant/Create">Register</a></div>
+
+
