@@ -88,6 +88,7 @@
       <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -107,6 +108,8 @@
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="Queries\AllQuestionsQuery.cs" />
     <Compile Include="Queries\GetOrderedListOfSectionsQuery.cs" />
+    <Compile Include="Queries\ListApplicationFormsForApplicantQuery.cs" />
+    <Compile Include="Queries\QueryRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">

@@ -122,12 +122,11 @@
     </Compile>
     <Compile Include="CastleWindsor\AutomappingConfiguration.cs" />
     <Compile Include="CastleWindsor\ComponentRegistrar.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApplicantController.cs" />
+    <Compile Include="Controllers\ApplicationFormController.cs" />
     <Compile Include="Controllers\ILoginHelper.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MockLoginHelper.cs" />
-    <Compile Include="Controllers\ViewModels\AdminQuestionListViewModel.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RouteRegistrar.cs" />
@@ -176,22 +175,13 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\Queries\" />
-    <Folder Include="Views\Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Application\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Admin\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Admin\AdminQuestionDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Application\ContactDetails.cshtml" />
@@ -207,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Applicant\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ApplicationForm\List.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

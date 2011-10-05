@@ -12,14 +12,12 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
 {
     public class ApplicantController : Controller
     {
-        IApplicantTasks applicantTasks;
         ICommandProcessor commandProcessor;
         ILoginHelper loginHelper;
 
-        public ApplicantController(IApplicantTasks applicantTasks, ICommandProcessor commandProcessor, ILoginHelper loginHelper)
+        public ApplicantController(ICommandProcessor commandProcessor, ILoginHelper loginHelper)
         {
             this.loginHelper = loginHelper;
-            this.applicantTasks = applicantTasks;
             this.commandProcessor = commandProcessor;
         }
 
@@ -74,13 +72,8 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
 
             SaveApplicantDetailsCommand saveDetailsCommand = new SaveApplicantDetailsCommand(applicant);
             commandProcessor.Process(saveDetailsCommand);
-            Applicant currentApplicant = loginHelper.GetLoggedInApplicant();
-            if (currentApplicant.Applications.Count == 0)
-            {
-                return new RedirectResult("/AplicationForm/List");
-            }
 
-            return View(currentApplicant);
+            return new RedirectResult("/ApplicationForm/List");
         }
     }
 }

@@ -74,6 +74,13 @@
                     Component.For(typeof(SharpArch.Domain.Commands.ICommandProcessor))
                         .ImplementedBy(typeof(SharpArch.Domain.Commands.CommandProcessor))
                         .Named("commandProcessor"));
+            
+            container.Register(
+                               Component.For(typeof(CraftAndDesignCouncil.Infrastructure.Queries.IQueryRunner))
+                                   .ImplementedBy(typeof(CraftAndDesignCouncil.Infrastructure.Queries.QueryRunner))
+                                   .Named("queryRunner"));
+
+           
                 
         }
 
