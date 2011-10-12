@@ -124,6 +124,7 @@
     <Compile Include="CastleWindsor\ComponentRegistrar.cs" />
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\ApplicationFormController.cs" />
+    <Compile Include="Controllers\ApplicationFormSectionController.cs" />
     <Compile Include="Controllers\ILoginHelper.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MockLoginHelper.cs" />

@@ -7,7 +7,6 @@ namespace CraftAndDesignCouncil.Domain.Contracts.Tasks
 {
     public interface IApplicationFormTasks
     {
-        ApplicationForm StartNewApplicationForm(Applicant applicant);
         ApplicationForm Get(int id);
     }
 }

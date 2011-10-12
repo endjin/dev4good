@@ -21,18 +21,6 @@
             this.applicantRepository = applicantRepository;
         }
 
-        public ApplicationForm StartNewApplicationForm(Applicant applicant)
-        {
-            Applicant applicantFromRepo = applicantRepository.Get(applicant.Id);
-
-            ApplicationForm form = new ApplicationForm();
-            applicantFromRepo.Applications.Add(form);
-            
-            applicantRepository.DbContext.CommitChanges();
-
-            return form;
-        }
-
         public ApplicationForm Get(int id)
         {
             return applicationFormRepository.Get(id);

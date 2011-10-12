@@ -40,13 +40,13 @@
                 return new RedirectResult("/");
             }
 
-            ApplicationForm form;
+            ApplicationForm form = null;
             ApplicationFormSection section;
 
             if (applicationFormId == null)
             {
                 Applicant loggedInAplicant = loginHelper.GetLoggedInApplicant();
-                form = applicationFormTasks.StartNewApplicationForm(loggedInAplicant);
+                //form = applicationFormTasks.StartNewApplicationForm(loggedInAplicant);
             }
             else
             {

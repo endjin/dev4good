@@ -85,6 +85,7 @@
     <Compile Include="ApplicationFormTasks.cs" />
     <Compile Include="CommandHandlers\RegisterApplicantHandler.cs" />
     <Compile Include="CommandHandlers\SaveApplicantDetailsHandler.cs" />
+    <Compile Include="CommandHandlers\StartNewApplicationFormCommandHandler.cs" />
     <Compile Include="Commands\ApplicantResult.cs" />
     <Compile Include="Commands\ApplicationFormResult.cs" />
     <Compile Include="Commands\RegisterApplicantCommand.cs">
@@ -92,6 +93,7 @@
     </Compile>
     <Compile Include="Commands\SaveApplicantDetailsCommand.cs" />
     <Compile Include="ApplicationFormSectionTasks.cs" />
+    <Compile Include="Commands\StartNewApplicationFormCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CraftAndDesignCouncil.Domain\CraftAndDesignCouncil.Domain.csproj">
