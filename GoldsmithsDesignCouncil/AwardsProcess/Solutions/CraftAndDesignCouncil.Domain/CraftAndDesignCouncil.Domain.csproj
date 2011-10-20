@@ -87,6 +87,7 @@
     <Compile Include="ApplicationFormSection.cs" />
     <Compile Include="Contracts\Queries\IAllQuestionsQuery.cs" />
     <Compile Include="Contracts\Queries\IGetOrderedListOfSectionsQuery.cs" />
+    <Compile Include="Contracts\Queries\IGetSectionByIdQuery.cs" />
     <Compile Include="Contracts\Queries\IListApplicationFormsForApplicantQuery.cs" />
     <Compile Include="Contracts\Tasks\IApplicantTasks.cs" />
     <Compile Include="Contracts\Tasks\IApplicationFormTasks.cs" />

@@ -3,10 +3,9 @@
     #region Using Directives
     using System;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Linq;
     using SharpArch.Domain.DomainModel;
-using System.Collections.Generic;
-
+    using System.Collections.Generic;
     #endregion
 
     public class Applicant : Entity
@@ -33,6 +32,11 @@ using System.Collections.Generic;
         public Applicant()
         {
             Applications = new List<ApplicationForm>();
+        }
+
+        public virtual ApplicationForm GetApplicationById(int applicationId)
+        {
+            return Applications.FirstOrDefault(x => x.Id == applicationId); 
         }
     }
 }

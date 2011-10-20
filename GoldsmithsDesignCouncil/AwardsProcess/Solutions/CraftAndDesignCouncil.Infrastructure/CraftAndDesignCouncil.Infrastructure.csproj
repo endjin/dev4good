@@ -108,6 +108,7 @@
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="Queries\AllQuestionsQuery.cs" />
     <Compile Include="Queries\GetOrderedListOfSectionsQuery.cs" />
+    <Compile Include="Queries\GetSectionByIdQuery.cs" />
     <Compile Include="Queries\ListApplicationFormsForApplicantQuery.cs" />
     <Compile Include="Queries\QueryRunner.cs" />
   </ItemGroup>
