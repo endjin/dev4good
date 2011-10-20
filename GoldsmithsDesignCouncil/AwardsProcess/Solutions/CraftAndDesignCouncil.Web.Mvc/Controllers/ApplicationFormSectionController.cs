@@ -58,6 +58,12 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
             }
             
             var model = new ApplicationFormSectionViewModel();
+            var questions = new List<QuestionAndAnswerViewModel>();
+            foreach (Question question in section.Questions)
+            {
+               questions.Add(new QuestionAndAnswerViewModel{QuestionText = question.QuestionText});
+            }
+            model.Questions = questions;
             model.SectionTitle = section.Title;
             return View(model);
         }

@@ -132,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RouteRegistrar.cs" />
     <Compile Include="Controllers\ViewModels\ApplicationFormSectionViewModel.cs" />
+    <Compile Include="Controllers\ViewModels\QuestionAndAnswerViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,22 +177,12 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\ApplicationFormSection\Edit.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Application\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Application\ContactDetails.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Application\ApplicationFormSection.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Application\ApplicationForms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Applicant\Create.cshtml" />

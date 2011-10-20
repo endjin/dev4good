@@ -1,4 +1,6 @@
-﻿@model CraftAndDesignCouncil.Web.Mvc.Controllers.ViewModels.ApplicationFormSectionViewModel
+﻿@using CraftAndDesignCouncil.Web.Mvc.Controllers.ViewModels;
+
+@model ApplicationFormSectionViewModel
 
 @{
     ViewBag.Title = "ApplicationFormSection";
@@ -8,4 +10,9 @@
 <h2>ApplicationFormSection</h2>
 
 <h3>@Model.SectionTitle</h3>
+
+@foreach (QuestionAndAnswerViewModel qa in Model.Questions)
+{
+    @qa.QuestionText <br />
+}
 
