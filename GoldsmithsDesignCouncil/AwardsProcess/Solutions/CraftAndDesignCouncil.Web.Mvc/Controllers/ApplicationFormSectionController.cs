@@ -61,7 +61,7 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
             var questions = new List<QuestionAndAnswerViewModel>();
             foreach (Question question in section.Questions)
             {
-               questions.Add(new QuestionAndAnswerViewModel{QuestionText = question.QuestionText});
+               questions.Add(new QuestionAndAnswerViewModel{QuestionText = question.QuestionText, QuestionId=question.Id});
             }
             model.Questions = questions;
             model.SectionTitle = section.Title;

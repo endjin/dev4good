@@ -11,8 +11,14 @@
 
 <h3>@Model.SectionTitle</h3>
 
-@foreach (QuestionAndAnswerViewModel qa in Model.Questions)
+@using (Html.BeginForm())
 {
-    @qa.QuestionText <br />
+    foreach (QuestionAndAnswerViewModel qa in Model.Questions)
+    {
+        @qa.QuestionText
+        @Html.TextBox("Answer_" + qa.QuestionId, qa.AnswerText);
+        <br />
+    }
+    @Html.SubmitButton();
 }
 
