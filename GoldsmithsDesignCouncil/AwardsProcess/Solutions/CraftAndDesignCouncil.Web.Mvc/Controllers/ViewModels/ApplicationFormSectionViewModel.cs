@@ -8,6 +8,6 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers.ViewModels
     public class ApplicationFormSectionViewModel
     {
         public string SectionTitle { get; set; }
-        public IEnumerable<QuestionAndAnswerViewModel> Questions {get;set;}
+        public IList<QuestionAndAnswerViewModel> Questions {get;set;}
     }
 }

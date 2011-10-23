@@ -7,17 +7,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ApplicationFormSection</h2>
-
 <h3>@Model.SectionTitle</h3>
 
 @using (Html.BeginForm())
-{
-    foreach (QuestionAndAnswerViewModel qa in Model.Questions)
+{   
+    for (int idx=0; idx<Model.Questions.Count; idx++)
     {
-        @qa.QuestionText
-        @Html.TextBox("Answer_" + qa.QuestionId, qa.AnswerText);
-        <br />
+       @Model.Questions[idx].QuestionText
+       @Html.TextBoxFor(x => x.Questions[idx].QuestionId);
+       @Html.TextBoxFor(x=>x.Questions[idx].AnswerText);
+       <br />
     }
     @Html.SubmitButton();
 }

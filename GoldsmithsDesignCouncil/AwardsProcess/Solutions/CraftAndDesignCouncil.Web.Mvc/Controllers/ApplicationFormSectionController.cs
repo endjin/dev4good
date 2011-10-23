@@ -67,5 +67,32 @@ namespace CraftAndDesignCouncil.Web.Mvc.Controllers
             model.SectionTitle = section.Title;
             return View(model);
         }
+
+        //id is the form and id2 is the section
+        [HttpPost]
+        public ActionResult Edit(int id, int? id2, ApplicationFormSectionViewModel answers)
+        {
+            if (!loginHelper.SomebodyIsLoggedIn)
+            {
+                return Redirect("/");
+            }
+            var user = loginHelper.GetLoggedInApplicant();
+            var form = user.GetApplicationById(id);
+            if (form == null)
+            {
+                return RedirectToRoute(new { Controller = "ApplicationForm" });
+            }
+
+            var application = user.GetApplicationById(id);
+            if (application == null)
+            {
+                return Redirect("/");
+            }
+            
+            //TODO: put the answers into the application and save.
+
+            return View();
+        }
+
     }
 }
