@@ -128,7 +128,6 @@
     <Compile Include="Controllers\ILoginHelper.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MockLoginHelper.cs" />
-    <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RouteRegistrar.cs" />
     <Compile Include="Controllers\ViewModels\ApplicationFormSectionViewModel.cs" />
