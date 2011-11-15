@@ -10,8 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-
-
 if exists (select 1 from information_schema.Tables where table_name = 'ApplicationFormSections' and TABLE_SCHEMA = 'dbo')
 begin
 	print 'ApplicationFormSections table found'
