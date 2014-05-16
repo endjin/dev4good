@@ -1,0 +1,35 @@
+﻿@model CharityPortal.Data.Resource
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Resource Details</h2>
+
+<fieldset>
+    <legend>Resource</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">Quantity</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Quantity)
+    </div>
+
+    <div class="display-label">Quantity Units</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuantityUnits)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "t-button" }) 
+    @Html.ActionLink("Back to List", "Index", null , new { @class = "t-button" })
+</p>

@@ -1,0 +1,45 @@
+﻿@model CharityPortal.Data.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Project</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">Is Active</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsActive)
+    </div>
+</fieldset>
+
+@if (Model != null && Model.RequiredResources != null && Model.RequiredResources.Count > 0) {
+<fieldset>
+    <legend>Required Resources Map</legend>
+    @{
+        Map map = new Map();
+        foreach(Resource resource in Model.RequiredResources) {
+            map.Markers.Add(MapUtils.CreateRequiredResourceMarker(resource, Url));
+        }
+    }
+    <div class="map-container">
+        @Html.Map(map);
+    </div>
+</fieldset>
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "t-button" }) 
+    @Html.ActionLink("Back to List", "Index",null,new { @class = "t-button" })
+</p>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CharityPortal.Data.Organization>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Organization List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null,  new{   @class="t-button"})
+</p>
+
+@*@(Html.Telerik().Grid(Model)
+                    .Name("Grid")
+            .DataKeys(keys => keys.Add(c => c.Id)).DataBinding(dataBinding => dataBinding.Server()
+                      .Select("Details", "Organization")
+                   .Update("Edit", "Organization")
+                       .Delete("Delete", "Organization")).Columns(columns =>
+            {
+                columns.Bound(o => o.Name).Width(100);
+                columns.Bound(o => o.ContactEmail).Width(200);columns.Command(commands =>
+            {commands.Select();
+                commands.Edit();
+                
+                commands.Delete();
+            }).Width(200);
+
+            }).Sortable(sorting => sorting.Enabled(true))
+            .Pageable(paging => paging.Enabled(false))
+            .Filterable(filtering => filtering.Enabled(false))
+           
+            .Footer(false))*@
+<div class="t-widget t-grid" id="Grid">
+
+<table style="border-collapse:collapse">
+<thead class="t-grid-header">
+    <tr>
+       <th class="t-header" scope="col">
+            Name
+        </th>
+       <th class="t-header" scope="col">
+            Contact Email
+        </th>
+          <th class="t-header" scope="col" ></th>
+    </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactEmail)
+        </td>
+        <td style="width:30%;vertical-align:middle; padding-left:2% ">
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id } , new{   @class="t-button"} ) 
+            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "t-button" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "t-button" })
+        </td>
+    </tr>
+}
+
+</table>
+</div>

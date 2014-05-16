@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataContext.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DataContextStoreContainer">
+    <EntitySet Name="Projects" EntityType="DataContext.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Resources" EntityType="DataContext.Store.Resources" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Organizations" EntityType="DataContext.Store.Organizations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tags" EntityType="DataContext.Store.Tags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AppSettings" EntityType="DataContext.Store.AppSettings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TagResource" EntityType="DataContext.Store.TagResource" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="OrganizationProject" Association="DataContext.Store.OrganizationProject">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectResource" Association="DataContext.Store.ProjectResource">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Resource" EntitySet="Resources" />
+    </AssociationSet>
+    <AssociationSet Name="OrganizationResource" Association="DataContext.Store.OrganizationResource">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="Resource" EntitySet="Resources" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagResource_Tag" Association="DataContext.Store.FK_TagResource_Tag">
+      <End Role="Tag" EntitySet="Tags" />
+      <End Role="TagResource" EntitySet="TagResource" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagResource_Resource" Association="DataContext.Store.FK_TagResource_Resource">
+      <End Role="Resource" EntitySet="Resources" />
+      <End Role="TagResource" EntitySet="TagResource" />
+    </AssociationSet>
+    <AssociationSet Name="ResourceResource" Association="DataContext.Store.ResourceResource">
+      <End Role="Resource" EntitySet="Resources" />
+      <End Role="Resource1" EntitySet="Resources" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Location_Longitude" Type="float" Nullable="false" />
+    <Property Name="Location_Latitude" Type="float" Nullable="false" />
+    <Property Name="Location_Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdminOrganization_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Resources">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="QuantityUnits" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Location_Longitude" Type="float" Nullable="false" />
+    <Property Name="Location_Latitude" Type="float" Nullable="false" />
+    <Property Name="Location_Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Project_Id" Type="int" Nullable="true" />
+    <Property Name="Organization_Id" Type="int" Nullable="true" />
+    <Property Name="FulfilledBy_Id" Type="bigint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Organizations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ContactEmail" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="AppSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TagResource">
+    <Key>
+      <PropertyRef Name="Tags_Id" />
+      <PropertyRef Name="Resources_Id" />
+    </Key>
+    <Property Name="Tags_Id" Type="int" Nullable="false" />
+    <Property Name="Resources_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="OrganizationProject">
+    <End Role="Organization" Type="DataContext.Store.Organizations" Multiplicity="0..1" />
+    <End Role="Project" Type="DataContext.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="AdminOrganization_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectResource">
+    <End Role="Project" Type="DataContext.Store.Projects" Multiplicity="0..1" />
+    <End Role="Resource" Type="DataContext.Store.Resources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Resource">
+        <PropertyRef Name="Project_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrganizationResource">
+    <End Role="Organization" Type="DataContext.Store.Organizations" Multiplicity="0..1" />
+    <End Role="Resource" Type="DataContext.Store.Resources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Resource">
+        <PropertyRef Name="Organization_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ResourceResource">
+    <End Role="Resource" Type="DataContext.Store.Resources" Multiplicity="0..1" />
+    <End Role="Resource1" Type="DataContext.Store.Resources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Resource1">
+        <PropertyRef Name="FulfilledBy_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagResource_Tag">
+    <End Role="Tag" Type="DataContext.Store.Tags" Multiplicity="1" />
+    <End Role="TagResource" Type="DataContext.Store.TagResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TagResource">
+        <PropertyRef Name="Tags_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagResource_Resource">
+    <End Role="TagResource" Type="DataContext.Store.TagResource" Multiplicity="*" />
+    <End Role="Resource" Type="DataContext.Store.Resources" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Resource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TagResource">
+        <PropertyRef Name="Resources_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataContext" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="DataContextContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Projects" EntityType="DataContext.Project" />
+          <EntitySet Name="Resources" EntityType="DataContext.Resource" />
+          <EntitySet Name="Organizations" EntityType="DataContext.Organization" />
+          <AssociationSet Name="OrganizationProject" Association="DataContext.OrganizationProject">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectResource" Association="DataContext.ProjectResource">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Resource" EntitySet="Resources" />
+          </AssociationSet>
+          <AssociationSet Name="OrganizationResource" Association="DataContext.OrganizationResource">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Resource" EntitySet="Resources" />
+          </AssociationSet>
+          <EntitySet Name="Tags" EntityType="DataContext.Tag" />
+          <AssociationSet Name="TagResource" Association="DataContext.TagResource">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="Resource" EntitySet="Resources" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceResource" Association="DataContext.ResourceResource">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="Resource1" EntitySet="Resources" />
+          </AssociationSet>
+          <EntitySet Name="AppSettings" EntityType="DataContext.AppSetting" />
+          </EntityContainer>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="AdminOrganization" Relationship="DataContext.OrganizationProject" FromRole="Project" ToRole="Organization" />
+          <NavigationProperty Name="RequiredResources" Relationship="DataContext.ProjectResource" FromRole="Project" ToRole="Resource" />
+          <Property Name="Location" Type="DataContext.Location" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="Project" Relationship="DataContext.ProjectResource" FromRole="Resource" ToRole="Project" />
+          <NavigationProperty Name="Organization" Relationship="DataContext.OrganizationResource" FromRole="Resource" ToRole="Organization" />
+          <Property Type="Double" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="QuantityUnits" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="Tags" Relationship="DataContext.TagResource" FromRole="Resource" ToRole="Tag" />
+          <Property Name="Location" Type="DataContext.Location" Nullable="false" />
+          <NavigationProperty Name="Fulfills" Relationship="DataContext.ResourceResource" FromRole="Resource" ToRole="Resource1" />
+          <NavigationProperty Name="FulfilledBy" Relationship="DataContext.ResourceResource" FromRole="Resource1" ToRole="Resource" />
+          <Property Type="String" Name="ImageUrl" Nullable="true" MaxLength="255" />
+          </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ContactEmail" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="Projects" Relationship="DataContext.OrganizationProject" FromRole="Organization" ToRole="Project" />
+          <NavigationProperty Name="AvailableResources" Relationship="DataContext.OrganizationResource" FromRole="Organization" ToRole="Resource" />
+        </EntityType>
+        <Association Name="OrganizationProject">
+          <End Type="DataContext.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="DataContext.Project" Role="Project" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectResource">
+          <End Type="DataContext.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="DataContext.Resource" Role="Resource" Multiplicity="*" />
+        </Association>
+        <Association Name="OrganizationResource">
+          <End Type="DataContext.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="DataContext.Resource" Role="Resource" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="Location" >
+          <Property Type="Double" Name="Longitude" Nullable="false" />
+          <Property Type="Double" Name="Latitude" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="Resources" Relationship="DataContext.TagResource" FromRole="Tag" ToRole="Resource" />
+        </EntityType>
+        <Association Name="TagResource">
+          <End Type="DataContext.Tag" Role="Tag" Multiplicity="*" />
+          <End Type="DataContext.Resource" Role="Resource" Multiplicity="*" />
+        </Association>
+        <Association Name="ResourceResource">
+          <End Type="DataContext.Resource" Role="Resource" Multiplicity="0..1" />
+          <End Type="DataContext.Resource" Role="Resource1" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="AppSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="255" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataContextStoreContainer" CdmEntityContainer="DataContextContainer">
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(DataContext.Project)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ComplexProperty Name="Location" TypeName="DataContext.Location">
+            <ScalarProperty Name="Longitude" ColumnName="Location_Longitude" />
+            <ScalarProperty Name="Latitude" ColumnName="Location_Latitude" />
+            <ScalarProperty Name="Address" ColumnName="Location_Address" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resources">
+      <EntityTypeMapping TypeName="IsTypeOf(DataContext.Resource)">
+        <MappingFragment StoreEntitySet="Resources">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="QuantityUnits" ColumnName="QuantityUnits" />
+          <ComplexProperty Name="Location" TypeName="DataContext.Location">
+            <ScalarProperty Name="Longitude" ColumnName="Location_Longitude" />
+            <ScalarProperty Name="Latitude" ColumnName="Location_Latitude" />
+            <ScalarProperty Name="Address" ColumnName="Location_Address" />
+          </ComplexProperty>
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="IsTypeOf(DataContext.Organization)">
+        <MappingFragment StoreEntitySet="Organizations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="IsTypeOf(DataContext.Tag)">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppSettings">
+      <EntityTypeMapping TypeName="IsTypeOf(DataContext.AppSetting)">
+        <MappingFragment StoreEntitySet="AppSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OrganizationProject" TypeName="DataContext.OrganizationProject" StoreEntitySet="Projects">
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="Id" ColumnName="AdminOrganization_Id" />
+      </EndProperty>
+      <EndProperty Name="Project">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="AdminOrganization_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectResource" TypeName="DataContext.ProjectResource" StoreEntitySet="Resources">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="Id" ColumnName="Project_Id" />
+      </EndProperty>
+      <EndProperty Name="Resource">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Project_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrganizationResource" TypeName="DataContext.OrganizationResource" StoreEntitySet="Resources">
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="Id" ColumnName="Organization_Id" />
+      </EndProperty>
+      <EndProperty Name="Resource">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Organization_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TagResource" TypeName="DataContext.TagResource" StoreEntitySet="TagResource">
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="Id" ColumnName="Tags_Id" />
+      </EndProperty>
+      <EndProperty Name="Resource">
+        <ScalarProperty Name="Id" ColumnName="Resources_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ResourceResource" TypeName="DataContext.ResourceResource" StoreEntitySet="Resources">
+      <EndProperty Name="Resource">
+        <ScalarProperty Name="Id" ColumnName="FulfilledBy_Id" />
+      </EndProperty>
+      <EndProperty Name="Resource1">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="FulfilledBy_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="DataContext" >
+        <EntityTypeShape EntityType="DataContext.Project" Width="2" PointX="3.125" PointY="0.875" Height="2.3648893229166661" />
+        <EntityTypeShape EntityType="DataContext.Resource" Width="1.75" PointX="5.625" PointY="0.875" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="DataContext.Organization" Width="1.75" PointX="0.75" PointY="1" Height="1.9802864583333331" />
+        <AssociationConnector Association="DataContext.OrganizationProject">
+          <ConnectorPoint PointX="2.5" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="3.125" PointY="1.9901432291666668" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataContext.ProjectResource">
+          <ConnectorPoint PointX="5.125" PointY="2.0574446614583328" />
+          <ConnectorPoint PointX="5.625" PointY="2.0574446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataContext.OrganizationResource">
+          <ConnectorPoint PointX="1.59375" PointY="2.9802864583333331" />
+          <ConnectorPoint PointX="1.59375" PointY="3.5574446614583328" />
+          <ConnectorPoint PointX="5.625" PointY="3.5574446614583328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataContext.Tag" Width="1.5" PointX="2.5" PointY="3.875" Height="1.5956835937499996" />
+        <AssociationConnector Association="DataContext.TagResource">
+          <ConnectorPoint PointX="4" PointY="4.0381982421875" />
+          <ConnectorPoint PointX="5.625" PointY="4.0381982421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataContext.ResourceResource">
+          <ConnectorPoint PointX="6.2455769230769231" PointY="4.201396484375" />
+          <ConnectorPoint PointX="6.2455769230769231" PointY="4.451396484375" />
+          <ConnectorPoint PointX="6.7665384615384614" PointY="4.451396484375" />
+          <ConnectorPoint PointX="6.7665384615384614" PointY="4.201396484375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataContext.AppSetting" Width="1.5" PointX="8.875" PointY="1.625" Height="1.59568359375" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
